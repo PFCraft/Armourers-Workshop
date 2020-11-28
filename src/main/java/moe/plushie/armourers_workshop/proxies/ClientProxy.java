@@ -1,18 +1,12 @@
 package moe.plushie.armourers_workshop.proxies;
 
+import com.mojang.authlib.GameProfile;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.net.URI;
 import java.util.List;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.Level;
-import org.lwjgl.Sys;
-
-import com.mojang.authlib.GameProfile;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.api.ArmourersWorkshopClientApi;
 import moe.plushie.armourers_workshop.api.common.painting.IPantable;
@@ -56,10 +50,8 @@ import moe.plushie.armourers_workshop.client.skin.cache.ClientSkinPaintCache;
 import moe.plushie.armourers_workshop.client.skin.cache.FastCache;
 import moe.plushie.armourers_workshop.client.texture.PlayerTextureDownloader;
 import moe.plushie.armourers_workshop.common.addons.ModAddonManager;
-import moe.plushie.armourers_workshop.common.holiday.ModHolidays;
 import moe.plushie.armourers_workshop.common.init.blocks.ModBlocks;
 import moe.plushie.armourers_workshop.common.init.entities.EntityMannequin;
-import moe.plushie.armourers_workshop.common.init.items.ItemGiftSack;
 import moe.plushie.armourers_workshop.common.init.items.ModItems;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import moe.plushie.armourers_workshop.common.library.LibraryFile;
@@ -121,6 +113,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.Level;
+import org.lwjgl.Sys;
 
 @Mod.EventBusSubscriber(modid = LibModInfo.ID, value = { Side.CLIENT })
 @SideOnly(Side.CLIENT)
@@ -218,7 +213,6 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemColour(), ModItems.DYE_BOTTLE);
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemColour(), ModItems.HUE_TOOL);
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemColour(), ModItems.SOAP);
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemColour(), ModItems.GIFT_SACK);
 
         Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new BlockColour(), ModBlocks.SKIN_CUBE);
         Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new BlockColour(), ModBlocks.SKIN_CUBE_GLASS);
@@ -246,9 +240,7 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
         super.postInit(event);
         ModAddonManager.initRenderers();
         EntitySkinRenderHandler.INSTANCE.initRenderer();
-        if (ModHolidays.VALENTINES.isHolidayActive()) {
-            enableValentinesClouds();
-        }
+
         loadErrorSkin();
         FMLCommonHandler.instance().registerCrashCallable(new ICrashCallable() {
             @Override
@@ -262,7 +254,7 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
                 error += "\tRender Layers:";
                 for (RenderPlayer playerRender : Minecraft.getMinecraft().getRenderManager().getSkinMap().values()) {
                     error += "\n\t\t Render Class: " + playerRender.getClass().getName();
-                    Object object = ReflectionHelper.getPrivateValue(RenderLivingBase.class, playerRender, "field_177097_h", "layerRenderers");
+                    Object object = ReflectionHelper.getPrivateValue(RenderLivingBase.class, playerRender, new String[] {"field_177097_h", "layerRenderers"});
                     if (object != null) {
                         List<LayerRenderer<?>> layerRenderers = (List<LayerRenderer<?>>) object;
                         for (LayerRenderer<?> layerRenderer : layerRenderers) {
@@ -283,7 +275,7 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
     private void enableValentinesClouds() {
         ModLogger.log("Love is in the air!");
         try {
-            Object o = ReflectionHelper.getPrivateValue(RenderGlobal.class, null, "CLOUDS_TEXTURES", "field_110925_j");
+            Object o = ReflectionHelper.getPrivateValue(RenderGlobal.class, null, new String[] {"CLOUDS_TEXTURES", "field_110925_j"});
             Field f = ReflectionHelper.findField(ResourceLocation.class, "namespace", "field_110626_a");
             f.setAccessible(true);
             f.set(o, LibModInfo.ID.toLowerCase());
@@ -468,9 +460,6 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
 
         @Override
         public int colorMultiplier(ItemStack stack, int tintIndex) {
-            if (stack.getItem() == ModItems.GIFT_SACK) {
-                return ((ItemGiftSack) stack.getItem()).colorMultiplier(stack, tintIndex);
-            }
             if (stack.getItem() == ModItems.DYE_BOTTLE) {
                 if (tintIndex == 0) {
                     return PaintingHelper.getToolDisplayColourRGB(stack);

@@ -1,9 +1,6 @@
 package moe.plushie.armourers_workshop.common.tileentities;
 
 import java.util.ArrayList;
-
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.api.common.skin.Rectangle3D;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;
 import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
@@ -40,6 +37,7 @@ import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.logging.log4j.Level;
 
 public class TileEntitySkinnable extends ModTileEntity implements IGuiFactory {
 
@@ -402,7 +400,7 @@ public class TileEntitySkinnable extends ModTileEntity implements IGuiFactory {
                         if (state.getBlock() instanceof BlockSkinnable) {
                             renderBounds = new AxisAlignedBB(-1, 0, -1, 2, 3, 2).offset(getPos());
                             EnumFacing dir = world.getBlockState(getPos()).getValue(BlockSkinnable.STATE_FACING);
-                            renderBounds = renderBounds.offset(-dir.getXOffset(), 0, -dir.getZOffset());
+                            renderBounds = renderBounds.offset(-dir.getFrontOffsetX(), 0, -dir.getFrontOffsetZ());
                         }
                     } else {
                         return new AxisAlignedBB(0, 0, 0, 1, 1, 1).offset(getPos());

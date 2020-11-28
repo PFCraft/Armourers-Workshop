@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.client.render.tileentities;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;
 import moe.plushie.armourers_workshop.api.common.skin.cubes.ICubeColour;
 import moe.plushie.armourers_workshop.client.render.IRenderBuffer;
@@ -26,6 +24,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class RenderBlockColourable extends TileEntitySpecialRenderer<TileEntityColourable> {
@@ -56,7 +55,7 @@ public class RenderBlockColourable extends TileEntitySpecialRenderer<TileEntityC
         bindTexture(MARKERS);
         renderer.startDrawingQuads(DefaultVertexFormats.POSITION_TEX);
         for (int i = 0; i < 6; i++) {
-            EnumFacing dir = EnumFacing.byIndex(i);
+            EnumFacing dir = EnumFacing.getFront(i);
             int paintType = cubeColour.getPaintType(i) & 0xFF;
             if (paintType != 255) {
                 IPaintType pt = PaintTypeRegistry.getInstance().getPaintTypeFromIndex(paintType);

@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.init.items;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.common.init.items.paintingtool.ItemBlendingTool;
 import moe.plushie.armourers_workshop.common.init.items.paintingtool.ItemBurnTool;
 import moe.plushie.armourers_workshop.common.init.items.paintingtool.ItemColourNoiseTool;
@@ -43,12 +42,10 @@ public class ModItems {
     public static final Item WAND_OF_STYLE = new ItemWandOfStyle();
     public static final Item SOAP = new ItemSoap();
     public static final Item DYE_BOTTLE = new ItemDyeBottle();
-    public static final Item GUIDE_BOOK = new ItemGuideBook();
     public static final Item ARMOURERS_HAMMER = new ItemArmourersHammer();
     public static final Item DEBUG_TOOL = new ItemDebugTool();
     public static final Item SKIN_UNLOCK = new ItemSkinUnlock();
     public static final Item LINKING_TOOL = new ItemLinkingTool();
-    public static final Item GIFT_SACK = new ItemGiftSack();
     public static final Item MANNEQUIN = new ItemMannequin();
 
     public static final Item ARMOUR_CONTAINER_ITEM = new ItemArmourContainerItem();

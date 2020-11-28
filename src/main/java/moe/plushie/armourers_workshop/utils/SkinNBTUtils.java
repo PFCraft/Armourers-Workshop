@@ -46,7 +46,7 @@ public class SkinNBTUtils implements ISkinNBTUtils {
 
     @Override
     public void setSkinDescriptor(NBTTagCompound compound, ISkinDescriptor skinDescriptor) {
-        if (compound.isEmpty() | skinDescriptor == null) {
+        if (compound.hasNoTags() | skinDescriptor == null) {
             return;
         }
         SkinNBTHelper.addSkinDataToStack(compound, (SkinDescriptor) skinDescriptor);

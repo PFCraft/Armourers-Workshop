@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.capability;
 
 import java.util.concurrent.Callable;
-
 import moe.plushie.armourers_workshop.api.common.capability.IEntitySkinCapability;
 import moe.plushie.armourers_workshop.api.common.capability.IPlayerWardrobeCap;
 import moe.plushie.armourers_workshop.api.common.capability.IWardrobeCap;
@@ -9,15 +8,12 @@ import moe.plushie.armourers_workshop.api.common.skin.entity.ISkinnableEntity;
 import moe.plushie.armourers_workshop.common.capability.entityskin.EntitySkinCapability;
 import moe.plushie.armourers_workshop.common.capability.entityskin.EntitySkinProvider;
 import moe.plushie.armourers_workshop.common.capability.entityskin.EntitySkinStorage;
-import moe.plushie.armourers_workshop.common.capability.holiday.HolidayTrackCap;
-import moe.plushie.armourers_workshop.common.capability.holiday.IHolidayTrackCap;
 import moe.plushie.armourers_workshop.common.capability.wardrobe.WardrobeCap;
 import moe.plushie.armourers_workshop.common.capability.wardrobe.WardrobeProvider;
 import moe.plushie.armourers_workshop.common.capability.wardrobe.WardrobeStorage;
 import moe.plushie.armourers_workshop.common.capability.wardrobe.player.PlayerWardrobeCap;
 import moe.plushie.armourers_workshop.common.capability.wardrobe.player.PlayerWardrobeProvider;
 import moe.plushie.armourers_workshop.common.capability.wardrobe.player.PlayerWardrobeStorage;
-import moe.plushie.armourers_workshop.common.config.ConfigHandler;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import moe.plushie.armourers_workshop.common.skin.entity.SkinnableEntityRegisty;
 import net.minecraft.entity.Entity;
@@ -31,7 +27,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -74,7 +69,6 @@ public final class ModCapabilityManager {
                 return null;
             }
         });
-        CapabilityManager.INSTANCE.register(IHolidayTrackCap.class, new HolidayTrackCap.Storage(), new HolidayTrackCap.Factory());
     }
 
     @SubscribeEvent
@@ -91,7 +85,6 @@ public final class ModCapabilityManager {
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
             event.addCapability(KEY_PLAYER_WARDROBE_PROVIDER, new PlayerWardrobeProvider(player, skinnableEntity));
-            event.addCapability(KEY_HOLIDAY_TRACKER, new HolidayTrackCap.Provider());
         } else {
             event.addCapability(KEY_WARDROBE_PROVIDER, new WardrobeProvider(entity, skinnableEntity));
         }
@@ -126,41 +119,6 @@ public final class ModCapabilityManager {
         IPlayerWardrobeCap wardrobeCapability = PlayerWardrobeCap.get(event.player);
         if (wardrobeCapability != null) {
             wardrobeCapability.syncToPlayer((EntityPlayerMP) event.player);
-        }
-    }
-
-    @SubscribeEvent
-    public static void onLivingDeathEvent(LivingDeathEvent event) {
-        if (!event.getEntity().getEntityWorld().isRemote & event.getEntityLiving() instanceof EntityPlayer) {
-            IEntitySkinCapability skinCapability = EntitySkinCapability.get(event.getEntityLiving());
-            if (skinCapability == null) {
-                return;
-            }
-            boolean dropSkins = true;
-            MinecraftServer server = event.getEntity().getEntityWorld().getMinecraftServer();
-            GameRules gr = getGameRules(server);
-            boolean keepInventory = false;
-            if (gr.hasRule("keepInventory")) {
-                keepInventory = gr.getBoolean("keepInventory");
-            }
-
-            switch (ConfigHandler.wardrobeDropSkinsOnDeath) {
-            case 0:
-                dropSkins = !keepInventory;
-                break;
-            case 1:
-                dropSkins = false;
-                break;
-            case 2:
-                dropSkins = true;
-                break;
-            default:
-                dropSkins = !keepInventory;
-                break;
-            }
-            if (dropSkins) {
-                skinCapability.getSkinInventoryContainer().dropItems(event.getEntityLiving().getEntityWorld(), event.getEntityLiving().getPositionVector());
-            }
         }
     }
 

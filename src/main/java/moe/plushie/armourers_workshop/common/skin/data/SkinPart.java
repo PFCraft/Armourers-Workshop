@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.skin.data;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.api.common.skin.Point3D;
 import moe.plushie.armourers_workshop.api.common.skin.Rectangle3D;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinPart;
@@ -176,7 +175,7 @@ public class SkinPart implements ISkinPart {
     public EnumFacing getMarkerSide(int index) {
         if (index >= 0 & index < markerBlocks.size()) {
             CubeMarkerData cmd = markerBlocks.get(index);
-            return EnumFacing.byIndex(cmd.meta - 1);
+            return EnumFacing.getFront(cmd.meta - 1);
         }
         return null;
     }

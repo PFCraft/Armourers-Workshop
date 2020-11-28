@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.client.render.item;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;
 import moe.plushie.armourers_workshop.client.model.block.ModelBlockSkinnable;
 import moe.plushie.armourers_workshop.client.render.ModRenderHelper;
@@ -13,6 +11,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.item.ItemStack;
+import org.lwjgl.opengl.GL11;
 
 public class RenderItemEquipmentSkin extends TileEntityItemStackRenderer {
     
@@ -27,7 +26,7 @@ public class RenderItemEquipmentSkin extends TileEntityItemStackRenderer {
             GlStateManager.pushAttrib();
             GlStateManager.scale(-1F, -1F, 1F);
             GlStateManager.rotate(180, 0, 1, 0);
-            mc.profiler.startSection("armourersItemSkin");
+            mc.mcProfiler.startSection("armourersItemSkin");
             ModRenderHelper.enableAlphaBlend();
             GL11.glEnable(GL11.GL_CULL_FACE);
             
@@ -44,7 +43,7 @@ public class RenderItemEquipmentSkin extends TileEntityItemStackRenderer {
             GlStateManager.rotate(30, 1, 0, 0);
             GlStateManager.rotate(45, 0, 1, 0);
             SkinItemRenderHelper.renderSkinAsItem(itemStackIn, true, 16, 16);
-            mc.profiler.endSection();
+            mc.mcProfiler.endSection();
             GlStateManager.popAttrib();
             GlStateManager.popMatrix();
         } else {

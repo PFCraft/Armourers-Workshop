@@ -1,11 +1,9 @@
 package moe.plushie.armourers_workshop.client.handler;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
-
+import java.util.HashMap;
+import java.util.Map;
 import moe.plushie.armourers_workshop.api.common.capability.IEntitySkinCapability;
 import moe.plushie.armourers_workshop.api.common.capability.IPlayerWardrobeCap;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;
@@ -54,7 +52,7 @@ public class PlayerTextureHandler {
 
     public PlayerTextureHandler() {
         MinecraftForge.EVENT_BUS.register(this);
-        profiler = Minecraft.getMinecraft().profiler;
+        profiler = Minecraft.getMinecraft().mcProfiler;
         INSTANCE = this;
     }
 
@@ -136,7 +134,7 @@ public class PlayerTextureHandler {
 
             NetworkPlayerInfo playerInfo = Minecraft.getMinecraft().getConnection().getPlayerInfo(player.getUniqueID());
             if (playerInfo != null) {
-                Map<Type, ResourceLocation> playerTextures = ReflectionHelper.getPrivateValue(NetworkPlayerInfo.class, playerInfo, "field_187107_a", "playerTextures");
+                Map<Type, ResourceLocation> playerTextures = ReflectionHelper.getPrivateValue(NetworkPlayerInfo.class, playerInfo, new String[] { "field_187107_a", "playerTextures" });
                 if (playerTextures != null) {
                     playerTextures.put(Type.SKIN, replacmentTexture);
                 }
@@ -189,7 +187,7 @@ public class PlayerTextureHandler {
             ResourceLocation normalTexture = textureInfo.postRender();
             NetworkPlayerInfo playerInfo = Minecraft.getMinecraft().getConnection().getPlayerInfo(player.getUniqueID());
             if (playerInfo != null) {
-                Map<Type, ResourceLocation> playerTextures = ReflectionHelper.getPrivateValue(NetworkPlayerInfo.class, playerInfo, "field_187107_a", "playerTextures");
+                Map<Type, ResourceLocation> playerTextures = ReflectionHelper.getPrivateValue(NetworkPlayerInfo.class, playerInfo, new String[] { "field_187107_a", "playerTextures" });
                 if (playerTextures != null) {
                     ResourceLocation curTexture = player.getLocationSkin();
                     if (curTexture == replacmentTexture) {

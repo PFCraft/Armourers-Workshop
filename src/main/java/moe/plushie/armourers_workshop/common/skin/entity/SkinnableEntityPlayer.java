@@ -2,9 +2,6 @@ package moe.plushie.armourers_workshop.common.skin.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import moe.plushie.armourers_workshop.client.render.entity.ModelResetLayer;
 import moe.plushie.armourers_workshop.client.render.entity.SkinLayerRendererHeldItem;
@@ -21,6 +18,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.logging.log4j.Level;
 
 public class SkinnableEntityPlayer extends SkinnableEntity {
 
@@ -35,7 +33,7 @@ public class SkinnableEntityPlayer extends SkinnableEntity {
         ModLogger.log("Setting up player render layers.");
         for (RenderPlayer playerRender : Minecraft.getMinecraft().getRenderManager().getSkinMap().values()) {
             try {
-                Object object = ReflectionHelper.getPrivateValue(RenderLivingBase.class, playerRender, "field_177097_h", "layerRenderers");
+                Object object = ReflectionHelper.getPrivateValue(RenderLivingBase.class, playerRender, new String[] {"field_177097_h", "layerRenderers"});
                 if (object != null) {
                     List<LayerRenderer<?>> layerRenderers = (List<LayerRenderer<?>>) object;
                     layerRenderers.add(0, new ModelResetLayer(playerRender));

@@ -2,14 +2,11 @@ package moe.plushie.armourers_workshop.common.addons;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import moe.plushie.armourers_workshop.client.render.entity.SkinLayerRendererBibed;
 import moe.plushie.armourers_workshop.client.render.entity.SkinLayerRendererHeldItem;
-import moe.plushie.armourers_workshop.common.skin.entity.SkinnableEntityRegisty;
 import moe.plushie.armourers_workshop.common.skin.entity.SkinnableEntity;
+import moe.plushie.armourers_workshop.common.skin.entity.SkinnableEntityRegisty;
 import moe.plushie.armourers_workshop.common.skin.type.SkinTypeRegistry;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraft.client.renderer.entity.Render;
@@ -23,6 +20,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.logging.log4j.Level;
 
 public class AddonCustomEntities extends ModAddon {
 
@@ -52,7 +50,7 @@ public class AddonCustomEntities extends ModAddon {
                 }
 
                 try {
-                    Object object = ReflectionHelper.getPrivateValue(RenderLivingBase.class, (RenderLivingBase) renderer, "field_177097_h", "layerRenderers");
+                    Object object = ReflectionHelper.getPrivateValue(RenderLivingBase.class, (RenderLivingBase) renderer, new String[] {"field_177097_h", "layerRenderers"});
                     if (object != null) {
                         List<LayerRenderer<?>> layerRenderers = (List<LayerRenderer<?>>) object;
                         // Looking for held item layer.

@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.utils;
 
 import com.mojang.authlib.GameProfile;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -38,7 +37,7 @@ public final class PlayerUtils {
     }
 
     public static EnumFacing getDirection(int x, int y, int z, EntityPlayer player) {
-        return EnumFacing.byIndex(getOrientation(x, y, z, player));
+        return EnumFacing.getFront(getOrientation(x, y, z, player));
     }
 
     public static int getOrientation(int x, int y, int z, EntityLivingBase entity) {
@@ -58,7 +57,7 @@ public final class PlayerUtils {
     }
 
     public static EnumFacing getDirectionSide(EntityPlayer player) {
-        return EnumFacing.byIndex(getOrientationSide(player));
+        return EnumFacing.getFront(getOrientationSide(player));
     }
 
     public static int getOrientationSide(EntityLivingBase entity) {

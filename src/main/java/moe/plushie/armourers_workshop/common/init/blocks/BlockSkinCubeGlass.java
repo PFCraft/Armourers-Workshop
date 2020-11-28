@@ -14,8 +14,7 @@ public class BlockSkinCubeGlass extends BlockSkinCube {
             setSortPriority(120);
         }
     }
-    
-    @Override
+
     public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.TRANSLUCENT;
     }

@@ -1,15 +1,12 @@
 package moe.plushie.armourers_workshop.common.init.blocks;
 
-import java.util.Random;
-
 import com.mojang.authlib.GameProfile;
-
+import java.util.Random;
 import moe.plushie.armourers_workshop.client.render.item.RenderItemMannequin;
 import moe.plushie.armourers_workshop.common.Contributors;
 import moe.plushie.armourers_workshop.common.Contributors.Contributor;
 import moe.plushie.armourers_workshop.common.config.ConfigHandler;
 import moe.plushie.armourers_workshop.common.data.type.TextureType;
-import moe.plushie.armourers_workshop.common.holiday.ModHolidays;
 import moe.plushie.armourers_workshop.common.init.entities.EntityMannequin;
 import moe.plushie.armourers_workshop.common.init.entities.EntityMannequin.TextureData;
 import moe.plushie.armourers_workshop.common.lib.EnumGuiId;
@@ -50,14 +47,12 @@ public class BlockDoll extends AbstractModBlockContainer {
     private static final String TAG_OWNER = "owner";
     private static final String TAG_IMAGE_URL = "imageUrl";
 
-    private final boolean isValentins;
     private static final AxisAlignedBB AABB = new AxisAlignedBB(0.2F, 0F, 0.2F, 0.8F, 0.95F, 0.8F);
 
     public BlockDoll() {
         super(LibBlockNames.DOLL, Material.CIRCUITS, SoundType.METAL, !ConfigHandler.hideDollFromCreativeTabs);
         setLightOpacity(0);
         // setBlockBounds(0.2F, 0F, 0.2F, 0.8F, 0.95F, 0.8F);
-        isValentins = ModHolidays.VALENTINES.isHolidayActive();
         setSortPriority(198);
     }
 
@@ -110,12 +105,7 @@ public class BlockDoll extends AbstractModBlockContainer {
     @Override
     public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         ParticleManager particleManager = Minecraft.getMinecraft().effectRenderer;
-        if (isValentins) {
-            if (rand.nextFloat() * 100 > 75) {
-                Particle particle = particleManager.spawnEffectParticle(EnumParticleTypes.HEART.getParticleID(), pos.getX() - 0.2F + rand.nextFloat() * 0.6F, pos.getY(), pos.getZ() - 0.2F + rand.nextFloat() * 0.6F, 0, 0, 0, null);
-                Minecraft.getMinecraft().effectRenderer.addEffect(particle);
-            }
-        }
+
         TileEntity tileEntity = worldIn.getTileEntity(pos);
         if (tileEntity != null && tileEntity instanceof TileEntityMannequin) {
             TileEntityMannequin te = (TileEntityMannequin) tileEntity;

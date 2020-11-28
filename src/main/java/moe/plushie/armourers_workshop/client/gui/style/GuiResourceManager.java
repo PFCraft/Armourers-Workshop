@@ -1,11 +1,9 @@
 package moe.plushie.armourers_workshop.client.gui.style;
 
-import java.io.IOException;
-import java.util.HashMap;
-
 import com.google.common.base.Charsets;
 import com.google.gson.JsonElement;
-
+import java.io.IOException;
+import java.util.HashMap;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import moe.plushie.armourers_workshop.utils.SerializeHelper;
 import net.minecraft.client.Minecraft;
@@ -50,7 +48,7 @@ public class GuiResourceManager implements IResourceManagerReloadListener {
     private static GuiStyle loadGuiJsonInfo(ResourceLocation resourceLocation) {
         GuiStyle guiStyle = new GuiStyle();
         
-        String path = String.format(GUI_ASSETS_LOCATION, resourceLocation.getNamespace(), resourceLocation.getPath());
+        String path = String.format(GUI_ASSETS_LOCATION, resourceLocation.getResourceDomain(), resourceLocation.getResourcePath());
         try {
             IResource resource = Minecraft.getMinecraft().getResourceManager().getResource(resourceLocation);
             String data = SerializeHelper.readFile(resource.getInputStream(), Charsets.UTF_8);

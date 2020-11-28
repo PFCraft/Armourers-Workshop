@@ -2,7 +2,6 @@ package moe.plushie.armourers_workshop.common.creativetab;
 
 import java.util.Collections;
 import java.util.Comparator;
-
 import moe.plushie.armourers_workshop.common.init.blocks.ModBlocks;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +18,7 @@ public class CreativeTabPaintingTools extends CreativeTabs {
     
     @SideOnly(Side.CLIENT)
     @Override
-    public ItemStack createIcon() {
+    public ItemStack getTabIconItem() {
         return new ItemStack(ModBlocks.ARMOURER);
     }
     

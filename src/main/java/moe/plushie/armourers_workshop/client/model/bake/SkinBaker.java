@@ -3,7 +3,6 @@ package moe.plushie.armourers_workshop.client.model.bake;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashSet;
-
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;
 import moe.plushie.armourers_workshop.api.common.skin.Rectangle3D;
 import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
@@ -89,9 +88,9 @@ public final class SkinBaker {
         
         for (int i = 0; i < dirs.length; i++) {
             EnumFacing dir = dirs[i];
-            int x = cubeLocation.getX() + dir.getXOffset();
-            int y = cubeLocation.getY() + dir.getYOffset();
-            int z = cubeLocation.getZ() + dir.getZOffset();
+            int x = cubeLocation.getX() + dir.getFrontOffsetX();
+            int y = cubeLocation.getY() + dir.getFrontOffsetY();
+            int z = cubeLocation.getZ() + dir.getFrontOffsetZ();
             int tarIndex = getIndexForLocation(x, y, z, partBounds, cubeArray);
             
             

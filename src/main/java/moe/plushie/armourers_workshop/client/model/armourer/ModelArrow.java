@@ -17,7 +17,7 @@ public class ModelArrow {
     
     public ModelArrow() {
         this.displayList = -1;
-        this.arrowTextures = ReflectionHelper.getPrivateValue(RenderArrow.class, null, "arrowTextures", "field_110780_a");
+        this.arrowTextures = ReflectionHelper.getPrivateValue(RenderArrow.class, null, new String[] {"arrowTextures", "field_110780_a"});
     }
     
     @Override

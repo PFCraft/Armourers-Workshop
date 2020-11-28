@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.tileentities;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.api.common.painting.IPantableBlock;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinPartType;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
@@ -316,7 +315,7 @@ public class TileEntityArmourer extends AbstractTileEntityInventory implements I
     @Override
     public void readCommonFromNBT(NBTTagCompound compound) {
         super.readCommonFromNBT(compound);
-        direction = EnumFacing.byIndex(compound.getByte(TAG_DIRECTION));
+        direction = EnumFacing.getFront(compound.getByte(TAG_DIRECTION));
         skinType = SkinTypeRegistry.INSTANCE.getSkinTypeFromRegistryName(compound.getString(TAG_TYPE));
         
         showGuides = compound.getBoolean(TAG_SHOW_GUIDES);

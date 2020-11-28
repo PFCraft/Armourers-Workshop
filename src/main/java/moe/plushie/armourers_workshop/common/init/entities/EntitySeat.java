@@ -42,9 +42,9 @@ public class EntitySeat extends Entity implements IEntityAdditionalSpawnData {
         if (this.isPassenger(passenger)) {
             float scale = 0.0625F;
 
-            float offsetX = (offset.getX() * scale) * rotation.getZOffset() + (-offset.getZ() * scale) * rotation.getXOffset();
+            float offsetX = (offset.getX() * scale) * rotation.getFrontOffsetZ() + (-offset.getZ() * scale) * rotation.getFrontOffsetX();
             float offsetY = offset.getY() * scale;
-            float offsetZ = (-offset.getZ() * scale) * rotation.getZOffset() + (-offset.getX() * scale) * rotation.getXOffset();
+            float offsetZ = (-offset.getZ() * scale) * rotation.getFrontOffsetZ() + (-offset.getX() * scale) * rotation.getFrontOffsetX();
 
             passenger.setPosition(this.posX + 0.5 - offsetX, this.posY + passenger.getYOffset() + 0.5F - offsetY, this.posZ + 0.5F - offsetZ);
 

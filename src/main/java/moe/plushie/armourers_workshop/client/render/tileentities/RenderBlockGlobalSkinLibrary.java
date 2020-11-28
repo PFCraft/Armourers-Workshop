@@ -30,9 +30,9 @@ public class RenderBlockGlobalSkinLibrary extends TileEntitySpecialRenderer<Tile
             if (state.getBlock() == ModBlocks.GLOBAL_SKIN_LIBRARY) {
                 EnumFacing facing = state.getValue(BlockGlobalSkinLibrary.STATE_FACING);
                 GlStateManager.translate(
-                        (xPos * SCALE * facing.getZOffset()) + (yPos * SCALE * -facing.getXOffset()),
+                        (xPos * SCALE * facing.getFrontOffsetZ()) + (yPos * SCALE * -facing.getFrontOffsetX()),
                         4 * SCALE,
-                        (xPos * SCALE * facing.getXOffset() + (yPos * SCALE * facing.getZOffset()))
+                        (xPos * SCALE * facing.getFrontOffsetX() + (yPos * SCALE * facing.getFrontOffsetZ()))
                         );
             }
         }

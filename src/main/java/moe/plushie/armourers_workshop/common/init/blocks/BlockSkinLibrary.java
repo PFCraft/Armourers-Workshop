@@ -112,7 +112,6 @@ public class BlockSkinLibrary extends AbstractModBlockContainer {
     }
 
     @SideOnly(Side.CLIENT)
-    @Override
     public BlockRenderLayer getRenderLayer() {
         if (!ConfigHandlerClient.useClassicBlockModels) {
             return BlockRenderLayer.CUTOUT_MIPPED;
@@ -140,11 +139,11 @@ public class BlockSkinLibrary extends AbstractModBlockContainer {
     @Override
     public void registerModels() {
         if (!ConfigHandlerClient.useClassicBlockModels) {
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey()), "normal"));
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 1, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey()), "creative"));
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "normal"));
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 1, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "creative"));
         } else {
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey() + "-classic"), "normal"));
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 1, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey() + "-classic"), "creative"));
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName() + "-classic"), "normal"));
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 1, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName() + "-classic"), "creative"));
             ModelLoader.setCustomStateMapper(this, new StateMap.Builder().withSuffix("-classic").ignore(STATE_FACING).build());
         }
     }

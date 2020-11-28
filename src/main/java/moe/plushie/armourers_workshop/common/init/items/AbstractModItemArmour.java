@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.init.items;
 
 import java.util.List;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
 import moe.plushie.armourers_workshop.client.model.ICustomModel;
@@ -38,15 +37,15 @@ public class AbstractModItemArmour extends ItemArmor implements ISortOrder, ICus
         if (addCreativeTab) {
             setCreativeTab(ArmourersWorkshop.TAB_MAIN);
         }
-        setTranslationKey(name);
+        setUnlocalizedName(name);
         setHasSubtypes(false);
         setMaxStackSize(1);
         ModItems.ITEM_LIST.add(this);
     }
     
     @Override
-    public Item setTranslationKey(String unlocalizedName) {
-        super.setTranslationKey(unlocalizedName);
+    public Item setUnlocalizedName(String unlocalizedName) {
+        super.setUnlocalizedName(unlocalizedName);
         setRegistryName(new ResourceLocation(LibModInfo.ID, "item." + unlocalizedName));
         return this;
     }
@@ -54,7 +53,7 @@ public class AbstractModItemArmour extends ItemArmor implements ISortOrder, ICus
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        String unlocalized = stack.getTranslationKey() + ".flavour";
+        String unlocalized = stack.getUnlocalizedName() + ".flavour";
         String localized = I18n.format(unlocalized);
         if (!unlocalized.equals(localized)) {
             if (localized.contains("%n")) {
@@ -72,8 +71,8 @@ public class AbstractModItemArmour extends ItemArmor implements ISortOrder, ICus
     }
     
     @Override
-    public String getTranslationKey(ItemStack stack) {
-        return getModdedUnlocalizedName(super.getTranslationKey(stack), stack);
+    public String getUnlocalizedName(ItemStack stack) {
+        return getModdedUnlocalizedName(super.getUnlocalizedName(stack), stack);
     }
 
     protected String getModdedUnlocalizedName(String unlocalizedName) {
@@ -129,6 +128,6 @@ public class AbstractModItemArmour extends ItemArmor implements ISortOrder, ICus
     @SideOnly(Side.CLIENT)
     @Override
     public void registerModels() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey()), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "inventory"));
     }
 }

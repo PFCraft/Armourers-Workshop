@@ -19,13 +19,13 @@ public class ParticlePaintSplash extends Particle {
         
         particleTextureIndexX = (int) (rand.nextFloat() * 4F);
         
-        posX += 0.5F * facing.getXOffset();
-        posY += 0.5F * facing.getYOffset();
-        posZ += 0.5F * facing.getZOffset();
+        posX += 0.5F * facing.getFrontOffsetX();
+        posY += 0.5F * facing.getFrontOffsetY();
+        posZ += 0.5F * facing.getFrontOffsetZ();
         
-        posX += (rand.nextFloat() - 0.5F) * facing.getZOffset() + (rand.nextFloat() - 0.5F) * facing.getYOffset();
-        posY += (rand.nextFloat() - 0.5F) * facing.getXOffset() + (rand.nextFloat() - 0.5F) * facing.getZOffset();
-        posZ += (rand.nextFloat() - 0.5F) * facing.getXOffset() + (rand.nextFloat() - 0.5F) * facing.getYOffset();
+        posX += (rand.nextFloat() - 0.5F) * facing.getFrontOffsetZ() + (rand.nextFloat() - 0.5F) * facing.getFrontOffsetY();
+        posY += (rand.nextFloat() - 0.5F) * facing.getFrontOffsetX() + (rand.nextFloat() - 0.5F) * facing.getFrontOffsetZ();
+        posZ += (rand.nextFloat() - 0.5F) * facing.getFrontOffsetX() + (rand.nextFloat() - 0.5F) * facing.getFrontOffsetY();
         
         setPosition(posX, posY, posZ);
         
@@ -33,9 +33,9 @@ public class ParticlePaintSplash extends Particle {
         prevPosY = posY;
         prevPosZ = posZ;
         
-        motionX = 0.06 * facing.getXOffset();
-        motionY = 0.06 * facing.getYOffset();
-        motionZ = 0.06 * facing.getZOffset();
+        motionX = 0.06 * facing.getFrontOffsetX();
+        motionY = 0.06 * facing.getFrontOffsetY();
+        motionZ = 0.06 * facing.getFrontOffsetZ();
         
         motionX += ((rand.nextFloat() - 0.5F) * 0.04);
         motionY += ((rand.nextFloat() - 0.5F) * 0.04);

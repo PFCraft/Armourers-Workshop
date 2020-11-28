@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.init.items;
 
 import java.util.List;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
 import moe.plushie.armourers_workshop.client.model.ICustomModel;
@@ -30,7 +29,7 @@ public abstract class AbstractModItem extends Item implements ISortOrder, ICusto
         if (addCreativeTab) {
             setCreativeTab(ArmourersWorkshop.TAB_MAIN);
         }
-        setTranslationKey(name);
+        setUnlocalizedName(name);
         setHasSubtypes(false);
         setMaxStackSize(1);
         setNoRepair();
@@ -38,8 +37,8 @@ public abstract class AbstractModItem extends Item implements ISortOrder, ICusto
     }
     
     @Override
-    public Item setTranslationKey(String unlocalizedName) {
-        super.setTranslationKey(unlocalizedName);
+    public Item setUnlocalizedName(String unlocalizedName) {
+        super.setUnlocalizedName(unlocalizedName);
         setRegistryName(new ResourceLocation(LibModInfo.ID, "item." + unlocalizedName));
         return this;
     }
@@ -50,7 +49,7 @@ public abstract class AbstractModItem extends Item implements ISortOrder, ICusto
         String unlocalized;
         String localized;
 
-        unlocalized = stack.getTranslationKey() + ".flavour";
+        unlocalized = stack.getUnlocalizedName() + ".flavour";
         localized = I18n.format(unlocalized);
         if (!unlocalized.equals(localized)) {
             if (localized.contains("\r\n")) {
@@ -68,8 +67,8 @@ public abstract class AbstractModItem extends Item implements ISortOrder, ICusto
     }
     
     @Override
-    public String getTranslationKey(ItemStack stack) {
-        return getModdedUnlocalizedName(super.getTranslationKey(stack), stack);
+    public String getUnlocalizedName(ItemStack stack) {
+        return getModdedUnlocalizedName(super.getUnlocalizedName(stack), stack);
     }
     
     protected String getModdedUnlocalizedName(String unlocalizedName) {
@@ -103,6 +102,6 @@ public abstract class AbstractModItem extends Item implements ISortOrder, ICusto
     @SideOnly(Side.CLIENT)
     @Override
     public void registerModels() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey()), "normal"));
+        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "normal"));
     }
 }

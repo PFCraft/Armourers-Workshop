@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.init.items.block;
 
 import java.util.List;
-
 import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
 import moe.plushie.armourers_workshop.common.creativetab.ISortOrder;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
@@ -27,8 +26,8 @@ public class ModItemBlockWithMetadata extends ItemBlock implements ISortOrder {
     }
     
     @Override
-    public String getTranslationKey(ItemStack stack) {
-        return getModdedUnlocalizedName(super.getTranslationKey(stack), stack);
+    public String getUnlocalizedName(ItemStack stack) {
+        return getModdedUnlocalizedName(super.getUnlocalizedName(stack), stack);
     }
     
     protected String getModdedUnlocalizedName(String unlocalizedName, ItemStack stack) {
@@ -46,7 +45,7 @@ public class ModItemBlockWithMetadata extends ItemBlock implements ISortOrder {
         String unlocalized;
         String localized;
 
-        unlocalized = stack.getTranslationKey() + ".flavour";
+        unlocalized = stack.getUnlocalizedName() + ".flavour";
         localized = I18n.format(unlocalized);
         if (!unlocalized.equals(localized)) {
             if (localized.contains("\r\n")) {

@@ -1,10 +1,6 @@
 package moe.plushie.armourers_workshop.common.addons;
 
 import java.util.ArrayList;
-
-import org.apache.logging.log4j.Level;
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.IExtraColours;
 import moe.plushie.armourers_workshop.api.common.capability.IWardrobeCap;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;
@@ -18,8 +14,8 @@ import moe.plushie.armourers_workshop.common.capability.wardrobe.WardrobeCap;
 import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import moe.plushie.armourers_workshop.common.skin.data.SkinDye;
 import moe.plushie.armourers_workshop.common.skin.data.SkinProperties;
-import moe.plushie.armourers_workshop.common.skin.entity.SkinnableEntityRegisty;
 import moe.plushie.armourers_workshop.common.skin.entity.SkinnableEntity;
+import moe.plushie.armourers_workshop.common.skin.entity.SkinnableEntityRegisty;
 import moe.plushie.armourers_workshop.common.skin.type.SkinTypeRegistry;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraft.client.Minecraft;
@@ -41,6 +37,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.logging.log4j.Level;
+import org.lwjgl.opengl.GL11;
 
 public class AddonHauntedAstolfoBeanPlushie extends ModAddon {
 
@@ -111,8 +109,8 @@ public class AddonHauntedAstolfoBeanPlushie extends ModAddon {
             this.renderLivingBase = renderLivingBase;
             try {
                 ModelHumanoidHead modelHead = (ModelHumanoidHead) renderLivingBase.getMainModel();
-                head = ReflectionHelper.getPrivateValue(ModelSkeletonHead.class, modelHead, "field_82896_a", "skeletonHead");
-                headwear = ReflectionHelper.getPrivateValue(ModelHumanoidHead.class, modelHead, "field_178717_b", "head");
+                head = ReflectionHelper.getPrivateValue(ModelSkeletonHead.class, modelHead, new String[] {"field_82896_a", "skeletonHead"});
+                headwear = ReflectionHelper.getPrivateValue(ModelHumanoidHead.class, modelHead, new String[] {"field_178717_b", "head"});
 
             } catch (Exception e) {
                 ModLogger.log(Level.WARN, "Failed to get model parts for " + ENTITY_CLASS_NAME);

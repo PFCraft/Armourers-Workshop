@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.init.blocks;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.client.model.ICustomModel;
 import moe.plushie.armourers_workshop.common.creativetab.ISortOrder;
@@ -43,7 +42,7 @@ public abstract class AbstractModBlockContainer extends BlockContainer implement
         setCreativeTab(ArmourersWorkshop.TAB_MAIN);
         setHardness(3.0F);
         setSoundType(SoundType.METAL);
-        setTranslationKey(name);
+        setUnlocalizedName(name);
         ModBlocks.BLOCK_LIST.add(this);
     }
 
@@ -54,7 +53,7 @@ public abstract class AbstractModBlockContainer extends BlockContainer implement
         }
         setHardness(3.0F);
         setSoundType(soundType);
-        setTranslationKey(name);
+        setUnlocalizedName(name);
         ModBlocks.BLOCK_LIST.add(this);
     }
 
@@ -90,8 +89,8 @@ public abstract class AbstractModBlockContainer extends BlockContainer implement
     }
 
     @Override
-    public Block setTranslationKey(String name) {
-        super.setTranslationKey(name);
+    public Block setUnlocalizedName(String name) {
+        super.setUnlocalizedName(name);
         setRegistryName(new ResourceLocation(LibModInfo.ID, "tile." + name));
         return this;
     }
@@ -122,7 +121,7 @@ public abstract class AbstractModBlockContainer extends BlockContainer implement
     @SideOnly(Side.CLIENT)
     @Override
     public void registerModels() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey()), "normal"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "normal"));
     }
 
     protected void openGui(EntityPlayer playerIn, EnumGuiId guiId, World worldIn, BlockPos pos, IBlockState state, EnumFacing facing) {
@@ -144,6 +143,6 @@ public abstract class AbstractModBlockContainer extends BlockContainer implement
 
     @Override
     public String getPermissionName() {
-        return getTranslationKey();
+        return getUnlocalizedName();
     }
 }

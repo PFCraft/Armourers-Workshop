@@ -20,12 +20,12 @@ public class RenderBlockArmourer extends TileEntitySpecialRenderer<TileEntityArm
     @Override
     public void render(TileEntityArmourer te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         Minecraft mc = Minecraft.getMinecraft();
-        mc.profiler.startSection("armourersArmourer");
+        mc.mcProfiler.startSection("armourersArmourer");
         float scale = 0.0625F;
 
         ISkinType skinType = te.getSkinType();
 
-        mc.profiler.startSection("textureBuild");
+        mc.mcProfiler.startSection("textureBuild");
         if (te.skinTexture == null) {
             te.skinTexture = new SkinTexture();
         }
@@ -37,7 +37,7 @@ public class RenderBlockArmourer extends TileEntitySpecialRenderer<TileEntityArm
 
         te.skinTexture.updateForResourceLocation(playerTexture.getResourceLocation());
         te.skinTexture.updatePaintData(te.getPaintData());
-        mc.profiler.endSection();
+        mc.mcProfiler.endSection();
 
         GlStateManager.pushMatrix();
         GlStateManager.pushAttrib();
@@ -72,7 +72,7 @@ public class RenderBlockArmourer extends TileEntitySpecialRenderer<TileEntityArm
         GlStateManager.scale(16F, 16F, 16F);
 
         if (skinType != null) {
-            mc.profiler.startSection("modelRender");
+            mc.mcProfiler.startSection("modelRender");
             GlStateManager.enablePolygonOffset();
             GlStateManager.doPolygonOffset(3F, 3F);
             long time = System.currentTimeMillis();
@@ -96,10 +96,10 @@ public class RenderBlockArmourer extends TileEntitySpecialRenderer<TileEntityArm
                 ArmourerRenderHelper.renderBuildingGuide(skinType, scale, te.getSkinProps(), te.isShowHelper());
             }
             GlStateManager.doPolygonOffset(-3F, -3F);
-            mc.profiler.endSection();
-            mc.profiler.startSection("renderGuideGrid");
+            mc.mcProfiler.endSection();
+            mc.mcProfiler.startSection("renderGuideGrid");
             ArmourerRenderHelper.renderBuildingGrid(skinType, scale, te.isShowGuides(), te.getSkinProps(), SkinProperties.PROP_BLOCK_MULTIBLOCK.getValue(te.getSkinProps()));
-            mc.profiler.endSection();
+            mc.mcProfiler.endSection();
             GlStateManager.doPolygonOffset(0F, 0F);
             GlStateManager.disablePolygonOffset();
         }
@@ -114,7 +114,7 @@ public class RenderBlockArmourer extends TileEntitySpecialRenderer<TileEntityArm
         GlStateManager.popAttrib();
         GlStateManager.popMatrix();
 
-        mc.profiler.endSection();
+        mc.mcProfiler.endSection();
     }
 
     @Override

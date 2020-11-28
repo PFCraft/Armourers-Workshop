@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.utils;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.api.common.painting.IPantable;
 import moe.plushie.armourers_workshop.api.common.painting.IPantableBlock;
 import moe.plushie.armourers_workshop.api.common.skin.cubes.ICubeColour;
@@ -53,11 +52,11 @@ public final class BlockUtils {
     }
     
     public static EnumFacing determineDirectionSideMeta(int metadata) {
-        return EnumFacing.byIndex(determineOrientationSideMeta(metadata));
+        return EnumFacing.getFront(determineOrientationSideMeta(metadata));
     }
     
     public static EnumFacing determineDirectionSide(EntityLivingBase entity) {
-        return EnumFacing.byIndex(determineOrientationSide(entity));
+        return EnumFacing.getFront(determineOrientationSide(entity));
     }
     
     public static ICubeColour getColourFromTileEntity(World world, BlockPos pos) {
@@ -102,9 +101,9 @@ public final class BlockUtils {
             IBlockState state = world.getBlockState(loc);
             if (state.getBlock() instanceof IPantableBlock) {
                 if (restrictPlane) {
-                    if (loc.getX() * facing.getXOffset() == pos.getX() * facing.getXOffset()) {
-                        if (loc.getY() * facing.getYOffset() == pos.getY() * facing.getYOffset()) {
-                            if (loc.getZ() * facing.getZOffset() == pos.getZ() * facing.getZOffset()) {
+                    if (loc.getX() * facing.getFrontOffsetX() == pos.getX() * facing.getFrontOffsetX()) {
+                        if (loc.getY() * facing.getFrontOffsetY() == pos.getY() * facing.getFrontOffsetY()) {
+                            if (loc.getZ() * facing.getFrontOffsetZ() == pos.getZ() * facing.getFrontOffsetZ()) {
                                 blockFaces.add(loc);
                             }
                         }

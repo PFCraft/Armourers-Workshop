@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.init.blocks;
 
 import java.util.Random;
-
 import moe.plushie.armourers_workshop.common.lib.EnumGuiId;
 import moe.plushie.armourers_workshop.common.lib.LibBlockNames;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntityHologramProjector;
@@ -37,7 +36,7 @@ public class BlockHologramProjector extends AbstractModBlockContainer {
     
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        EnumFacing facing = EnumFacing.byIndex(meta);
+        EnumFacing facing = EnumFacing.getFront(meta);
         return this.getDefaultState().withProperty(STATE_FACING, facing);
     }
 
@@ -65,7 +64,7 @@ public class BlockHologramProjector extends AbstractModBlockContainer {
     @Override
     public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
         int dir = BlockUtils.determineOrientation(pos, placer);
-        EnumFacing enumfacing = EnumFacing.byIndex(dir);
+        EnumFacing enumfacing = EnumFacing.getFront(dir);
         return getDefaultState().withProperty(STATE_FACING, enumfacing);
     }
     

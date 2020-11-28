@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.client.render.entity;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.capability.IEntitySkinCapability;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
@@ -20,6 +18,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class SkinLayerRendererGhast extends SkinLayerRenderer<EntityGhast, RenderGhast> {
@@ -31,8 +30,8 @@ public class SkinLayerRendererGhast extends SkinLayerRenderer<EntityGhast, Rende
         super(renderGhast);
         if (renderGhast.getMainModel() instanceof ModelGhast) {
             try {
-                body = ReflectionHelper.getPrivateValue(ModelGhast.class, (ModelGhast)renderGhast.getMainModel(), "field_78128_a", "body");
-                tentacles = ReflectionHelper.getPrivateValue(ModelGhast.class, (ModelGhast)renderGhast.getMainModel(), "field_78127_b", "tentacles");
+                body = ReflectionHelper.getPrivateValue(ModelGhast.class, (ModelGhast)renderGhast.getMainModel(), new String[] {"field_78128_a", "body"});
+                tentacles = ReflectionHelper.getPrivateValue(ModelGhast.class, (ModelGhast)renderGhast.getMainModel(), new String[] {"field_78127_b", "tentacles"});
                 MinecraftForge.EVENT_BUS.register(this);
             } catch (Exception e) {
                 e.printStackTrace();

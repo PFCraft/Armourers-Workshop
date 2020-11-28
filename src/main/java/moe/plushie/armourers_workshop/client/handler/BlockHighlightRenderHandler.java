@@ -6,8 +6,8 @@ import moe.plushie.armourers_workshop.common.init.items.ModItems;
 import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import moe.plushie.armourers_workshop.common.skin.type.SkinTypeRegistry;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntitySkinnable;
-import moe.plushie.armourers_workshop.utils.SkinNBTHelper;
 import moe.plushie.armourers_workshop.utils.PlayerUtils;
+import moe.plushie.armourers_workshop.utils.SkinNBTHelper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.GlStateManager.DestFactor;
@@ -94,11 +94,11 @@ public class BlockHighlightRenderHandler {
                         
                         AxisAlignedBB aabb = new AxisAlignedBB(minX, minY, minZ, maxX, maxY, maxZ);
                         aabb = aabb.offset(-xOff - 1, -yOff, -zOff - 1);
-                        aabb = aabb.offset(dir.getXOffset() * -1, 0, dir.getZOffset() * -1);
+                        aabb = aabb.offset(dir.getFrontOffsetX() * -1, 0, dir.getFrontOffsetZ() * -1);
                         aabb = aabb.offset(pos);
                         aabb = aabb.offset(ix, iy, iz);
 
-                        BlockPos target = pos.add(ix - 1 - dir.getXOffset(), 0, iz - 1 - dir.getZOffset());
+                        BlockPos target = pos.add(ix - 1 - dir.getFrontOffsetX(), 0, iz - 1 - dir.getFrontOffsetZ());
                         boolean blocked = false;
                         if (!world.isAirBlock(target)) {
                             blocked = true;

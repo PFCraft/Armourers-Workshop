@@ -1,16 +1,13 @@
 package moe.plushie.armourers_workshop.common.init.blocks;
 
+import com.mojang.authlib.GameProfile;
 import java.util.Random;
 import java.util.UUID;
-
-import com.mojang.authlib.GameProfile;
-
 import moe.plushie.armourers_workshop.client.render.item.RenderItemMannequin;
 import moe.plushie.armourers_workshop.client.texture.PlayerTexture;
 import moe.plushie.armourers_workshop.common.Contributors;
 import moe.plushie.armourers_workshop.common.Contributors.Contributor;
 import moe.plushie.armourers_workshop.common.data.type.TextureType;
-import moe.plushie.armourers_workshop.common.holiday.ModHolidays;
 import moe.plushie.armourers_workshop.common.init.entities.EntityMannequin;
 import moe.plushie.armourers_workshop.common.init.entities.EntityMannequin.TextureData;
 import moe.plushie.armourers_workshop.common.init.items.block.ItemBlockMannequin;
@@ -71,12 +68,10 @@ public class BlockMannequin extends AbstractModBlockContainer {
 
     private static final String TAG_OWNER = "owner";
     private static final String TAG_IMAGE_URL = "imageUrl";
-    private final boolean isValentins;
 
     public BlockMannequin() {
         super(LibBlockNames.MANNEQUIN, Material.CIRCUITS, SoundType.METAL, true);
         setLightOpacity(0);
-        isValentins = ModHolidays.VALENTINES.isHolidayActive();
         setSortPriority(199);
         setDefaultState(this.blockState.getBaseState().withProperty(STATE_PART, EnumPartType.BOTTOM));
     }
@@ -179,12 +174,7 @@ public class BlockMannequin extends AbstractModBlockContainer {
     public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         if (!isTopOfMannequin(worldIn, pos)) {
             ParticleManager particleManager = Minecraft.getMinecraft().effectRenderer;
-            if (isValentins) {
-                if (rand.nextFloat() * 100 > 75) {
-                    Particle particle = particleManager.spawnEffectParticle(EnumParticleTypes.HEART.getParticleID(), pos.getX() - 0.2F + rand.nextFloat() * 0.6F, pos.getY(), pos.getZ() - 0.2F + rand.nextFloat() * 0.6F, 0, 0, 0, null);
-                    Minecraft.getMinecraft().effectRenderer.addEffect(particle);
-                }
-            }
+
             TileEntityMannequin te = getTileEntity(worldIn, pos, TileEntityMannequin.class);
             if (te != null && te.PROP_RENDER_EXTRAS.get()) {
                 Contributor contributor = Contributors.INSTANCE.getContributor(te.PROP_OWNER.get());
@@ -312,7 +302,7 @@ public class BlockMannequin extends AbstractModBlockContainer {
     }
 
     @Override
-    public void onEntityCollision(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
+    public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
         if (worldIn.isRemote) {
             return;
         }

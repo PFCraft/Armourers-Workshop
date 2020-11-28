@@ -102,12 +102,12 @@ public class ItemLinkingTool extends AbstractModItem {
             @Override
             public ModelResourceLocation getModelLocation(ItemStack stack) {
                 if (!hasLinkLocation(stack)) {
-                    return new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey()), "normal");
+                    return new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "normal");
                 } else {
-                    return new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey() + "-link"), "normal");
+                    return new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName() + "-link"), "normal");
                 }
             }
         });
-        ModelBakery.registerItemVariants(this, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey()), "normal"), new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey() + "-link"), "normal"));
+        ModelBakery.registerItemVariants(this, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "normal"), new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName() + "-link"), "normal"));
     }
 }

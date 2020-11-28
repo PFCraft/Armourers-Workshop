@@ -4,12 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.Level;
-import org.lwjgl.Sys;
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import moe.plushie.armourers_workshop.client.gui.GuiHelper;
@@ -64,6 +58,10 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.Level;
+import org.lwjgl.Sys;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class GuiSkinLibrary extends ModGuiContainer<ContainerSkinLibrary> implements IDialogCallback {
@@ -879,7 +877,7 @@ public class GuiSkinLibrary extends ModGuiContainer<ContainerSkinLibrary> implem
     @Override
     protected void keyTyped(char key, int keyCode) throws IOException {
         if (keyCode == mc.gameSettings.keyBindScreenshot.getKeyCode()) {
-            mc.ingameGUI.getChatGUI().printChatMessage(ScreenShotHelper.saveScreenshot(mc.gameDir, mc.displayWidth, mc.displayHeight, mc.getFramebuffer()));
+            mc.ingameGUI.getChatGUI().printChatMessage(ScreenShotHelper.saveScreenshot(mc.mcDataDir, mc.displayWidth, mc.displayHeight, mc.getFramebuffer()));
         }
         if (!isDialogOpen()) {
             if (!(searchTextbox.textboxKeyTyped(key, keyCode) | filenameTextbox.textboxKeyTyped(key, keyCode))) {

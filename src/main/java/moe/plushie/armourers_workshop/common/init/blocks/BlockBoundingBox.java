@@ -1,10 +1,8 @@
 package moe.plushie.armourers_workshop.common.init.blocks;
 
-import java.awt.Color;
-import java.awt.Point;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;
 import moe.plushie.armourers_workshop.api.common.painting.IPantableBlock;
 import moe.plushie.armourers_workshop.api.common.skin.cubes.ICubeColour;
@@ -136,8 +134,8 @@ public class BlockBoundingBox extends AbstractModBlockContainer implements IPant
     }
     
     @Override
-    public String getTranslationKey() {
-        return getModdedUnlocalizedName(super.getTranslationKey());
+    public String getUnlocalizedName() {
+        return getModdedUnlocalizedName(super.getUnlocalizedName());
     }
 
     protected String getModdedUnlocalizedName(String unlocalizedName) {

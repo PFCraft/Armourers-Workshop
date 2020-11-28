@@ -2,7 +2,6 @@ package moe.plushie.armourers_workshop.common.creativetab;
 
 import java.util.Collections;
 import java.util.Comparator;
-
 import moe.plushie.armourers_workshop.common.init.items.ItemMannequin;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import net.minecraft.client.Minecraft;
@@ -20,10 +19,10 @@ public class CreativeTabMain extends CreativeTabs {
     
     @SideOnly(Side.CLIENT)
     @Override
-    public ItemStack createIcon() {
+    public ItemStack getTabIconItem() {
         return ItemMannequin.create(Minecraft.getMinecraft().player, 1F);
     }
-    
+
     @SideOnly(Side.CLIENT)
     @Override
     public void displayAllRelevantItems(NonNullList<ItemStack> itemStackList) {

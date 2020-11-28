@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.client.render.tileentities;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinPartTypeTextured;
 import moe.plushie.armourers_workshop.client.render.IRenderBuffer;
@@ -16,6 +14,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.profiler.Profiler;
 import net.minecraft.util.EnumFacing;
+import org.lwjgl.opengl.GL11;
 
 public class RenderBlockBoundingBox extends TileEntitySpecialRenderer<TileEntityBoundingBox> {
 
@@ -27,7 +26,7 @@ public class RenderBlockBoundingBox extends TileEntitySpecialRenderer<TileEntity
     
     @Override
     public void render(TileEntityBoundingBox te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
-        Profiler pro = Minecraft.getMinecraft().profiler;
+        Profiler pro = Minecraft.getMinecraft().mcProfiler;
         
         if (!(te.getSkinPart() instanceof ISkinPartTypeTextured)) {
             return;
@@ -46,7 +45,7 @@ public class RenderBlockBoundingBox extends TileEntitySpecialRenderer<TileEntity
         renderer.startDrawingQuads(DefaultVertexFormats.POSITION_TEX);
         for (int i = 0; i < 6; i++) {
             if (te.isPaintableSide(i)) {
-                EnumFacing dir = EnumFacing.byIndex(i);
+                EnumFacing dir = EnumFacing.getFront(i);
                 IPaintType paintType = te.getPaintType(dir);
                 if (paintType != PaintTypeRegistry.PAINT_TYPE_NONE) {
                     RenderBlockColourable.renderFaceWithMarker(renderer, x, y, z, dir, paintType.getMarkerIndex());

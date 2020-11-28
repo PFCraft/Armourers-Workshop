@@ -1,11 +1,7 @@
 package moe.plushie.armourers_workshop.client.render.tileentities;
 
-import java.awt.Color;
+import java.awt.*;
 import java.nio.FloatBuffer;
-
-import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;
 import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
 import moe.plushie.armourers_workshop.client.helper.MannequinTextureHelper;
@@ -18,7 +14,6 @@ import moe.plushie.armourers_workshop.common.Contributors;
 import moe.plushie.armourers_workshop.common.Contributors.Contributor;
 import moe.plushie.armourers_workshop.common.data.type.BipedRotations;
 import moe.plushie.armourers_workshop.common.data.type.BipedRotations.BipedPart;
-import moe.plushie.armourers_workshop.common.holiday.ModHolidays;
 import moe.plushie.armourers_workshop.common.inventory.MannequinSlotType;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import moe.plushie.armourers_workshop.common.skin.data.Skin;
@@ -32,16 +27,16 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.GlStateManager.DestFactor;
 import net.minecraft.client.renderer.GlStateManager.SourceFactor;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class RenderBlockMannequin extends TileEntitySpecialRenderer<TileEntityMannequin> {
@@ -49,8 +44,6 @@ public class RenderBlockMannequin extends TileEntitySpecialRenderer<TileEntityMa
     private static final ResourceLocation circle = new ResourceLocation(LibModInfo.ID.toLowerCase(), "textures/other/nanoha-circle.png");
     
     private static RenderBlockMannequinItems renderItems = new RenderBlockMannequinItems();
-    private static boolean isHalloweenSeason;
-    private static boolean isHalloween;
     private final static float SCALE = 0.0625F;
     private static long lastTextureBuild = 0;
     private final ModelMannequin modelSteve;
@@ -68,12 +61,10 @@ public class RenderBlockMannequin extends TileEntitySpecialRenderer<TileEntityMa
     
     @Override
     public void render(TileEntityMannequin te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
-        mc.profiler.startSection("armourersMannequin");
-        mc.profiler.startSection("holidayCheck");
-        isHalloweenSeason = ModHolidays.HALLOWEEN_SEASON.isHolidayActive();
-        isHalloween = ModHolidays.HALLOWEEN.isHolidayActive();
+        mc.mcProfiler.startSection("armourersMannequin");
+        mc.mcProfiler.startSection("holidayCheck");
         //mannequinFakePlayer = null; // TODO make a new fake player
-        mc.profiler.endStartSection("move");
+        mc.mcProfiler.endStartSection("move");
         GlStateManager.pushMatrix();
         GlStateManager.pushAttrib();
         GlStateManager.enableRescaleNormal();
@@ -98,7 +89,7 @@ public class RenderBlockMannequin extends TileEntitySpecialRenderer<TileEntityMa
             GL11.glTranslatef(0, SCALE * 24, 0);
         }
         
-        mc.profiler.endStartSection("getTexture");
+        mc.mcProfiler.endStartSection("getTexture");
         ResourceLocation rl;
         boolean slimModel = false;
         boolean download;
@@ -112,7 +103,7 @@ public class RenderBlockMannequin extends TileEntitySpecialRenderer<TileEntityMa
             model = modelAlex;
         }
 
-        mc.profiler.endStartSection("fakePlayer");
+        mc.mcProfiler.endStartSection("fakePlayer");
         /*
         if (mannequinFakePlayer == null) {
             mannequinFakePlayer = new MannequinFakePlayer(te.getWorld(), new GameProfile(null, "[Mannequin]"));
@@ -161,26 +152,8 @@ public class RenderBlockMannequin extends TileEntitySpecialRenderer<TileEntityMa
         model.bipedBody.rotateAngleX = 0;
         model.bipedBody.rotateAngleY = 0;
         model.bipedBody.rotateAngleZ = 0;
-        if (isHalloween) {
-            double dX = -x - 0.5F;
-            double dY = -y - 0;
-            double dZ = -z - 0.5F;
 
-            double yaw = Math.atan2(dZ, dX);
-            double pitch = Math.atan2(Math.sqrt(dZ * dZ + dX * dX), dY) + Math.PI;
-
-            yaw -= Math.toRadians(rotaion * 22.5F - 90F);
-            pitch += Math.PI / 2D;
-
-            model.bipedHead.rotateAngleX = (float) (pitch);
-            model.bipedHead.rotateAngleY = (float) (yaw);
-            model.bipedHead.rotateAngleZ = 0F;
-            model.bipedHeadwear.rotateAngleX = model.bipedHead.rotateAngleX;
-            model.bipedHeadwear.rotateAngleY = model.bipedHead.rotateAngleY;
-            model.bipedHeadwear.rotateAngleZ = 0F;
-        }
-
-        mc.profiler.endStartSection("textureBuild");
+        mc.mcProfiler.endStartSection("textureBuild");
         
         /*if (te.haveSkinsUpdated()) {
             te.sp = getSkinPointers(te);
@@ -224,11 +197,11 @@ public class RenderBlockMannequin extends TileEntitySpecialRenderer<TileEntityMa
                 }
             }*/
 
-        mc.profiler.endStartSection("textureBind");
+        mc.mcProfiler.endStartSection("textureBind");
         bindTexture(rl);
         
         
-        mc.profiler.endStartSection("selectModelRender");
+        mc.mcProfiler.endStartSection("selectModelRender");
         /*te.getBipedRotations().hasCustomHead = hasCustomHead(te);
         
         boolean selectingColour = false;
@@ -255,7 +228,7 @@ public class RenderBlockMannequin extends TileEntitySpecialRenderer<TileEntityMa
         }*/
         
         
-        mc.profiler.endStartSection("modelRender");
+        mc.mcProfiler.endStartSection("modelRender");
         if (te.PROP_VISIBLE.get() & !(te.PROP_OWNER.get() != null && te.PROP_OWNER.get().getName().equalsIgnoreCase("null"))) {
             renderModel(te, model);
             /*long time = System.currentTimeMillis();
@@ -277,30 +250,12 @@ public class RenderBlockMannequin extends TileEntitySpecialRenderer<TileEntityMa
             } else {
                 renderModel(te, model, fakePlayer);
             }*/
-            if (isHalloweenSeason) {
-                GlStateManager.pushMatrix();
-                if (model.isChild) {
-                    ModelHelper.enableChildModelScale(true, SCALE);
-                }
-                
-                GlStateManager.rotate(180, 0, 0, 1);
-                GlStateManager.rotate((float) Math.toDegrees(model.bipedHead.rotateAngleZ), 0, 0, 1);
-                GlStateManager.rotate((float) Math.toDegrees(model.bipedHead.rotateAngleY), 0, -1, 0);
-                GlStateManager.rotate((float) Math.toDegrees(model.bipedHead.rotateAngleX), -1, 0, 0);
-                GlStateManager.translate(0, 4 * SCALE, 0);
-                mc.getRenderItem().renderItem(new ItemStack(Blocks.PUMPKIN), TransformType.FIXED);
-                if (model.isChild) {
-                    ModelHelper.disableChildModelScale();
-                }
-                
-                GlStateManager.popMatrix();
-            }
         }
         
 
         
         
-        mc.profiler.endStartSection("magicCircle");
+        mc.mcProfiler.endStartSection("magicCircle");
         //Magic circle.
         if (te.PROP_RENDER_EXTRAS.get() & te.PROP_VISIBLE.get()) {
             Contributor contributor = Contributors.INSTANCE.getContributor(te.PROP_OWNER.get());
@@ -311,14 +266,14 @@ public class RenderBlockMannequin extends TileEntitySpecialRenderer<TileEntityMa
         }
         
         //Render items.
-        mc.profiler.endStartSection("equippedItems");
+        mc.mcProfiler.endStartSection("equippedItems");
         double distance = Minecraft.getMinecraft().player.getDistanceSq(te.getPos());
         if (distance <= ConfigHandlerClient.renderDistanceMannequinEquipment) {
             //renderEquippedItems(te, fakePlayer, model, distance);
         }
         
         
-        mc.profiler.endStartSection("reset");
+        mc.mcProfiler.endStartSection("reset");
         model.bipedLeftLeg.rotateAngleZ = 0F;
         model.bipedRightLeg.rotateAngleZ = 0F;
         model.bipedHead.rotateAngleZ = 0F;
@@ -333,7 +288,7 @@ public class RenderBlockMannequin extends TileEntitySpecialRenderer<TileEntityMa
         renderPlayer.modelArmorChestplate.bipedRightLeg.rotateAngleZ = 0F;
         renderPlayer.modelArmorChestplate.bipedHead.rotateAngleZ = 0F;
         renderPlayer.modelArmorChestplate.bipedHeadwear.rotateAngleZ = 0F;*/
-        mc.profiler.endStartSection("pop");
+        mc.mcProfiler.endStartSection("pop");
         
         
         
@@ -341,8 +296,8 @@ public class RenderBlockMannequin extends TileEntitySpecialRenderer<TileEntityMa
         GlStateManager.popAttrib();
         GlStateManager.popMatrix();
         
-        mc.profiler.endSection();
-        mc.profiler.endSection();
+        mc.mcProfiler.endSection();
+        mc.mcProfiler.endSection();
     }
     
     public static void renderMagicCircle(Minecraft mc, byte r, byte g, byte b, float partialTickTime, int offset, boolean isChild) {
@@ -463,9 +418,7 @@ public class RenderBlockMannequin extends TileEntitySpecialRenderer<TileEntityMa
                 return true;
             }
         }
-        if (isHalloweenSeason) {
-            return true;
-        }
+
         SkinDescriptor skinPointer = SkinNBTHelper.getSkinDescriptorFromStack(stack);
         if (skinPointer != null) {
             Skin skin = ClientSkinCache.INSTANCE.getSkin(skinPointer, false);

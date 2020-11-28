@@ -1,16 +1,8 @@
 package moe.plushie.armourers_workshop.common.config;
 
 import java.io.File;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 import java.util.UUID;
-
 import moe.plushie.armourers_workshop.common.capability.entityskin.EntitySkinCapability;
-import moe.plushie.armourers_workshop.common.holiday.Holiday;
-import moe.plushie.armourers_workshop.common.holiday.ModHolidays;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraft.entity.player.EntityPlayer;
@@ -88,7 +80,6 @@ public class ConfigHandler {
         loadCategoryWardrobe();
         loadCategoryLibrary();
         loadCategoryRecipe();
-        loadCategoryHolidayEvents();
         loadCategoryEntitySkins();
         loadCategoryCache();
         checkIfUpdated();
@@ -223,55 +214,6 @@ public class ConfigHandler {
         
         enableRecoveringSkins = config.getBoolean("enableRecoveringSkins", CATEGORY_RECIPE, false,
                 "Enable copying the skin off an item in the skinning table");
-    }
-    
-    private static void loadCategoryHolidayEvents() {
-        config.setCategoryComment(CATEGORY_HOLIDAY, "Enable/disable holiday events.");
-        
-        disableAllHolidayEvents = config.getBoolean("disableAllHolidayEvents", CATEGORY_HOLIDAY, false,
-                "Setting to true will disable all holiday events. What's wrong with you!");
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("MM:dd:HH", Locale.ENGLISH);
-        
-        for (Holiday holiday : ModHolidays.getHolidays()) {
-            boolean holidayEnabled = config.getBoolean("holiday-" + holiday.getName() + "-enabled", CATEGORY_HOLIDAY, true,
-                    "Enable holiday.");
-            
-            Calendar startDate = holiday.getStartDate();
-            Calendar endDate = holiday.getEndDate();
-            
-            String dates = config.getString("holiday-" + holiday.getName() + "-range", CATEGORY_HOLIDAY,
-                    sdf.format(startDate.getTime()) + "-" + sdf.format(endDate.getTime()),
-                    "Holiday date range. Format (Start Date-End Date) (MONTH:DAY:HOUR-MONTH:DAY:HOUR)");
-
-            String startDateStr = sdf.format(startDate.getTime());
-            String endDateStr = sdf.format(endDate.getTime());
-            
-            if (dates.contains("-")) {
-                String[] split = dates.split("-");
-                startDateStr = split[0];
-                endDateStr = split[1];
-            }
-            
-            try {
-                Date date = sdf.parse(startDateStr);
-                startDate.setTime(date);
-                startDate.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            try {
-                Date date = sdf.parse(endDateStr);
-                endDate.setTime(date);
-                endDate.set(Calendar.YEAR, Calendar.getInstance().get(Calendar.YEAR));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            
-            holiday.setEnabled(holidayEnabled);
-            holiday.setStartDate(startDate);
-            holiday.setEndDate(endDate);
-        }
     }
     
     private static void loadCategoryEntitySkins() {

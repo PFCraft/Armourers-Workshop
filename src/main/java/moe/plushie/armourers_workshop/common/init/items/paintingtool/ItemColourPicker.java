@@ -1,9 +1,8 @@
 package moe.plushie.armourers_workshop.common.init.items.paintingtool;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;
 import moe.plushie.armourers_workshop.api.common.painting.IPaintingTool;
@@ -183,14 +182,14 @@ public class ItemColourPicker extends AbstractModItem implements IPaintingTool, 
             @Override
             public ModelResourceLocation getModelLocation(ItemStack stack) {
                 if (getToolHasColour(stack)) {
-                    return new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey()), "inventory");
+                    return new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "inventory");
                 } else {
-                    return new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey() + "-empty"), "inventory");
+                    return new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName() + "-empty"), "inventory");
                 }
             }
         });
         ModelBakery.registerItemVariants(this,
-                new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey()), "inventory"),
-                new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey() + "-empty"), "inventory"));
+                new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "inventory"),
+                new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName() + "-empty"), "inventory"));
     }
 }

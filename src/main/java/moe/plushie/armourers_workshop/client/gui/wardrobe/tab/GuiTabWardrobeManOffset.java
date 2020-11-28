@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.client.gui.wardrobe.tab;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.client.gui.GuiHelper;
 import moe.plushie.armourers_workshop.client.gui.controls.GuiIconButton;
 import moe.plushie.armourers_workshop.client.gui.controls.GuiTabPanel;
@@ -17,6 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class GuiTabWardrobeManOffset extends GuiTabPanel {
@@ -109,13 +108,13 @@ public class GuiTabWardrobeManOffset extends GuiTabPanel {
         Vec3d offset = new Vec3d(0, 0, 0);
         for (int i = 0; i < 6; i++) {
             if (iconButtonsX[i] == button) {
-                offset = offset.add(amount, 0, 0);
+                offset = offset.addVector(amount, 0, 0);
             }
             if (iconButtonsY[i] == button) {
-                offset = offset.add(0, amount, 0);
+                offset = offset.addVector(0, amount, 0);
             }
             if (iconButtonsZ[i] == button) {
-                offset = offset.add(0, 0, amount);
+                offset = offset.addVector(0, 0, amount);
             }
         }
 

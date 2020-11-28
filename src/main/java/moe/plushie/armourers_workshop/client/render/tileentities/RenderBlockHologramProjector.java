@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.client.render.tileentities;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
 import moe.plushie.armourers_workshop.client.model.skin.IEquipmentModel;
@@ -23,6 +21,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class RenderBlockHologramProjector extends TileEntitySpecialRenderer<TileEntityHologramProjector> {
@@ -109,7 +108,7 @@ public class RenderBlockHologramProjector extends TileEntitySpecialRenderer<Tile
             angleZ = angleZ / speedZ * 360F;
         }
         if (!tileEntity.getGlowing().get()) {
-            EnumFacing dir = EnumFacing.byIndex(tileEntity.getBlockMetadata());
+            EnumFacing dir = EnumFacing.getFront(tileEntity.getBlockMetadata());
             float xLight = tileEntity.getPos().getX();
             float yLight = tileEntity.getPos().getY();
             float zLight = tileEntity.getPos().getZ();

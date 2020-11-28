@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.init.blocks;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.client.model.ICustomModel;
 import moe.plushie.armourers_workshop.common.creativetab.ISortOrder;
@@ -31,7 +30,7 @@ public abstract class AbstractModBlock extends Block implements ISortOrder, ICus
         setCreativeTab(ArmourersWorkshop.TAB_MAIN);
         setHardness(3.0F);
         setSoundType(SoundType.METAL);
-        setTranslationKey(name);
+        setUnlocalizedName(name);
         ModBlocks.BLOCK_LIST.add(this);
     }
 
@@ -42,11 +41,10 @@ public abstract class AbstractModBlock extends Block implements ISortOrder, ICus
         }
         setHardness(3.0F);
         setSoundType(soundType);
-        setTranslationKey(name);
+        setUnlocalizedName(name);
         ModBlocks.BLOCK_LIST.add(this);
     }
 
-    @Override
     public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.CUTOUT;
     }
@@ -78,8 +76,8 @@ public abstract class AbstractModBlock extends Block implements ISortOrder, ICus
     }
 
     @Override
-    public Block setTranslationKey(String key) {
-        super.setTranslationKey(key);
+    public Block setUnlocalizedName(String key) {
+        super.setUnlocalizedName(key);
         setRegistryName(new ResourceLocation(LibModInfo.ID, "tile." + key));
         return this;
     }
@@ -102,7 +100,7 @@ public abstract class AbstractModBlock extends Block implements ISortOrder, ICus
     @SideOnly(Side.CLIENT)
     @Override
     public void registerModels() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey()), "normal"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "normal"));
     }
     
     @Override
@@ -111,6 +109,6 @@ public abstract class AbstractModBlock extends Block implements ISortOrder, ICus
     
     @Override
     public String getPermissionName() {
-        return getTranslationKey();
+        return getUnlocalizedName();
     }
 }

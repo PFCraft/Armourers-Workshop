@@ -1,9 +1,8 @@
 package moe.plushie.armourers_workshop.common.init.items.paintingtool;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;
 import moe.plushie.armourers_workshop.api.common.painting.IPantableBlock;
@@ -153,12 +152,12 @@ public class ItemShadeNoiseTool extends AbstractModItem implements IConfigurable
             @Override
             public ModelResourceLocation getModelLocation(ItemStack stack) {
                 if (ToolOptions.FULL_BLOCK_MODE.getValue(stack)) {
-                    return new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey()), "normal");
+                    return new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "normal");
                 } else {
-                    return new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey() + "-small"), "normal");
+                    return new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName() + "-small"), "normal");
                 }
             }
         });
-        ModelBakery.registerItemVariants(this, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey()), "normal"), new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey() + "-small"), "normal"));
+        ModelBakery.registerItemVariants(this, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "normal"), new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName() + "-small"), "normal"));
     }
 }

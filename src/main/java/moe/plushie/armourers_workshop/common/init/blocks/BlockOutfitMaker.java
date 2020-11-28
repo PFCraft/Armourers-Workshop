@@ -87,7 +87,6 @@ public class BlockOutfitMaker extends AbstractModBlockContainer {
     }
     
     @SideOnly(Side.CLIENT)
-    @Override
     public BlockRenderLayer getRenderLayer() {
         if (!ConfigHandlerClient.useClassicBlockModels) {
             return BlockRenderLayer.CUTOUT_MIPPED;
@@ -110,9 +109,9 @@ public class BlockOutfitMaker extends AbstractModBlockContainer {
     @Override
     public void registerModels() {
         if (!ConfigHandlerClient.useClassicBlockModels) {
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey()), "normal"));
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "normal"));
         } else {
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey() + "-classic"), "normal"));
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName() + "-classic"), "normal"));
         }
     }
 }

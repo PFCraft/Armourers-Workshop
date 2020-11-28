@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.world;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;
 import moe.plushie.armourers_workshop.common.init.blocks.BlockSkinnable;
 import moe.plushie.armourers_workshop.common.init.blocks.ModBlocks;
@@ -10,8 +9,8 @@ import moe.plushie.armourers_workshop.common.skin.data.SkinProperties;
 import moe.plushie.armourers_workshop.common.skin.type.SkinTypeRegistry;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntitySkinnable;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntitySkinnableChild;
-import moe.plushie.armourers_workshop.utils.SkinUtils;
 import moe.plushie.armourers_workshop.utils.PlayerUtils;
+import moe.plushie.armourers_workshop.utils.SkinUtils;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -99,7 +98,7 @@ public final class BlockSkinPlacementHelper {
                 for (int iz = 0; iz < 3; iz++) {
                     float[] bounds = TileEntitySkinnable.getBlockBounds(skin, -ix + 2, iy, iz, dir);
                     if (bounds != null) {
-                        BlockPos childPos = pos.add(ix - 1 - dir.getXOffset() * 1, iy, iz - 1 - dir.getZOffset() * 1);
+                        BlockPos childPos = pos.add(ix - 1 - dir.getFrontOffsetX() * 1, iy, iz - 1 - dir.getFrontOffsetZ() * 1);
                         relatedBlocks.add(childPos);
                         
                         IBlockState replaceState = world.getBlockState(childPos);
@@ -135,7 +134,7 @@ public final class BlockSkinPlacementHelper {
         
         float[] bounds = TileEntitySkinnable.getBlockBounds(skin, -ix + 2, iy, iz, dir);
         if (bounds != null) {
-            BlockPos childPos = pos.add(ix - 1 - dir.getXOffset() * 1, iy, iz - 1 - dir.getZOffset() * 1);
+            BlockPos childPos = pos.add(ix - 1 - dir.getFrontOffsetX() * 1, iy, iz - 1 - dir.getFrontOffsetZ() * 1);
             world.setBlockState(childPos, state, 2);
             TileEntitySkinnableChild te = new TileEntitySkinnableChild();
             te.setSkinPointer(skin, descriptor);

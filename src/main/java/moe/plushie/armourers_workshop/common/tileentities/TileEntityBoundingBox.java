@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.tileentities;
 
-import java.awt.Point;
-
+import java.awt.*;
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinPartType;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinPartTypeTextured;
@@ -131,7 +130,7 @@ public class TileEntityBoundingBox extends ModTileEntity {
     }
     
     public boolean isPaintableSide(int side) {
-        EnumFacing sideBlock = EnumFacing.byIndex(side);
+        EnumFacing sideBlock = EnumFacing.getFront(side);
         if (getWorld().getBlockState(getPos().offset(sideBlock)).getBlock() == getBlockType()) {
             return false;
         }

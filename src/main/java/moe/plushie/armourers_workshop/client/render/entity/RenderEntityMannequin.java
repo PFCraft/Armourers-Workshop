@@ -1,15 +1,11 @@
 package moe.plushie.armourers_workshop.client.render.entity;
 
-import java.util.concurrent.TimeUnit;
-
-import org.lwjgl.opengl.GL11;
-
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.cache.RemovalListener;
 import com.google.common.cache.RemovalNotification;
-
+import java.util.concurrent.TimeUnit;
 import moe.plushie.armourers_workshop.api.common.IExtraColours;
 import moe.plushie.armourers_workshop.api.common.capability.IEntitySkinCapability;
 import moe.plushie.armourers_workshop.api.common.capability.IWardrobeCap;
@@ -32,7 +28,6 @@ import moe.plushie.armourers_workshop.common.capability.wardrobe.WardrobeCap;
 import moe.plushie.armourers_workshop.common.data.type.BipedRotations;
 import moe.plushie.armourers_workshop.common.data.type.BipedRotations.BipedPart;
 import moe.plushie.armourers_workshop.common.data.type.TextureType;
-import moe.plushie.armourers_workshop.common.holiday.ModHolidays;
 import moe.plushie.armourers_workshop.common.init.entities.EntityMannequin;
 import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import moe.plushie.armourers_workshop.common.skin.data.SkinDye;
@@ -51,14 +46,12 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class RenderEntityMannequin extends Render<EntityMannequin> {
 
     private static LoadingCache<EntityMannequin, EntityTextureInfo> textureCache;
-
-    private boolean isHalloweenSeason;
-    private boolean isHalloween;
 
     private final ModelPlayer modelPlayerSmall = new ModelPlayer(0F, true);
     private final ModelPlayer modelPlayerNormal = new ModelPlayer(0F, false);
@@ -99,9 +92,6 @@ public class RenderEntityMannequin extends Render<EntityMannequin> {
         if (skinCap == null) {
             return;
         }
-
-        isHalloweenSeason = ModHolidays.HALLOWEEN_SEASON.isHolidayActive();
-        isHalloween = ModHolidays.HALLOWEEN.isHolidayActive();
 
         GlStateManager.pushAttrib();
         GlStateManager.pushMatrix();

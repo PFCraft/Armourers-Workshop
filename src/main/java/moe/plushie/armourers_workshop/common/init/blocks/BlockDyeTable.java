@@ -1,8 +1,8 @@
 package moe.plushie.armourers_workshop.common.init.blocks;
 
 import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
-import moe.plushie.armourers_workshop.common.lib.LibBlockNames;
 import moe.plushie.armourers_workshop.common.lib.EnumGuiId;
+import moe.plushie.armourers_workshop.common.lib.LibBlockNames;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntityDyeTable;
 import net.minecraft.block.BlockHorizontal;
@@ -72,7 +72,6 @@ public class BlockDyeTable extends AbstractModBlockContainer {
     }
     
     @SideOnly(Side.CLIENT)
-    @Override
     public BlockRenderLayer getRenderLayer() {
         if (!ConfigHandlerClient.useClassicBlockModels) {
             return BlockRenderLayer.CUTOUT_MIPPED;
@@ -98,7 +97,7 @@ public class BlockDyeTable extends AbstractModBlockContainer {
         if (!ConfigHandlerClient.useClassicBlockModels) {
             super.registerModels();
         } else {
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getTranslationKey() + "-classic"), "normal"));
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName() + "-classic"), "normal"));
             ModelLoader.setCustomStateMapper(this, new StateMap.Builder().withSuffix("-classic").ignore(STATE_FACING).build());
         }
     }
