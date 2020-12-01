@@ -32,6 +32,7 @@ public class SkinnableEntityChicken extends SkinnableEntity {
     @Override
     public void getValidSkinTypes(ArrayList<ISkinType> skinTypes) {
         skinTypes.add(SkinTypeRegistry.skinHead);
+        skinTypes.add(SkinTypeRegistry.skinWings);
     }
 
     @Override

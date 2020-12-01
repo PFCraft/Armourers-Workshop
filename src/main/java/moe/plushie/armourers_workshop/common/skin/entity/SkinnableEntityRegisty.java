@@ -43,7 +43,7 @@ public final class SkinnableEntityRegisty implements ISkinnableEntityRegisty {
         registerEntity(new SkinnableEntitySkeleton());
         registerEntity(new SkinnableEntitySlime());
         registerEntity(new SkinnableEntityMannequin());
-        // registerEntity(new SkinnableEntityZombie());
+        registerEntity(new SkinnableEntityZombie());
     }
 
     @Override
