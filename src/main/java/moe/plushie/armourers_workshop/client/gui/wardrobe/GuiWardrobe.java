@@ -20,10 +20,6 @@ import moe.plushie.armourers_workshop.client.gui.wardrobe.tab.GuiTabWardrobeColo
 import moe.plushie.armourers_workshop.client.gui.wardrobe.tab.GuiTabWardrobeContributor;
 import moe.plushie.armourers_workshop.client.gui.wardrobe.tab.GuiTabWardrobeDisplaySettings;
 import moe.plushie.armourers_workshop.client.gui.wardrobe.tab.GuiTabWardrobeDyes;
-import moe.plushie.armourers_workshop.client.gui.wardrobe.tab.GuiTabWardrobeManExtras;
-import moe.plushie.armourers_workshop.client.gui.wardrobe.tab.GuiTabWardrobeManOffset;
-import moe.plushie.armourers_workshop.client.gui.wardrobe.tab.GuiTabWardrobeManRotations;
-import moe.plushie.armourers_workshop.client.gui.wardrobe.tab.GuiTabWardrobeManTextureData;
 import moe.plushie.armourers_workshop.client.gui.wardrobe.tab.GuiTabWardrobeOutfits;
 import moe.plushie.armourers_workshop.client.gui.wardrobe.tab.GuiTabWardrobeSkins;
 import moe.plushie.armourers_workshop.client.lib.LibGuiResources;
@@ -32,7 +28,6 @@ import moe.plushie.armourers_workshop.common.Contributors;
 import moe.plushie.armourers_workshop.common.Contributors.Contributor;
 import moe.plushie.armourers_workshop.common.capability.entityskin.EntitySkinCapability;
 import moe.plushie.armourers_workshop.common.config.ConfigHandler;
-import moe.plushie.armourers_workshop.common.init.entities.EntityMannequin;
 import moe.plushie.armourers_workshop.common.inventory.ContainerSkinWardrobe;
 import moe.plushie.armourers_workshop.common.inventory.slot.SlotHidable;
 import moe.plushie.armourers_workshop.common.skin.type.SkinTypeRegistry;
@@ -67,11 +62,6 @@ public class GuiWardrobe extends GuiTabbed<ContainerSkinWardrobe> {
     private final GuiTabWardrobeColourSettings tabColourSettings;
     private final GuiTabWardrobeDyes tabDyes;
     private final GuiTabWardrobeContributor tabContributor;
-    
-    private final GuiTabWardrobeManTextureData tabManTextureData;
-    private final GuiTabWardrobeManRotations tabManRotations;
-    private final GuiTabWardrobeManExtras tabManExtras;
-    private final GuiTabWardrobeManOffset tabManOffset;
 
     private EntitySkinCapability skinCapability;
     private EntityPlayer player;
@@ -79,7 +69,6 @@ public class GuiWardrobe extends GuiTabbed<ContainerSkinWardrobe> {
     private boolean rotatingPlayer = false;
     private float playerRotation = 45F;
     private final boolean isPlayer;
-    private final boolean isMannequin;
 
     private int lastMouseX;
     private int lastMouseY;
@@ -96,7 +85,6 @@ public class GuiWardrobe extends GuiTabbed<ContainerSkinWardrobe> {
         this.player = inventory.player;
         this.skinCapability = skinCapability;
         isPlayer = wardrobeCapability instanceof IPlayerWardrobeCap;
-        isMannequin = skinCapability.getEntity() instanceof EntityMannequin;
         boolean isCreative = player.capabilities.isCreativeMode;
         tabController.setTabsPerSide(5);
         
@@ -156,53 +144,6 @@ public class GuiWardrobe extends GuiTabbed<ContainerSkinWardrobe> {
                 .setTabTextureSize(26, 30)
                 .setPadding(0, 4, 3, 3)
                 .setVisable(isPlayer & contributor != null));
-
-        if (isMannequin) {
-            EntityMannequin entityMannequin = (EntityMannequin) skinCapability.getEntity();
-
-            tabController.setTabsPerSide(4);
-            
-            tabManRotations = new GuiTabWardrobeManRotations(tabList.size(), this, entityMannequin);
-            tabList.add(tabManRotations);
-            GuiTab tabListItemManRotations = new GuiTab(tabController, GuiHelper.getLocalizedControlName(GUI_NAME, "tab.man_rotations"));
-            tabListItemManRotations.setIconLocation(80, 0);
-            tabListItemManRotations.setAnimation(8, 150);
-            tabListItemManRotations.setVisable(isMannequin);
-            tabListItemManRotations.setPadding(0, 0, 3, 3);
-            tabController.addTab(tabListItemManRotations);
-
-            tabManTextureData = new GuiTabWardrobeManTextureData(tabList.size(), this, entityMannequin);
-            tabList.add(tabManTextureData);
-            GuiTab tabListItemManTextureData = new GuiTab(tabController, GuiHelper.getLocalizedControlName(GUI_NAME, "tab.man_texture"));
-            tabListItemManTextureData.setIconLocation(128, 0);
-            tabListItemManTextureData.setAnimation(8, 150);
-            tabListItemManTextureData.setVisable(isMannequin);
-            tabListItemManTextureData.setPadding(0, 0, 3, 3);
-            tabController.addTab(tabListItemManTextureData);
-
-            tabManExtras = new GuiTabWardrobeManExtras(tabList.size(), this, entityMannequin);
-            tabList.add(tabManExtras);
-            GuiTab tabListItemManExtras = new GuiTab(tabController, GuiHelper.getLocalizedControlName(GUI_NAME, "tab.man_extras"));
-            tabListItemManExtras.setIconLocation(144, 0);
-            tabListItemManExtras.setAnimation(8, 150);
-            tabListItemManExtras.setVisable(isMannequin);
-            tabListItemManExtras.setPadding(0, 0, 3, 3);
-            tabController.addTab(tabListItemManExtras);
-
-            tabManOffset = new GuiTabWardrobeManOffset(tabList.size(), this, entityMannequin);
-            tabList.add(tabManOffset);
-            GuiTab tabListItemManOffset = new GuiTab(tabController, GuiHelper.getLocalizedControlName(GUI_NAME, "tab.man_offsets"));
-            tabListItemManOffset.setIconLocation(96, 0);
-            tabListItemManOffset.setAnimation(8, 150);
-            tabListItemManOffset.setVisable(isMannequin);
-            tabListItemManOffset.setPadding(0, 0, 3, 3);
-            tabController.addTab(tabListItemManOffset);
-        } else {
-            tabManRotations = null;
-            tabManTextureData = null;
-            tabManExtras = null;
-            tabManOffset = null;
-        }
 
         tabController.setActiveTabIndex(getActiveTab());
 
@@ -413,13 +354,6 @@ public class GuiWardrobe extends GuiTabbed<ContainerSkinWardrobe> {
             GL11.glTranslatef(boxX, boxY, 50);
             GL11.glRotatef(-20, 1, 0, 0);
             GL11.glRotatef(playerRotation, 0, 1, 0);
-            if (isMannequin) {
-                EntityMannequin mannequin = (EntityMannequin) skinCapability.getEntity();
-                float rot = mannequin.getRotation();
-                GL11.glRotatef(rot, 0, 1, 0);
-                float manScale = mannequin.getScale();
-                GL11.glScalef(1F / manScale, 1F / manScale, 1F / manScale);
-            }
             GL11.glTranslatef(0, 0, -50);
             
             GlStateManager.translate(0, 0, 50.0F);

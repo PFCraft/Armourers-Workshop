@@ -210,7 +210,7 @@ public class ConfigHandlerClient {
         tooltipSkinName = config.getBoolean("tooltipSkinName", CATEGORY_TOOLTIP, true, "Show skin name tooltip on items.");
         tooltipSkinAuthor = config.getBoolean("tooltipSkinAuthor", CATEGORY_TOOLTIP, true, "Show skin author tooltip on items.");
         tooltipSkinType = config.getBoolean("tooltipSkinType", CATEGORY_TOOLTIP, true, "Show skin type tooltip on items.");
-        tooltipDebug = config.getBoolean("tooltipDebug", CATEGORY_TOOLTIP, false, "Show skin debug info on items.");
+        tooltipDebug = config.getBoolean("tooltipDebug", CATEGORY_TOOLTIP, true, "Show skin debug info on items.");
         tooltipFlavour = config.getBoolean("tooltipFlavour", CATEGORY_TOOLTIP, true, "Show skin flavoue text tooltip on items.");
         tooltipOpenWardrobe = config.getBoolean("tooltipOpenWardrobe", CATEGORY_TOOLTIP, true, "Show open wardrobe message on skins.");
     }

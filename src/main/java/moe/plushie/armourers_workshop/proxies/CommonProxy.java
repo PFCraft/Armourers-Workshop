@@ -20,7 +20,6 @@ import moe.plushie.armourers_workshop.common.crafting.CraftingManager;
 import moe.plushie.armourers_workshop.common.init.blocks.ModBlocks;
 import moe.plushie.armourers_workshop.common.init.entities.ModEntities;
 import moe.plushie.armourers_workshop.common.init.items.ModItems;
-import moe.plushie.armourers_workshop.common.init.sounds.ModSounds;
 import moe.plushie.armourers_workshop.common.inventory.ContainerSkinLibrary;
 import moe.plushie.armourers_workshop.common.inventory.ModContainer;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
@@ -71,7 +70,6 @@ public class CommonProxy implements ILibraryCallback {
 
     private static ModItems modItems;
     private static ModBlocks modBlocks;
-    private static ModSounds modSounds;
     public ILibraryManager libraryManager;
     private PermissionSystem permissionSystem;
     private AdvancedSkinRegistry advancedSkinRegistry;
@@ -107,7 +105,6 @@ public class CommonProxy implements ILibraryCallback {
 
         modItems = new ModItems();
         modBlocks = new ModBlocks();
-        modSounds = new ModSounds();
 
         SkinnableEntityRegisty.init();
 

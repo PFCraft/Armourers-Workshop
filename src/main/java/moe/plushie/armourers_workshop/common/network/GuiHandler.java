@@ -4,7 +4,6 @@ import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.api.common.capability.IPlayerWardrobeCap;
 import moe.plushie.armourers_workshop.api.common.capability.IWardrobeCap;
 import moe.plushie.armourers_workshop.client.gui.GuiAdminPanel;
-import moe.plushie.armourers_workshop.client.gui.GuiDebugTool;
 import moe.plushie.armourers_workshop.client.gui.GuiToolOptions;
 import moe.plushie.armourers_workshop.client.gui.miniarmourer.GuiMiniArmourer;
 import moe.plushie.armourers_workshop.client.gui.wardrobe.GuiWardrobe;
@@ -137,8 +136,6 @@ public class GuiHandler implements IGuiHandler {
                 ModLogger.log(Level.WARN, "Error entity not found");
             }
             break;
-        case DEBUG_TOOL:
-            return new GuiDebugTool();
         case ADMIN_PANEL:
             return new GuiAdminPanel(player);
         case MINI_ARMOURER:

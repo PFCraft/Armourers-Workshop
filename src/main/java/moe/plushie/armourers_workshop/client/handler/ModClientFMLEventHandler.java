@@ -23,9 +23,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.Type;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class ModClientFMLEventHandler {
-    
-    private boolean showmDevWarning;
-    private boolean shownMoBendsWarning;
+
     public static float renderTickTime;
     public static int skinRendersThisTick = 0;
     public static int skinRenderLastTick = 0;
@@ -38,43 +36,13 @@ public class ModClientFMLEventHandler {
         }
     }
     
-    public void onPlayerTickEndEvent() {
-        EntityPlayerSP player = Minecraft.getMinecraft().player;
-        if (!showmDevWarning && LibModInfo.DEVELOPMENT_VERSION) {
-            TextComponentString devWarning = new TextComponentString(TranslateUtils.translate("chat.armourers_workshop:devWarning"));
-            devWarning.getStyle().setColor(TextFormatting.RED);
-            player.sendMessage(devWarning);
-            showmDevWarning = true;
-        }
-        if (!shownMoBendsWarning & ModAddonManager.addonMobends.isModLoaded()) {
-            TextComponentString moBendsWarning = new TextComponentString(TranslateUtils.translate("chat.armourers_workshop:mobends.warn"));
-            moBendsWarning.getStyle().setColor(TextFormatting.RED);
-            player.sendMessage(moBendsWarning);
-            shownMoBendsWarning = true;
-        }
-    }
-    
     @SubscribeEvent
     public void onKeyInputEvent(InputEvent.KeyInputEvent event) {
-        if (Keybindings.KEY_UNDO.isPressed()) {
-            PacketHandler.networkWrapper.sendToServer(new MessageClientKeyPress(Button.UNDO));
-        }
         if (Keybindings.OPEN_WARDROBE.isPressed() & ConfigHandler.canOpenWardrobe(Minecraft.getMinecraft().player)) {
             PacketHandler.networkWrapper.sendToServer(new MessageClientKeyPress(Button.OPEN_WARDROBE));
         }
     }
-    
-    @SubscribeEvent
-    public void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event.side == Side.CLIENT) {
-            if (event.type == Type.PLAYER) {
-                if (event.phase == Phase.END) {
-                    onPlayerTickEndEvent();
-                }
-            }
-        }
-    }
-    
+
     @SubscribeEvent
     public void onRenderTickEvent(RenderTickEvent event) {
         if (event.phase == Phase.START) {

@@ -80,52 +80,8 @@ public class ItemSkin extends AbstractModItem {
             SkinDescriptor skinData = SkinNBTHelper.getSkinDescriptorFromStack(stack);
             ISkinIdentifier identifier = skinData.getIdentifier();
 
-            if (!isEquipmentSkin & ConfigHandlerClient.tooltipHasSkin) {
-                tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.hasSkin"));
-            }
-
             if (ClientSkinCache.INSTANCE.isSkinInCache(skinData)) {
                 Skin data = ClientSkinCache.INSTANCE.getSkin(skinData);
-                if (stack.getItem() != ModItems.SKIN & !data.getCustomName().trim().isEmpty() & ConfigHandlerClient.tooltipSkinName) {
-                    tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinName", data.getCustomName()));
-                }
-                if (!data.getAuthorName().trim().isEmpty() & ConfigHandlerClient.tooltipSkinAuthor) {
-                    tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinAuthor", data.getAuthorName()));
-                }
-                if (skinData.getIdentifier().getSkinType() != null & ConfigHandlerClient.tooltipSkinType) {
-                    String localSkinName = SkinTypeRegistry.INSTANCE.getLocalizedSkinTypeName(skinData.getIdentifier().getSkinType());
-                    tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinType", localSkinName));
-                }
-                if (ConfigHandlerClient.tooltipDebug) {
-                    // Debug info.
-                    if (GuiScreen.isShiftKeyDown()) {
-                        tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinIdentifier"));
-                        if (identifier.hasLocalId()) {
-                            tooltip.add("  " + TranslateUtils.translate("item.armourers_workshop:rollover.skinId", identifier.getSkinLocalId()));
-                        }
-                        if (identifier.hasLibraryFile()) {
-                            tooltip.add("  " + TranslateUtils.translate("item.armourers_workshop:rollover.skinLibraryFile", identifier.getSkinLibraryFile().getFullName()));
-                        }
-                        if (identifier.hasGlobalId()) {
-                            tooltip.add("  " + TranslateUtils.translate("item.armourers_workshop:rollover.skinGlobalId", identifier.getSkinGlobalId()));
-                        }
-                        tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinTotalCubes", data.getTotalCubes()));
-                        tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinNumCubes", data.getTotalOfCubeType(CubeRegistry.INSTANCE.getCubeFormId((byte) 0))));
-                        tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinNumCubesGlowing", data.getTotalOfCubeType(CubeRegistry.INSTANCE.getCubeFormId((byte) 1))));
-                        tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinNumCubesGlass", data.getTotalOfCubeType(CubeRegistry.INSTANCE.getCubeFormId((byte) 2))));
-                        tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinNumCubesGlassGlowing", data.getTotalOfCubeType(CubeRegistry.INSTANCE.getCubeFormId((byte) 3))));
-                        tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinPaintData", data.hasPaintData()));
-                        tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinMarkerCount", data.getMarkerCount()));
-                        tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinDyeCount", skinData.getSkinDye().getNumberOfDyes()));
-                        tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinProperties"));
-                        ArrayList<String> props = data.getProperties().getPropertiesList();
-                        for (int i = 0; i < props.size(); i++) {
-                            tooltip.add("  " + props.get(i));
-                        }
-                    } else {
-                        tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinHoldShiftForInfo"));
-                    }
-                }
                 String flavour = SkinProperties.PROP_ALL_FLAVOUR_TEXT.getValue(data.getProperties()).trim();
                 if (!StringUtils.isEmpty(flavour) & ConfigHandlerClient.tooltipFlavour) {
                     tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.flavour", flavour));
@@ -152,10 +108,6 @@ public class ItemSkin extends AbstractModItem {
                 if (identifier.hasGlobalId()) {
                     tooltip.add("  " + TranslateUtils.translate("item.armourers_workshop:rollover.skinGlobalId", identifier.getSkinGlobalId()));
                 }
-            }
-            if (isEquipmentSkin & ConfigHandlerClient.tooltipOpenWardrobe) {
-                String keyName = Keybindings.OPEN_WARDROBE.getDisplayName();
-                tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinOpenWardrobe", keyName));
             }
         } else {
             // No skin identifier on stack.

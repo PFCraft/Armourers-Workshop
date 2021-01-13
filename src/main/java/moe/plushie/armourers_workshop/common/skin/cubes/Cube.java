@@ -25,9 +25,4 @@ public class Cube implements ICube {
     public byte getId() {
         return id;
     }
-    
-    @Override
-    public Block getMinecraftBlock() {
-        return ModBlocks.SKIN_CUBE;
-    }
 }

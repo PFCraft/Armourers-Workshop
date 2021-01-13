@@ -13,7 +13,6 @@ import moe.plushie.armourers_workshop.api.common.skin.type.ISkinPartTypeTextured
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import moe.plushie.armourers_workshop.client.model.bake.ColouredFace;
 import moe.plushie.armourers_workshop.common.painting.PaintTypeRegistry;
-import moe.plushie.armourers_workshop.common.skin.cubes.CubeMarkerData;
 import moe.plushie.armourers_workshop.common.skin.data.SkinCubeData;
 import moe.plushie.armourers_workshop.common.skin.data.SkinPart;
 import moe.plushie.armourers_workshop.common.skin.data.SkinTexture;
@@ -126,6 +125,6 @@ public abstract class AbstractSkinPartTypeBase implements ISkinPartType {
                 }
             }
         }
-        return new SkinPart(cubeData, this, new ArrayList<CubeMarkerData>());
+        return new SkinPart(cubeData, this, new ArrayList<>());
     }
 }

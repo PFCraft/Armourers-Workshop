@@ -10,7 +10,6 @@ import moe.plushie.armourers_workshop.api.common.IExtraColours.ExtraColourType;
 import moe.plushie.armourers_workshop.common.capability.wardrobe.ExtraColours;
 import moe.plushie.armourers_workshop.common.data.type.BipedRotations;
 import moe.plushie.armourers_workshop.common.data.type.TextureType;
-import moe.plushie.armourers_workshop.common.tileentities.TileEntityHologramProjector.PowerMode;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTUtil;
@@ -32,7 +31,6 @@ public final class TilePropertyManager {
         typeSerializers.put(BipedRotations.class.getName(), new BipedRotationsSerializer());
         typeSerializers.put(ExtraColours.class.getName(), new ExtraColoursSerializer());
         typeSerializers.put(TextureType.class.getName(), new TextureTypeSerializer());
-        typeSerializers.put(PowerMode.class.getName(), new PowerModeSerializer());
     }
 
     public NBTTagCompound writePropToCompound(TileProperty<?> tileProperty, NBTTagCompound compound) {
@@ -194,27 +192,6 @@ public final class TilePropertyManager {
         public void writeType(TileProperty<?> tileProperty, NBTTagCompound target) {
             TextureType tt = (TextureType) tileProperty.get();
             target.setString(tileProperty.getKey(), tt.name());
-        }
-    }
-
-    private static class PowerModeSerializer implements ITypeSerializer<NBTTagCompound> {
-
-        @Override
-        public void readType(TileProperty<?> tileProperty, NBTTagCompound source) {
-            if (source.hasKey(tileProperty.getKey(), NBT.TAG_STRING)) {
-                try {
-                    PowerMode pm = PowerMode.valueOf(source.getString(tileProperty.getKey()));
-                    tileProperty.loadType(pm);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        @Override
-        public void writeType(TileProperty<?> tileProperty, NBTTagCompound target) {
-            PowerMode pm = (PowerMode) tileProperty.get();
-            target.setString(tileProperty.getKey(), pm.name());
         }
     }
 

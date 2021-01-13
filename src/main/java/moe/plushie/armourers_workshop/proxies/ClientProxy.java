@@ -11,13 +11,11 @@ import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.api.ArmourersWorkshopClientApi;
 import moe.plushie.armourers_workshop.api.common.painting.IPantable;
 import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
-import moe.plushie.armourers_workshop.client.gui.globallibrary.GuiGlobalLibrary;
 import moe.plushie.armourers_workshop.client.gui.style.GuiResourceManager;
 import moe.plushie.armourers_workshop.client.handler.BlockHighlightRenderHandler;
 import moe.plushie.armourers_workshop.client.handler.ClientWardrobeHandler;
 import moe.plushie.armourers_workshop.client.handler.DebugTextHandler;
 import moe.plushie.armourers_workshop.client.handler.ItemTooltipHandler;
-import moe.plushie.armourers_workshop.client.handler.MannequinPlacementHandler;
 import moe.plushie.armourers_workshop.client.handler.ModClientFMLEventHandler;
 import moe.plushie.armourers_workshop.client.handler.PlayerTextureHandler;
 import moe.plushie.armourers_workshop.client.handler.RehostedJarHandler;
@@ -32,26 +30,18 @@ import moe.plushie.armourers_workshop.client.palette.PaletteManager;
 import moe.plushie.armourers_workshop.client.render.RenderBridge;
 import moe.plushie.armourers_workshop.client.render.SkinModelRenderHelper;
 import moe.plushie.armourers_workshop.client.render.entity.EntitySkinRenderHandler;
-import moe.plushie.armourers_workshop.client.render.entity.RenderEntityMannequin;
 import moe.plushie.armourers_workshop.client.render.entity.RenderSpectralArrowSkinned;
 import moe.plushie.armourers_workshop.client.render.entity.RenderTippedArrowSkinned;
 import moe.plushie.armourers_workshop.client.render.item.RenderItemEquipmentSkin;
 import moe.plushie.armourers_workshop.client.render.tileentities.RenderBlockAdvancedSkinBuilder;
-import moe.plushie.armourers_workshop.client.render.tileentities.RenderBlockArmourer;
-import moe.plushie.armourers_workshop.client.render.tileentities.RenderBlockBoundingBox;
 import moe.plushie.armourers_workshop.client.render.tileentities.RenderBlockColourable;
-import moe.plushie.armourers_workshop.client.render.tileentities.RenderBlockGlobalSkinLibrary;
-import moe.plushie.armourers_workshop.client.render.tileentities.RenderBlockHologramProjector;
-import moe.plushie.armourers_workshop.client.render.tileentities.RenderBlockMannequin;
 import moe.plushie.armourers_workshop.client.render.tileentities.RenderBlockSkinnable;
 import moe.plushie.armourers_workshop.client.settings.Keybindings;
 import moe.plushie.armourers_workshop.client.skin.cache.ClientSkinCache;
 import moe.plushie.armourers_workshop.client.skin.cache.ClientSkinPaintCache;
 import moe.plushie.armourers_workshop.client.skin.cache.FastCache;
-import moe.plushie.armourers_workshop.client.texture.PlayerTextureDownloader;
 import moe.plushie.armourers_workshop.common.addons.ModAddonManager;
 import moe.plushie.armourers_workshop.common.init.blocks.ModBlocks;
-import moe.plushie.armourers_workshop.common.init.entities.EntityMannequin;
 import moe.plushie.armourers_workshop.common.init.items.ModItems;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import moe.plushie.armourers_workshop.common.library.LibraryFile;
@@ -64,19 +54,13 @@ import moe.plushie.armourers_workshop.common.skin.cache.CommonSkinCache;
 import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import moe.plushie.armourers_workshop.common.skin.data.SkinIdentifier;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntityAdvancedSkinBuilder;
-import moe.plushie.armourers_workshop.common.tileentities.TileEntityArmourer;
-import moe.plushie.armourers_workshop.common.tileentities.TileEntityBoundingBox;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntityColourable;
-import moe.plushie.armourers_workshop.common.tileentities.TileEntityGlobalSkinLibrary;
-import moe.plushie.armourers_workshop.common.tileentities.TileEntityHologramProjector;
-import moe.plushie.armourers_workshop.common.tileentities.TileEntityMannequin;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntitySkinnable;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import moe.plushie.armourers_workshop.utils.SkinIOUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -123,7 +107,6 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
 
     public static ClientWardrobeHandler wardrobeHandler;
     public static PlayerTextureHandler playerTextureHandler;
-    public static PlayerTextureDownloader playerTextureDownloader;
     private static PaletteManager paletteManager;
 
     @SubscribeEvent
@@ -154,13 +137,6 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
 
         ReflectionHelper.setPrivateValue(ArmourersWorkshopClientApi.class, null, SkinRenderHandlerApi.INSTANCE, "skinRenderHandler");
 
-        RenderingRegistry.registerEntityRenderingHandler(EntityMannequin.class, new IRenderFactory() {
-
-            @Override
-            public Render createRenderFor(RenderManager manager) {
-                return new RenderEntityMannequin(manager);
-            }
-        });
         RenderingRegistry.registerEntityRenderingHandler(EntityTippedArrow.class, new IRenderFactory() {
 
             @Override
@@ -187,7 +163,6 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
         SkinModelRenderHelper.init();
         EntitySkinRenderHandler.init();
         new BlockHighlightRenderHandler();
-        new MannequinPlacementHandler();
         new ItemTooltipHandler();
         new SkinPreviewHandler();
         RenderBridge.init();
@@ -197,28 +172,9 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
          * RenderManager.instance.entityRenderMap.put(EntityArrow.class, arrowRender);
          */
         // Register tile entity renderers.
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityArmourer.class, new RenderBlockArmourer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMannequin.class, new RenderBlockMannequin());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySkinnable.class, new RenderBlockSkinnable());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityColourable.class, new RenderBlockColourable());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBoundingBox.class, new RenderBlockBoundingBox());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGlobalSkinLibrary.class, new RenderBlockGlobalSkinLibrary());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHologramProjector.class, new RenderBlockHologramProjector());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAdvancedSkinBuilder.class, new RenderBlockAdvancedSkinBuilder());
-
-        // Register coloured items and blocks.
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemColour(), ModItems.PAINT_BRUSH);
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemColour(), ModItems.PAINT_ROLLER);
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemColour(), ModItems.COLOUR_PICKER);
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemColour(), ModItems.DYE_BOTTLE);
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemColour(), ModItems.HUE_TOOL);
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new ItemColour(), ModItems.SOAP);
-
-        Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new BlockColour(), ModBlocks.SKIN_CUBE);
-        Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new BlockColour(), ModBlocks.SKIN_CUBE_GLASS);
-        Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new BlockColour(), ModBlocks.SKIN_CUBE_GLOWING);
-        Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new BlockColour(), ModBlocks.SKIN_CUBE_GLASS_GLOWING);
-        Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new BlockColour(), ModBlocks.COLOUR_MIXER);
 
     }
 
@@ -227,7 +183,6 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
         super.init(event);
         wardrobeHandler = new ClientWardrobeHandler();
         playerTextureHandler = new PlayerTextureHandler();
-        playerTextureDownloader = new PlayerTextureDownloader();
         ClientSkinCache.init();
         FMLCommonHandler.instance().bus().register(new ModClientFMLEventHandler());
         MinecraftForge.EVENT_BUS.register(new DebugTextHandler());
@@ -384,10 +339,6 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
             ArmourersWorkshop.getProxy().libraryManager.addFileToListType(new LibraryFile(fileName, filePath, skin.getSkinType()), LibraryFileType.LOCAL, null);
             break;
         case GLOBAL_UPLOAD:
-            GuiScreen screen = Minecraft.getMinecraft().currentScreen;
-            if (screen instanceof GuiGlobalLibrary) {
-                ((GuiGlobalLibrary) screen).gotSkinFromServer(skin);
-            }
             break;
         }
     }
@@ -460,18 +411,6 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
 
         @Override
         public int colorMultiplier(ItemStack stack, int tintIndex) {
-            if (stack.getItem() == ModItems.DYE_BOTTLE) {
-                if (tintIndex == 0) {
-                    return PaintingHelper.getToolDisplayColourRGB(stack);
-                }
-                return 0xFFFFFFFF;
-            }
-            if (stack.getItem() == ModItems.COLOUR_PICKER) {
-                if (tintIndex == 0) {
-                    return PaintingHelper.getToolDisplayColourRGB(stack);
-                }
-                return 0xFFFFFFFF;
-            }
             if (tintIndex == 1) {
                 return PaintingHelper.getToolDisplayColourRGB(stack);
             }

@@ -2,8 +2,6 @@ package moe.plushie.armourers_workshop.common.network.messages.client;
 
 import io.netty.buffer.ByteBuf;
 import moe.plushie.armourers_workshop.common.data.type.BipedRotations;
-import moe.plushie.armourers_workshop.common.inventory.ContainerMannequin;
-import moe.plushie.armourers_workshop.common.tileentities.TileEntityMannequin;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.Container;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -41,11 +39,6 @@ public class MessageClientGuiBipedRotations implements IMessage, IMessageHandler
         }
 
         Container container = player.openContainer;
-
-        if (container != null && container instanceof ContainerMannequin) {
-            TileEntityMannequin tileEntity = ((ContainerMannequin) container).getTileEntity();
-            tileEntity.PROP_BIPED_ROTATIONS.set(message.bipedRotations);
-        }
 
         return null;
     }

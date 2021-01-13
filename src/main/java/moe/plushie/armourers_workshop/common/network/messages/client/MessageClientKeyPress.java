@@ -42,9 +42,6 @@ public class MessageClientKeyPress implements IMessage, IMessageHandler<MessageC
             @Override
             public void run() {
                 switch (message.button) {
-                case UNDO:
-                    UndoManager.undoPressed(player);
-                    break;
                 case OPEN_WARDROBE:
                     if (ConfigHandler.canOpenWardrobe(player)) {
                         FMLNetworkHandler.openGui(player, ArmourersWorkshop.getInstance(), EnumGuiId.WARDROBE_PLAYER.ordinal(), player.getEntityWorld(), 0, 0, 0);
@@ -57,7 +54,6 @@ public class MessageClientKeyPress implements IMessage, IMessageHandler<MessageC
     }
     
     public enum Button {
-        UNDO,
         OPEN_WARDROBE;
     }
 }

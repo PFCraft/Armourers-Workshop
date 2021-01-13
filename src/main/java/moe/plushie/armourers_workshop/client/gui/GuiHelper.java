@@ -36,10 +36,6 @@ public final class GuiHelper {
     public static void drawPlayerHead(int x, int y, int size, String username) {
 
         ResourceLocation rl = DefaultPlayerSkin.getDefaultSkinLegacy();
-        if (!StringUtils.isNullOrEmpty(username)) {
-            PlayerTexture playerTexture = getPlayerTexture(username, TextureType.USER);
-            rl = playerTexture.getResourceLocation();
-        }
         Minecraft.getMinecraft().renderEngine.bindTexture(rl);
 
         int sourceSize = 8;
@@ -48,10 +44,6 @@ public final class GuiHelper {
         Gui.drawScaledCustomSizeModalRect(x + 1, y + 1, 8, 8, sourceSize, sourceSize, size, size, 64, 64);
         // Overlay
         Gui.drawScaledCustomSizeModalRect(x, y, 40, 8, sourceSize, sourceSize, size + 2, size + 2, 64, 64);
-    }
-
-    private static PlayerTexture getPlayerTexture(String textureString, TextureType textureType) {
-        return ClientProxy.playerTextureDownloader.getPlayerTexture(textureString, textureType);
     }
 
     public static void renderPlayerInvTexture(int x, int y) {

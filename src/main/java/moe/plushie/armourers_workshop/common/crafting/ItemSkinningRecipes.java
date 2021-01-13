@@ -6,7 +6,6 @@ import moe.plushie.armourers_workshop.common.addons.ModAddonManager.ItemOverride
 import moe.plushie.armourers_workshop.common.crafting.recipe.RecipeItemSkinning;
 import moe.plushie.armourers_workshop.common.crafting.recipe.RecipeSkinArmour;
 import moe.plushie.armourers_workshop.common.crafting.recipe.RecipeSkinArmourContainer;
-import moe.plushie.armourers_workshop.common.crafting.recipe.RecipeSkinClear;
 import moe.plushie.armourers_workshop.common.crafting.recipe.RecipeSkinCopy;
 import moe.plushie.armourers_workshop.common.crafting.recipe.RecipeSkinItem;
 import moe.plushie.armourers_workshop.common.crafting.recipe.RecipeSkinRecover;
@@ -32,7 +31,6 @@ public class ItemSkinningRecipes {
         recipes.add(new RecipeSkinItem(SkinTypeRegistry.skinItem, ItemOverrideType.ITEM));
         
         recipes.add(new RecipeSkinCopy());
-        recipes.add(new RecipeSkinClear());
         recipes.add(new RecipeSkinRecover());
         
         recipes.add(new RecipeSkinArmour(SkinTypeRegistry.skinHead));

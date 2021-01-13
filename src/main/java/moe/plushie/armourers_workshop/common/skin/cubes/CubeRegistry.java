@@ -43,22 +43,4 @@ public final class CubeRegistry {
         registerCube(new CubeGlass());
         registerCube(new CubeGlassGlowing());
     }
-
-    public boolean isBuildingBlock(Block block) {
-        for (int i = 0; i < cubeList.size(); i++) {
-            if (cubeList.get(i).getMinecraftBlock() == block) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public ICube getCubeFromBlock(Block block) {
-        for (int i = 0; i < cubeList.size(); i++) {
-            if (cubeList.get(i).getMinecraftBlock() == block) {
-                return cubeList.get(i);
-            }
-        }
-        return null;
-    }
 }

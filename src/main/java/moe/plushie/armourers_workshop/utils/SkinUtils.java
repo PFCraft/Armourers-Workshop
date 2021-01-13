@@ -7,7 +7,6 @@ import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinIdentifier;
 import moe.plushie.armourers_workshop.client.skin.cache.ClientSkinCache;
-import moe.plushie.armourers_workshop.common.init.entities.EntityMannequin;
 import moe.plushie.armourers_workshop.common.skin.cache.CommonSkinCache;
 import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import moe.plushie.armourers_workshop.common.skin.data.SkinDescriptor;
@@ -123,11 +122,6 @@ public final class SkinUtils {
                         flapTime = flyingSpeed;
                     }
                 } else {
-                    flapTime = flyingSpeed;
-                }
-            }
-            if (entity instanceof EntityMannequin) {
-                if (((EntityMannequin) entity).isFlying()) {
                     flapTime = flyingSpeed;
                 }
             }

@@ -42,7 +42,6 @@ public final class SkinnableEntityRegisty implements ISkinnableEntityRegisty {
         registerEntity(new SkinnableEntityPlayer());
         registerEntity(new SkinnableEntitySkeleton());
         registerEntity(new SkinnableEntitySlime());
-        registerEntity(new SkinnableEntityMannequin());
         registerEntity(new SkinnableEntityZombie());
     }
 

@@ -10,7 +10,6 @@ import moe.plushie.armourers_workshop.client.gui.wardrobe.tab.GuiTabWardrobeCont
 import moe.plushie.armourers_workshop.client.handler.ClientWardrobeHandler;
 import moe.plushie.armourers_workshop.client.render.SkinModelRenderHelper;
 import moe.plushie.armourers_workshop.client.render.SkinRenderData;
-import moe.plushie.armourers_workshop.client.render.tileentities.RenderBlockMannequin;
 import moe.plushie.armourers_workshop.client.skin.cache.ClientSkinCache;
 import moe.plushie.armourers_workshop.common.Contributors;
 import moe.plushie.armourers_workshop.common.Contributors.Contributor;
@@ -49,7 +48,6 @@ public class SkinLayerRendererPlayer implements LayerRenderer<EntityPlayer> {
         if (GuiTabWardrobeContributor.testMode) {
             Contributor contributor = Contributors.INSTANCE.getContributor(entitylivingbaseIn.getGameProfile());
             if (contributor != null) {
-                RenderBlockMannequin.renderMagicCircle(Minecraft.getMinecraft(), contributor.r, contributor.g, contributor.b, partialTicks, 0, false);
             }
         }
 

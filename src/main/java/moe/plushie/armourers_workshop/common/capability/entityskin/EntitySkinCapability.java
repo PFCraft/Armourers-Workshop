@@ -188,7 +188,9 @@ public class EntitySkinCapability implements IEntitySkinCapability, IInventoryCa
 
     @Override
     public void syncToAllTracking() {
-        PacketHandler.networkWrapper.sendToAllTracking(getUpdateMessage(), entity);
+        if (getUpdateMessage() != null) {
+            PacketHandler.networkWrapper.sendToAllTracking(getUpdateMessage(), entity);
+        }
     }
     
     public static IEntitySkinCapability get(Entity entity) {

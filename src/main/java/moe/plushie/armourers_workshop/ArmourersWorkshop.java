@@ -4,7 +4,6 @@ import org.apache.logging.log4j.Logger;
 
 import moe.plushie.armourers_workshop.common.command.CommandArmourers;
 import moe.plushie.armourers_workshop.common.creativetab.CreativeTabMain;
-import moe.plushie.armourers_workshop.common.creativetab.CreativeTabPaintingTools;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import moe.plushie.armourers_workshop.common.skin.cache.CommonSkinCache;
 import moe.plushie.armourers_workshop.proxies.CommonProxy;
@@ -39,7 +38,6 @@ public class ArmourersWorkshop {
     private static CommonProxy proxy;
 
     public static final CreativeTabMain TAB_MAIN = new CreativeTabMain();
-    public static final CreativeTabPaintingTools TAB_PAINTING_TOOLS = new CreativeTabPaintingTools();
 
     @EventHandler
     public void perInit(FMLPreInitializationEvent event) {

@@ -1,10 +1,7 @@
 package moe.plushie.armourers_workshop.utils;
 
 import java.util.ArrayList;
-import moe.plushie.armourers_workshop.api.common.painting.IPantable;
 import moe.plushie.armourers_workshop.api.common.painting.IPantableBlock;
-import moe.plushie.armourers_workshop.api.common.skin.cubes.ICubeColour;
-import moe.plushie.armourers_workshop.common.skin.cubes.CubeColour;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.IInventory;
@@ -57,14 +54,6 @@ public final class BlockUtils {
     
     public static EnumFacing determineDirectionSide(EntityLivingBase entity) {
         return EnumFacing.getFront(determineOrientationSide(entity));
-    }
-    
-    public static ICubeColour getColourFromTileEntity(World world, BlockPos pos) {
-        TileEntity te = world.getTileEntity(pos);
-        if (te != null & te instanceof IPantable) {
-            return ((IPantable)te).getColour();
-        }
-        return new CubeColour();
     }
     
     public static void dropInventoryBlocks(World world, BlockPos pos) {

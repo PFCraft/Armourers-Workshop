@@ -12,6 +12,4 @@ public interface ICube {
     
     /** Get the cubes ID */
     public byte getId();
-    
-    public Block getMinecraftBlock();
 }

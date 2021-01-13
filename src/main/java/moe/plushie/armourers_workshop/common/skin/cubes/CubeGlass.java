@@ -9,9 +9,4 @@ public class CubeGlass extends Cube {
     public boolean needsPostRender() {
         return true;
     }
-    
-    @Override
-    public Block getMinecraftBlock() {
-        return ModBlocks.SKIN_CUBE_GLASS;
-    }
 }

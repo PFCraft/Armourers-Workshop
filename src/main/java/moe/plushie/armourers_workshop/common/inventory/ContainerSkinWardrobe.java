@@ -7,12 +7,8 @@ import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDye;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import moe.plushie.armourers_workshop.common.capability.entityskin.EntitySkinCapability;
 import moe.plushie.armourers_workshop.common.config.ConfigHandler;
-import moe.plushie.armourers_workshop.common.init.entities.EntityMannequin;
-import moe.plushie.armourers_workshop.common.init.items.ItemDyeBottle;
 import moe.plushie.armourers_workshop.common.init.items.ItemSkin;
 import moe.plushie.armourers_workshop.common.init.items.ModItems;
-import moe.plushie.armourers_workshop.common.inventory.slot.SlotDyeBottle;
-import moe.plushie.armourers_workshop.common.inventory.slot.SlotHidable;
 import moe.plushie.armourers_workshop.common.inventory.slot.SlotSkin;
 import moe.plushie.armourers_workshop.common.painting.PaintTypeRegistry;
 import moe.plushie.armourers_workshop.common.painting.PaintingHelper;
@@ -28,7 +24,6 @@ public class ContainerSkinWardrobe extends ModContainer {
 
     private final EntitySkinCapability skinCapability;
     private final IWardrobeCap wardrobeCapability;
-    private final DyeInventory dyeInventory;
     private int slotsUnlocked;
 
     private int indexSkinsStart = 0;
@@ -47,10 +42,8 @@ public class ContainerSkinWardrobe extends ModContainer {
         super(invPlayer);
         this.skinCapability = skinCapability;
         this.wardrobeCapability = wardrobeCapability;
-        this.dyeInventory = new DyeInventory(wardrobeCapability, invPlayer.player.getEntityWorld().isRemote);
         SkinInventoryContainer skinInv = skinCapability.getSkinInventoryContainer();
         boolean isPlayer = wardrobeCapability instanceof IPlayerWardrobeCap;
-        boolean isMannequin = skinCapability.getEntity() instanceof EntityMannequin;
         boolean isCreative = invPlayer.player.capabilities.isCreativeMode;
 
         if (isPlayer) {
@@ -129,7 +122,6 @@ public class ContainerSkinWardrobe extends ModContainer {
         indexDyeEnd = indexSkinsEnd;
         if (!isPlayer | (isPlayer & (ConfigHandler.wardrobeTabDyes | isCreative))) {
             for (int i = 0; i < 8; i++) {
-                addSlotToContainer(new SlotDyeBottle(dyeInventory, i, 83 + 20 * i, 27));
                 indexDyeEnd += 1;
             }
         }
@@ -155,13 +147,6 @@ public class ContainerSkinWardrobe extends ModContainer {
 
         indexMannequinHandsStart = indexOutfitEnd;
         indexMannequinHandsEnd = indexMannequinHandsStart;
-        if (isMannequin) {
-            EntityMannequin entityMannequin = (EntityMannequin) skinCapability.getEntity();
-            ModInventory inventoryMannequin = entityMannequin.getInventoryHands();
-            addSlotToContainer(new SlotHidable(inventoryMannequin, 0, 83, 122));
-            addSlotToContainer(new SlotHidable(inventoryMannequin, 1, 102, 122));
-            indexMannequinHandsEnd += 2;
-        }
 
         addPlayerSlots(59, 168);
     }
@@ -225,20 +210,6 @@ public class ContainerSkinWardrobe extends ModContainer {
                 }
             }
 
-            if (stack.getItem() == ModItems.DYE_BOTTLE) {
-                if (((ItemDyeBottle) stack.getItem()).getToolHasColour(stack)) {
-                    for (int i = indexDyeStart; i < indexDyeEnd; i++) {
-                        Slot targetSlot = getSlot(i);
-                        if (targetSlot.isItemValid(stack)) {
-                            if (this.mergeItemStack(stack, i, i + 1, false)) {
-                                slotted = true;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-
             // TODO Add check for valid outfit.
             if (stack.getItem() instanceof ItemSkin & SkinNBTHelper.stackHasSkinData(stack)) {
                 for (int i = indexOutfitStart; i < indexOutfitEnd; i++) {
@@ -280,48 +251,5 @@ public class ContainerSkinWardrobe extends ModContainer {
 
         }
         return ItemStack.EMPTY;
-    }
-
-    private class DyeInventory extends ModInventory {
-
-        private final IWardrobeCap wardrobeCapability;
-        private final boolean isRemote;
-
-        public DyeInventory(IWardrobeCap wardrobeCapability, boolean isRemote) {
-            super("dyeInventory", 8);
-            this.wardrobeCapability = wardrobeCapability;
-            this.isRemote = isRemote;
-            ISkinDye dye = wardrobeCapability.getDye();
-            for (int i = 0; i < 8; i++) {
-                if (dye.haveDyeInSlot(i)) {
-                    byte[] rgbt = dye.getDyeColour(i);
-                    ItemStack bottle = new ItemStack(ModItems.DYE_BOTTLE, 1, 1);
-                    PaintingHelper.setToolPaintColour(bottle, rgbt);
-                    PaintingHelper.setToolPaint(bottle, PaintTypeRegistry.getInstance().getPaintTypeFormByte(rgbt[3]));
-                    if (dye.hasName(i)) {
-                        bottle.setStackDisplayName(dye.getDyeName(i));
-                    }
-                    slots.set(i, bottle);
-                } else {
-                    slots.set(i, ItemStack.EMPTY);
-                }
-            }
-        }
-
-        @Override
-        public void setInventorySlotContents(int slotId, ItemStack stack) {
-            super.setInventorySlotContents(slotId, stack);
-            if (stack.isEmpty()) {
-                wardrobeCapability.getDye().removeDye(slotId);
-            } else {
-                if (PaintingHelper.getToolHasPaint(stack)) {
-                    byte[] rgbt = PaintingHelper.getToolPaintData(stack);
-                    wardrobeCapability.getDye().addDye(slotId, rgbt);
-                }
-            }
-            if (!isRemote) {
-                wardrobeCapability.syncToAllTracking();
-            }
-        }
     }
 }

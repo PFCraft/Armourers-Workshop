@@ -1,9 +1,7 @@
 package moe.plushie.armourers_workshop.common.network.messages.client;
 
 import io.netty.buffer.ByteBuf;
-import moe.plushie.armourers_workshop.common.inventory.ContainerArmourer;
 import moe.plushie.armourers_workshop.common.skin.data.SkinProperties;
-import moe.plushie.armourers_workshop.common.tileentities.TileEntityArmourer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.Container;
 import net.minecraft.nbt.NBTTagCompound;
@@ -42,11 +40,7 @@ public class MessageClientGuiSetArmourerSkinProps implements IMessage, IMessageH
         EntityPlayerMP player = ctx.getServerHandler().player;
         if (player == null) { return null; }
         Container container = player.openContainer;
-        
-        if (container != null && container instanceof ContainerArmourer) {
-            TileEntityArmourer te = ((ContainerArmourer)container).getTileEntity();
-            te.setSkinProps(message.skinProps);
-        }
+
         return null;
     }
 }
