@@ -1,5 +1,8 @@
 package moe.plushie.armourers_workshop;
 
+import goblinbob.mobends.core.Core;
+import goblinbob.mobends.core.addon.AddonHelper;
+import goblinbob.mobends.standard.DefaultAddon;
 import org.apache.logging.log4j.Logger;
 
 import moe.plushie.armourers_workshop.common.command.CommandArmourers;
@@ -45,6 +48,8 @@ public class ArmourersWorkshop {
         ModLogger.log(String.format("Loading %s version %s.", LibModInfo.NAME, LibModInfo.MOD_VERSION));
         proxy.preInit(event);
         proxy.initLibraryManager();
+        proxy.createCore();
+        Core.getInstance().preInit(event);
     }
 
     @EventHandler
@@ -52,11 +57,15 @@ public class ArmourersWorkshop {
         proxy.init(event);
         proxy.registerKeyBindings();
         proxy.initRenderers();
+        Core.getInstance().init(event);
+        // Registering the standard set of animations.
+        AddonHelper.registerAddon(LibModInfo.ID, new DefaultAddon());
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
+        Core.getInstance().postInit(event);
     }
 
     @EventHandler

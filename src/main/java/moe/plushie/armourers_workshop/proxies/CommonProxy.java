@@ -1,5 +1,6 @@
 package moe.plushie.armourers_workshop.proxies;
 
+import goblinbob.mobends.core.Core;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -299,5 +300,10 @@ public class CommonProxy implements ILibraryCallback {
     @SubscribeEvent
     public MinecraftServer getServer() {
         return FMLCommonHandler.instance().getMinecraftServerInstance();
+    }
+
+    public void createCore()
+    {
+        Core.createAsServer();
     }
 }

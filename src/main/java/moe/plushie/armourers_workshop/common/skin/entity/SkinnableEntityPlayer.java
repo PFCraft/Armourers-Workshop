@@ -1,11 +1,11 @@
 package moe.plushie.armourers_workshop.common.skin.entity;
 
+import goblinbob.mobends.standard.client.renderer.entity.layers.LayerCustomHeldItem;
 import java.util.ArrayList;
 import java.util.List;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import moe.plushie.armourers_workshop.client.render.entity.ModelResetLayer;
 import moe.plushie.armourers_workshop.client.render.entity.SkinLayerRendererHeldItem;
-import moe.plushie.armourers_workshop.client.render.entity.SkinLayerRendererPlayer;
 import moe.plushie.armourers_workshop.common.skin.type.SkinTypeRegistry;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraft.client.Minecraft;
@@ -57,7 +57,7 @@ public class SkinnableEntityPlayer extends SkinnableEntity {
                 e.printStackTrace();
             }
             ModLogger.log("Adding 'SkinLayerRendererPlayer' to " + playerRender);
-            playerRender.addLayer(new SkinLayerRendererPlayer(playerRender));
+            playerRender.addLayer(new LayerCustomHeldItem(playerRender));
         }
         ModLogger.log("Finished setting up player render layers.");
     }

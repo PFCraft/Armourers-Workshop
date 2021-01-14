@@ -123,25 +123,19 @@ public class BlockSkinLibrary extends AbstractModBlockContainer {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerModels() {
-        if (!ConfigHandlerClient.useClassicBlockModels) {
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "normal"));
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 1, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName()), "creative"));
-        } else {
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName() + "-classic"), "normal"));
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 1, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName() + "-classic"), "creative"));
-            ModelLoader.setCustomStateMapper(this, new StateMap.Builder().withSuffix("-classic").ignore(STATE_FACING).build());
-        }
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(new ResourceLocation(LibModInfo.ID, getUnlocalizedName() + "-classic"), "creative"));
+        ModelLoader.setCustomStateMapper(this, new StateMap.Builder().withSuffix("-classic").ignore(STATE_FACING).build());
     }
 
     /*
-     * 
+     *
      * @Override public int damageDropped(int meta) { return meta; }
-     * 
+     *
      * @Override public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
      * BlockUtils.dropInventoryBlocks(world, x, y,z);
      * super.breakBlock(world, x, y, z, block, meta);
      * }
-     * 
+     *
      */
 
     @Override

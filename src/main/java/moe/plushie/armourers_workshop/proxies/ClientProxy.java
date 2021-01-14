@@ -1,6 +1,10 @@
 package moe.plushie.armourers_workshop.proxies;
 
 import com.mojang.authlib.GameProfile;
+import goblinbob.mobends.core.Core;
+import goblinbob.mobends.standard.client.event.RenderingEventHandler;
+import goblinbob.mobends.standard.client.renderer.entity.RenderBendsSpectralArrow;
+import goblinbob.mobends.standard.client.renderer.entity.RenderBendsTippedArrow;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -149,6 +153,8 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
                 return new RenderSpectralArrowSkinned(manager);
             }
         });
+        RenderingRegistry.registerEntityRenderingHandler(EntitySpectralArrow.class, RenderBendsSpectralArrow::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityTippedArrow.class, RenderBendsTippedArrow::new);
     }
 
     @Override
@@ -185,6 +191,7 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
         MinecraftForge.EVENT_BUS.register(new DebugTextHandler());
         FastCache.INSTANCE.loadCacheData();
         paletteManager = new PaletteManager(getModDirectory());
+        MinecraftForge.EVENT_BUS.register(new RenderingEventHandler());
     }
 
     @Override
@@ -272,7 +279,6 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
 
     @Override
     public void registerKeyBindings() {
-        ClientRegistry.registerKeyBinding(Keybindings.KEY_UNDO);
         ClientRegistry.registerKeyBinding(Keybindings.OPEN_WARDROBE);
     }
 
@@ -422,5 +428,11 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
 
     public static PaletteManager getPaletteManager() {
         return paletteManager;
+    }
+
+    @Override
+    public void createCore()
+    {
+        Core.createAsClient();
     }
 }

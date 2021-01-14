@@ -41,21 +41,6 @@ public class ModItemBlock extends ItemBlock implements ISortOrder {
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        String unlocalized;
-        String localized;
-
-        unlocalized = stack.getUnlocalizedName() + ".flavour";
-        localized = I18n.format(unlocalized);
-        if (!unlocalized.equals(localized)) {
-            if (localized.contains("\r\n")) {
-                String[] split = localized.split("\r\n");
-                for (int i = 0; i < split.length; i++) {
-                    tooltip.add(split[i]);
-                }
-            } else {
-                tooltip.add(localized);
-            }
-        }
         super.addInformation(stack, worldIn, tooltip, flagIn);
         if (block instanceof ISortOrder & ConfigHandlerClient.showSortOrderToolTip) {
             tooltip.add("sortPriority" + String.valueOf(getSortPriority()));

@@ -1,5 +1,10 @@
-package moe.plushie.armourers_workshop.client.render.entity;
+package goblinbob.mobends.standard.client.renderer.entity.layers;
 
+import goblinbob.mobends.core.data.EntityData;
+import goblinbob.mobends.core.data.EntityDatabase;
+import goblinbob.mobends.core.math.SmoothOrientation;
+import goblinbob.mobends.core.util.GlHelper;
+import goblinbob.mobends.standard.data.BipedEntityData;
 import moe.plushie.armourers_workshop.api.common.IExtraColours;
 import moe.plushie.armourers_workshop.api.common.capability.IPlayerWardrobeCap;
 import moe.plushie.armourers_workshop.api.common.capability.IWardrobeCap;
@@ -12,7 +17,6 @@ import moe.plushie.armourers_workshop.client.render.SkinModelRenderHelper;
 import moe.plushie.armourers_workshop.client.render.SkinRenderData;
 import moe.plushie.armourers_workshop.client.skin.cache.ClientSkinCache;
 import moe.plushie.armourers_workshop.common.Contributors;
-import moe.plushie.armourers_workshop.common.Contributors.Contributor;
 import moe.plushie.armourers_workshop.common.capability.entityskin.EntitySkinCapability;
 import moe.plushie.armourers_workshop.common.capability.wardrobe.ExtraColours;
 import moe.plushie.armourers_workshop.common.capability.wardrobe.player.PlayerWardrobeCap;
@@ -21,32 +25,56 @@ import moe.plushie.armourers_workshop.common.skin.data.SkinDye;
 import moe.plushie.armourers_workshop.common.skin.data.SkinProperties;
 import moe.plushie.armourers_workshop.common.skin.type.SkinTypeRegistry;
 import moe.plushie.armourers_workshop.proxies.ClientProxy;
-import moe.plushie.armourers_workshop.proxies.ClientProxy.TexturePaintType;
 import moe.plushie.armourers_workshop.utils.SkinNBTHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.entity.RenderPlayer;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
+import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHandSide;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class SkinLayerRendererPlayer implements LayerRenderer<EntityPlayer> {
+public class LayerCustomHeldItem implements LayerRenderer<EntityLivingBase>
+{
 
-    private final RenderPlayer renderPlayer;
+    protected final RenderLivingBase<?> livingEntityRenderer;
 
-    public SkinLayerRendererPlayer(RenderPlayer renderPlayer) {
-        this.renderPlayer = renderPlayer;
+    public LayerCustomHeldItem(RenderLivingBase<?> livingEntityRendererIn)
+    {
+        this.livingEntityRenderer = livingEntityRendererIn;
     }
 
-    @Override
-    public void doRenderLayer(EntityPlayer entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+    public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale)
+    {
+        boolean flag = entitylivingbaseIn.getPrimaryHand() == EnumHandSide.RIGHT;
+        ItemStack itemstack = flag ? entitylivingbaseIn.getHeldItemOffhand() : entitylivingbaseIn.getHeldItemMainhand();
+        ItemStack itemstack1 = flag ? entitylivingbaseIn.getHeldItemMainhand() : entitylivingbaseIn.getHeldItemOffhand();
+
+        if (!itemstack.isEmpty() || !itemstack1.isEmpty())
+        {
+            GlStateManager.pushMatrix();
+
+            if (this.livingEntityRenderer.getMainModel().isChild)
+            {
+                GlStateManager.translate(0.0F, 0.75F, 0.0F);
+                GlStateManager.scale(0.5F, 0.5F, 0.5F);
+            }
+
+            this.renderHeldItem(entitylivingbaseIn, itemstack1, ItemCameraTransforms.TransformType.THIRD_PERSON_RIGHT_HAND, EnumHandSide.RIGHT);
+            this.renderHeldItem(entitylivingbaseIn, itemstack, ItemCameraTransforms.TransformType.THIRD_PERSON_LEFT_HAND, EnumHandSide.LEFT);
+            GlStateManager.popMatrix();
+        }
+
         if (GuiTabWardrobeContributor.testMode) {
-            Contributor contributor = Contributors.INSTANCE.getContributor(entitylivingbaseIn.getGameProfile());
+            Contributors.Contributor contributor = Contributors.INSTANCE.getContributor(((EntityPlayer)entitylivingbaseIn).getGameProfile());
             if (contributor != null) {
             }
         }
@@ -55,8 +83,8 @@ public class SkinLayerRendererPlayer implements LayerRenderer<EntityPlayer> {
         if (distance > ConfigHandlerClient.renderDistanceSkin) {
             return;
         }
-        renderPlayer.getMainModel().bipedLeftArm.isHidden = false;
-        renderPlayer.getMainModel().bipedRightArm.isHidden = false;
+        ((ModelBiped)livingEntityRenderer.getMainModel()).bipedLeftArm.isHidden = false;
+        ((ModelBiped)livingEntityRenderer.getMainModel()).bipedRightArm.isHidden = false;
         EntitySkinCapability skinCap = (EntitySkinCapability) EntitySkinCapability.get(entitylivingbaseIn);
         if (skinCap == null) {
             return;
@@ -79,7 +107,7 @@ public class SkinLayerRendererPlayer implements LayerRenderer<EntityPlayer> {
         ISkinType[] skinTypes = skinCap.getValidSkinTypes();
         SkinModelRenderHelper modelRenderer = SkinModelRenderHelper.INSTANCE;
         IExtraColours extraColours = ExtraColours.EMPTY_COLOUR;
-        IPlayerWardrobeCap wardrobe = PlayerWardrobeCap.get(entitylivingbaseIn);
+        IPlayerWardrobeCap wardrobe = PlayerWardrobeCap.get((EntityPlayer)entitylivingbaseIn);
         if (wardrobe != null) {
             extraColours = wardrobe.getExtraColours();
         }
@@ -88,18 +116,59 @@ public class SkinLayerRendererPlayer implements LayerRenderer<EntityPlayer> {
             ISkinType skinType = skinTypes[i];
             ISkinDescriptor skinDescriptorArmour = getSkinDescriptorFromArmourer(entitylivingbaseIn, skinType);
             if (skinDescriptorArmour != null) {
-                renderSkin(entitylivingbaseIn, skinDescriptorArmour, skinCap, wardrobe, extraColours, distance, entitylivingbaseIn != Minecraft.getMinecraft().player);
+                renderSkin((EntityPlayer) entitylivingbaseIn, skinDescriptorArmour, skinCap, wardrobe, extraColours, distance, entitylivingbaseIn != Minecraft.getMinecraft().player);
             } else {
                 if (skinType.getVanillaArmourSlotId() != -1 | skinType == SkinTypeRegistry.skinWings | skinType == SkinTypeRegistry.skinOutfit) {
                     for (int skinIndex = 0; skinIndex < skinCap.getSlotCountForSkinType(skinType); skinIndex++) {
                         ISkinDescriptor skinDescriptor = skinCap.getSkinDescriptor(skinType, skinIndex);
                         if (skinDescriptor != null) {
-                            renderSkin(entitylivingbaseIn, skinDescriptor, skinCap, wardrobe, extraColours, distance, entitylivingbaseIn != Minecraft.getMinecraft().player);
+                            renderSkin((EntityPlayer) entitylivingbaseIn, skinDescriptor, skinCap, wardrobe, extraColours, distance, entitylivingbaseIn != Minecraft.getMinecraft().player);
                         }
                     }
                 }
             }
         }
+    }
+
+    private void renderHeldItem(EntityLivingBase entity, ItemStack p_188358_2_, ItemCameraTransforms.TransformType p_188358_3_, EnumHandSide handSide)
+    {
+        if (!p_188358_2_.isEmpty())
+        {
+            GlStateManager.pushMatrix();
+
+            if (entity.isSneaking())
+            {
+                GlStateManager.translate(0.0F, 0.2F, 0.0F);
+            }
+            // Forge: moved this call down, fixes incorrect offset while sneaking.
+            this.translateToHand(handSide, entity);
+            GlStateManager.rotate(-90.0F, 1.0F, 0.0F, 0.0F);
+            GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
+            boolean flag = handSide == EnumHandSide.LEFT;
+            GlStateManager.translate((float)(flag ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+            Minecraft.getMinecraft().getItemRenderer().renderItemSide(entity, p_188358_2_, p_188358_3_, flag);
+            GlStateManager.popMatrix();
+        }
+    }
+
+    /**
+     * MO BENDS
+     * This is the only function that had it's code changed
+     */
+    protected void translateToHand(EnumHandSide handSide, EntityLivingBase entity)
+    {
+    	((ModelBiped)this.livingEntityRenderer.getMainModel()).postRenderArm(0.0625F, handSide);
+    	
+    	EntityData<?> entityData = EntityDatabase.instance.get(entity);
+    	if (entityData instanceof BipedEntityData)
+    	{
+    		BipedEntityData<?> bipedData = (BipedEntityData<?>) entityData;
+    		SmoothOrientation itemRotation = handSide == EnumHandSide.RIGHT ? bipedData.renderRightItemRotation : bipedData.renderLeftItemRotation;
+    		
+    		GlStateManager.translate(0, 8F * 0.0625F, 0);
+    		GlHelper.rotate(itemRotation.getSmooth());
+            GlStateManager.translate(0, -8F * 0.0625F, 0);
+    	}
     }
 
     private void renderSkin(EntityPlayer entityPlayer, ISkinDescriptor skinDescriptor, EntitySkinCapability skinCap, IWardrobeCap wardrobe, IExtraColours extraColours, double distance, boolean doLodLoading) {
@@ -145,7 +214,7 @@ public class SkinLayerRendererPlayer implements LayerRenderer<EntityPlayer> {
                 skinCap.hideLegRightOverlay = true;
             }
 
-            if (skin.hasPaintData() & ClientProxy.getTexturePaintType() == TexturePaintType.MODEL_REPLACE_AW) {
+            if (skin.hasPaintData() & ClientProxy.getTexturePaintType() == ClientProxy.TexturePaintType.MODEL_REPLACE_AW) {
                 if (skin.getSkinType() == SkinTypeRegistry.skinHead) {
                     skinCap.hideHead = true;
                 }
@@ -171,7 +240,7 @@ public class SkinLayerRendererPlayer implements LayerRenderer<EntityPlayer> {
                 }
             }
             GlStateManager.pushMatrix();
-            modelRenderer.renderEquipmentPart(skin, new SkinRenderData(0.0625F, dye, extraColours, distance, doLodLoading, false, false, ((AbstractClientPlayer) entityPlayer).getLocationSkin()), entityPlayer, renderPlayer.getMainModel());
+            modelRenderer.renderEquipmentPart(skin, new SkinRenderData(0.0625F, dye, extraColours, distance, doLodLoading, false, false, ((AbstractClientPlayer) entityPlayer).getLocationSkin()), entityPlayer, (ModelBiped) livingEntityRenderer.getMainModel());
             // modelRenderer.renderEquipmentPart(entityPlayer, renderPlayer.getMainModel(),
             // skin, dye, extraColours, distance, doLodLoading);
             GlStateManager.popMatrix();
@@ -187,8 +256,10 @@ public class SkinLayerRendererPlayer implements LayerRenderer<EntityPlayer> {
         return null;
     }
 
-    @Override
-    public boolean shouldCombineTextures() {
+
+    public boolean shouldCombineTextures()
+    {
         return false;
     }
+
 }
