@@ -33,7 +33,6 @@ import moe.plushie.armourers_workshop.client.render.entity.EntitySkinRenderHandl
 import moe.plushie.armourers_workshop.client.render.entity.RenderSpectralArrowSkinned;
 import moe.plushie.armourers_workshop.client.render.entity.RenderTippedArrowSkinned;
 import moe.plushie.armourers_workshop.client.render.item.RenderItemEquipmentSkin;
-import moe.plushie.armourers_workshop.client.render.tileentities.RenderBlockAdvancedSkinBuilder;
 import moe.plushie.armourers_workshop.client.render.tileentities.RenderBlockColourable;
 import moe.plushie.armourers_workshop.client.render.tileentities.RenderBlockSkinnable;
 import moe.plushie.armourers_workshop.client.settings.Keybindings;
@@ -53,7 +52,6 @@ import moe.plushie.armourers_workshop.common.skin.SkinExtractor;
 import moe.plushie.armourers_workshop.common.skin.cache.CommonSkinCache;
 import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import moe.plushie.armourers_workshop.common.skin.data.SkinIdentifier;
-import moe.plushie.armourers_workshop.common.tileentities.TileEntityAdvancedSkinBuilder;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntityColourable;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntitySkinnable;
 import moe.plushie.armourers_workshop.utils.ModLogger;
@@ -174,7 +172,6 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
         // Register tile entity renderers.
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySkinnable.class, new RenderBlockSkinnable());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityColourable.class, new RenderBlockColourable());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAdvancedSkinBuilder.class, new RenderBlockAdvancedSkinBuilder());
 
     }
 

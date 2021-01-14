@@ -4,13 +4,9 @@ import java.util.ArrayList;
 
 import moe.plushie.armourers_workshop.common.lib.LibBlockNames;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
-import moe.plushie.armourers_workshop.common.tileentities.TileEntityAdvancedSkinBuilder;
-import moe.plushie.armourers_workshop.common.tileentities.TileEntityColourable;
-import moe.plushie.armourers_workshop.common.tileentities.TileEntityOutfitMaker;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntitySkinLibrary;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntitySkinnable;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntitySkinnableChild;
-import moe.plushie.armourers_workshop.common.tileentities.TileEntitySkinningTable;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
@@ -56,12 +52,8 @@ public class ModBlocks {
 
     public void registerTileEntities() {
         registerTileEntity(TileEntitySkinLibrary.class, LibBlockNames.SKIN_LIBRARY);
-        registerTileEntity(TileEntityColourable.class, LibBlockNames.SKIN_CUBE);
-        registerTileEntity(TileEntitySkinningTable.class, LibBlockNames.SKINNING_TABLE);
         registerTileEntity(TileEntitySkinnable.class, LibBlockNames.SKINNABLE);
         registerTileEntity(TileEntitySkinnableChild.class, LibBlockNames.SKINNABLE_CHILD);
-        registerTileEntity(TileEntityOutfitMaker.class, LibBlockNames.OUTFIT_MAKER);
-        registerTileEntity(TileEntityAdvancedSkinBuilder.class, LibBlockNames.ADVANCED_SKIN_BUILDER);
     }
 
     private void registerTileEntity(Class<? extends TileEntity> tileEntityClass, String id) {

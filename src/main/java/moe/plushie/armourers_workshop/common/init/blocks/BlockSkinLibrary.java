@@ -36,27 +36,21 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class BlockSkinLibrary extends AbstractModBlockContainer {
 
     public static final PropertyDirection STATE_FACING = BlockHorizontal.FACING;
-    public static final PropertyEnum<EnumLibraryType> STATE_TYPE = PropertyEnum.<EnumLibraryType>create("type", EnumLibraryType.class);
 
     public BlockSkinLibrary() {
         super(LibBlockNames.SKIN_LIBRARY);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(STATE_TYPE, EnumLibraryType.NORMAL).withProperty(STATE_FACING, EnumFacing.NORTH));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(STATE_FACING, EnumFacing.NORTH));
         setSortPriority(198);
     }
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[] { STATE_TYPE, STATE_FACING });
+        return new BlockStateContainer(this, new IProperty[] { STATE_FACING });
     }
 
     public IBlockState getStateFromMeta(int meta) {
-        boolean typeBit = getBitBool(meta, 0);
         boolean northSouthBit = getBitBool(meta, 1);
         boolean posNegBit = getBitBool(meta, 2);
-        EnumLibraryType type = EnumLibraryType.NORMAL;
-        if (typeBit) {
-            type = EnumLibraryType.CREATIVE;
-        }
         EnumFacing facing = EnumFacing.EAST;
         if (northSouthBit) {
             if (posNegBit) {
@@ -71,13 +65,12 @@ public class BlockSkinLibrary extends AbstractModBlockContainer {
                 facing = EnumFacing.WEST;
             }
         }
-        return this.getDefaultState().withProperty(STATE_TYPE, type).withProperty(STATE_FACING, facing);
+        return this.getDefaultState().withProperty(STATE_FACING, facing);
     }
 
     public int getMetaFromState(IBlockState state) {
-        EnumLibraryType type = state.getValue(STATE_TYPE);
         EnumFacing facing = state.getValue(STATE_FACING);
-        int meta = setBit(0, 0, type == EnumLibraryType.CREATIVE);
+        int meta = setBit(0, 0, true);
         if (facing == EnumFacing.NORTH | facing == EnumFacing.SOUTH) {
             meta = setBit(meta, 1, true);
         }
@@ -90,24 +83,16 @@ public class BlockSkinLibrary extends AbstractModBlockContainer {
     @Override
     public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
         EnumFacing enumfacing = placer.getHorizontalFacing().getOpposite();
-        EnumLibraryType type = EnumLibraryType.NORMAL;
-        if (placer.getHeldItem(hand).getMetadata() == 1) {
-            type = EnumLibraryType.CREATIVE;
-        }
-        return getDefaultState().withProperty(STATE_FACING, enumfacing).withProperty(STATE_TYPE, type);
+        return getDefaultState().withProperty(STATE_FACING, enumfacing);
     }
 
     @Override
     public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
         items.add(new ItemStack(this, 1, 0));
-        items.add(new ItemStack(this, 1, 1));
     }
 
     @Override
     public int damageDropped(IBlockState state) {
-        if (state.getValue(STATE_TYPE) == EnumLibraryType.CREATIVE) {
-            return 1;
-        }
         return 0;
     }
 
@@ -168,14 +153,5 @@ public class BlockSkinLibrary extends AbstractModBlockContainer {
     @Override
     public TileEntity createNewTileEntity(World world, int p_149915_2_) {
         return new TileEntitySkinLibrary();
-    }
-
-    public static enum EnumLibraryType implements IStringSerializable {
-        NORMAL, CREATIVE;
-
-        @Override
-        public String getName() {
-            return toString().toLowerCase();
-        }
     }
 }

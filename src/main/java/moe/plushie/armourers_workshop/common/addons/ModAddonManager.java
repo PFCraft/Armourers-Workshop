@@ -14,42 +14,22 @@ public final class ModAddonManager {
     private static final ArrayList<ModAddon> LOADED_ADDONS = new ArrayList<ModAddon>(); 
     
     private static final HashSet<String> ITEM_OVERRIDES = new HashSet<String>();
-    
-    //public static AddonAquaTweaks addonAquaTweaks;
-    //public static AddonBalkonsWeaponMod addonBalkonsWeaponMod;
-    //public static AddonBattlegear2 addonBattlegear2;
-    //public static AddonBetterStorage addonBetterStorage;
-    //public static AddonBotania addonBotania;
-    public static AddonBuildCraft addonBuildCraft;
+
     public static ModAddon addonColoredLights;
     public static AddonCustomEntities addonCustomEntities;
     public static AddonCustomNPCS addonCustomNPCS;
-    //public static AddonGlassShards addonGlassShards;
     public static AddonHauntedAstolfoBeanPlushie addonHauntedAstolfoBeanPlushie;
-    //public static AddonIntegratedCircuits addonIntegratedCircuits;
     public static AddonJBRAClient addonJBRAClient;
     public static AddonJEI addonJEI;
-    //public static AddonLittleMaidMob addonLittleMaidMob;
-    //public static AddonMaplecrafted addonMaplecrafted;
-    //public static AddonMekanismTools addonMekanismTools;
-    //public static AddonMetallurgy addonMetallurgy;
     public static AddonMinecraft addonMinecraft;
-    //public static AddonMinecraftComesAlive addonMinecraftComesAlive;
     public static ModAddon addonMobends;
     public static ModAddon addonMorePlayerModels;
-    //public static AddonMoreSwordsMod addonMoreSwordsMod;
     public static AddonNEI addonNEI;
-    //public static AddonOreSpawn addonOreSpawn;
     public static AddonOverlord addonOverlord;
     public static AddonRealFirstPerson addonRealFirstPerson;
     public static AddonRealFirstPerson2 addonRealFirstPerson2;
     public static AddonShaders addonShaders;
     public static ModAddon addonSmartMoving;
-    //public static AddonTails addonTails;
-    //public static AddonThaumcraft addonThaumcraft;
-    //public static AddonTinkersConstruct addonTinkersConstruct;
-    //public static AddonTwilightForest addonTwilightForest;
-    //public static AddonZeldaSwordSkills addonZeldaSwordSkills;
     
     private ModAddonManager() {
     }
@@ -63,41 +43,21 @@ public final class ModAddonManager {
     
     private static void loadAddons() {
         ModLogger.log("Loading addons");
-        //addonAquaTweaks = new AddonAquaTweaks();
-        //addonBalkonsWeaponMod = new AddonBalkonsWeaponMod();
-        //addonBattlegear2 = new AddonBattlegear2();
-        //addonBetterStorage = new AddonBetterStorage();
-        //addonBotania = new AddonBotania();
-        addonBuildCraft = new AddonBuildCraft();
         addonColoredLights = new ModAddon("easycoloredlights", "Colored Lights");
         addonCustomEntities = new  AddonCustomEntities();
         addonCustomNPCS = new AddonCustomNPCS();
-        //addonGlassShards = new AddonGlassShards();
         addonHauntedAstolfoBeanPlushie = new AddonHauntedAstolfoBeanPlushie();
-        //addonIntegratedCircuits = new AddonIntegratedCircuits();
         addonJBRAClient = new AddonJBRAClient();
         addonJEI = new AddonJEI();
-        //addonLittleMaidMob = new AddonLittleMaidMob();
-        //addonMaplecrafted = new AddonMaplecrafted();
-        //addonMekanismTools = new AddonMekanismTools();
-        //addonMetallurgy = new AddonMetallurgy();
         addonMinecraft = new AddonMinecraft();
-        //addonMinecraftComesAlive = new AddonMinecraftComesAlive();
         addonMobends = new ModAddon("mobends", "Mo' Bends");
         addonMorePlayerModels = new ModAddon("moreplayermodels", "More Player Models");
-        //addonMoreSwordsMod = new AddonMoreSwordsMod();
         addonNEI = new AddonNEI();
-        //addonOreSpawn = new AddonOreSpawn();
         addonOverlord = new AddonOverlord();
         addonRealFirstPerson = new AddonRealFirstPerson();
         addonRealFirstPerson2 = new AddonRealFirstPerson2();
         addonShaders = new AddonShaders();
         addonSmartMoving = new ModAddon("SmartMoving", "Smart Moving");
-        //addonTails = new AddonTails();
-        //addonThaumcraft = new AddonThaumcraft();
-        //addonTinkersConstruct = new AddonTinkersConstruct();
-        //addonTwilightForest = new AddonTwilightForest();
-        //addonZeldaSwordSkills = new AddonZeldaSwordSkills();
     }
     
     public static void init() {

@@ -3,10 +3,11 @@ package moe.plushie.armourers_workshop.utils;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDye;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinIdentifier;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
-import moe.plushie.armourers_workshop.common.init.items.ItemArmourContainerItem;
-import moe.plushie.armourers_workshop.common.init.items.ItemSkinTemplate;
 import moe.plushie.armourers_workshop.common.init.items.ModItems;
+import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import moe.plushie.armourers_workshop.common.skin.data.SkinDescriptor;
+import moe.plushie.armourers_workshop.common.skin.data.SkinIdentifier;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -111,10 +112,16 @@ public class SkinNBTHelper {
     }
 
     public static ItemStack makeEquipmentSkinStack(SkinDescriptor descriptor) {
-        return ((ItemSkinTemplate) ModItems.SKIN_TEMPLATE).makeSkinStack(descriptor);
+        ItemStack stack = new ItemStack(ModItems.SKIN);
+        SkinNBTHelper.addSkinDataToStack(stack, descriptor);
+        return stack;
     }
 
-    public static ItemStack makeArmouerContainerStack(SkinDescriptor descriptor) {
-        return ((ItemArmourContainerItem) ModItems.ARMOUR_CONTAINER_ITEM).makeSkinStack(descriptor);
+    public static ItemStack makeEquipmentSkinStack(ISkinIdentifier identifier) {
+        return makeEquipmentSkinStack(new SkinDescriptor(identifier));
+    }
+
+    public static ItemStack makeEquipmentSkinStack(Skin skin) {
+        return makeEquipmentSkinStack(new SkinIdentifier(skin));
     }
 }

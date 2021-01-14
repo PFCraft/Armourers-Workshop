@@ -1,6 +1,5 @@
 package moe.plushie.armourers_workshop.common.init.items;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -11,12 +10,10 @@ import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinIdentifier;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
-import moe.plushie.armourers_workshop.client.settings.Keybindings;
 import moe.plushie.armourers_workshop.client.skin.cache.ClientSkinCache;
 import moe.plushie.armourers_workshop.common.capability.entityskin.EntitySkinCapability;
 import moe.plushie.armourers_workshop.common.capability.wardrobe.player.PlayerWardrobeCap;
 import moe.plushie.armourers_workshop.common.lib.LibItemNames;
-import moe.plushie.armourers_workshop.common.skin.cubes.CubeRegistry;
 import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import moe.plushie.armourers_workshop.common.skin.data.SkinDescriptor;
 import moe.plushie.armourers_workshop.common.skin.data.SkinProperties;
@@ -27,7 +24,6 @@ import moe.plushie.armourers_workshop.utils.SkinUtils;
 import moe.plushie.armourers_workshop.utils.TranslateUtils;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBehaviorDispenseItem;
@@ -71,10 +67,8 @@ public class ItemSkin extends AbstractModItem {
 
     @SideOnly(Side.CLIENT)
     public static void addTooltipToSkinItem(ItemStack stack, EntityPlayer player, List tooltip, ITooltipFlag flagIn) {
-        String cRed = TextFormatting.RED.toString();
 
         boolean isEquipmentSkin = stack.getItem() == ModItems.SKIN;
-        boolean isEquipmentContainer = stack.getItem() instanceof AbstractModItemArmour;
 
         if (SkinNBTHelper.stackHasSkinData(stack)) {
             SkinDescriptor skinData = SkinNBTHelper.getSkinDescriptorFromStack(stack);

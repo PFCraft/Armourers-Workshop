@@ -24,6 +24,7 @@ import moe.plushie.armourers_workshop.client.render.SkinItemRenderHelper;
 import moe.plushie.armourers_workshop.client.skin.cache.ClientSkinCache;
 import moe.plushie.armourers_workshop.common.addons.ModAddonManager;
 import moe.plushie.armourers_workshop.common.config.ConfigHandler;
+import moe.plushie.armourers_workshop.common.init.items.ModItems;
 import moe.plushie.armourers_workshop.common.inventory.ContainerSkinLibrary;
 import moe.plushie.armourers_workshop.common.library.ILibraryManager;
 import moe.plushie.armourers_workshop.common.library.LibraryFile;
@@ -34,7 +35,6 @@ import moe.plushie.armourers_workshop.common.network.SkinUploadHelper;
 import moe.plushie.armourers_workshop.common.network.messages.client.MessageClientGuiLoadSaveArmour;
 import moe.plushie.armourers_workshop.common.network.messages.client.MessageClientGuiLoadSaveArmour.LibraryPacketType;
 import moe.plushie.armourers_workshop.common.network.messages.client.MessageClientGuiSkinLibraryCommand;
-import moe.plushie.armourers_workshop.common.skin.ISkinHolder;
 import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import moe.plushie.armourers_workshop.common.skin.data.SkinDescriptor;
 import moe.plushie.armourers_workshop.common.skin.data.SkinIdentifier;
@@ -255,23 +255,16 @@ public class GuiSkinLibrary extends ModGuiContainer<ContainerSkinLibrary> implem
     private boolean isLoading() {
         Slot slot = inventorySlots.inventorySlots.get(36);
         ItemStack stack = slot.getStack();
-        if (armourLibrary.isCreativeLibrary()) {
-            if (stack == null) {
-                return true;
-            }
-            if (stack.isEmpty()) {
-                return true;
-            }
-            if (stack.getItem() instanceof ISkinHolder) {
-                return true;
-            }
-            return false;
-        } else {
-            if (stack.getItem() instanceof ISkinHolder) {
-                return true;
-            }
-            return false;
+        if (stack == null) {
+            return true;
         }
+        if (stack.isEmpty()) {
+            return true;
+        }
+        if (stack.getItem() == ModItems.SKIN) {
+            return true;
+        }
+        return false;
     }
 
     private void setFileSwitchType(LibraryFileType type) {
@@ -623,10 +616,6 @@ public class GuiSkinLibrary extends ModGuiContainer<ContainerSkinLibrary> implem
         } else {
             loadSaveButton.displayString = GuiHelper.getLocalizedControlName(armourLibrary.getName(), "save");
         }
-        if (!inventorySlots.inventorySlots.get(36).getHasStack() & !armourLibrary.isCreativeLibrary()) {
-            loadSaveButton.displayString = "";
-            loadSaveButton.enabled = false;
-        }
 
         if (fileSwitchType == LibraryFileType.LOCAL) {
             files = libraryManager.getClientPublicFileList().getFileList();
@@ -925,11 +914,7 @@ public class GuiSkinLibrary extends ModGuiContainer<ContainerSkinLibrary> implem
 
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        if (armourLibrary.isCreativeLibrary()) {
-            GuiHelper.renderLocalizedGuiName(this.fontRenderer, this.xSize, armourLibrary.getName() + "1", 0xCCCCCC);
-        } else {
-            GuiHelper.renderLocalizedGuiName(this.fontRenderer, this.xSize, armourLibrary.getName() + "0", 0xCCCCCC);
-        }
+        GuiHelper.renderLocalizedGuiName(this.fontRenderer, this.xSize, armourLibrary.getName() + "1", 0xCCCCCC);
 
         String filesLabel = GuiHelper.getLocalizedControlName(armourLibrary.getName(), "label.files");
         String filenameLabel = GuiHelper.getLocalizedControlName(armourLibrary.getName(), "label.filename");

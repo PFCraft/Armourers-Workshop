@@ -4,10 +4,8 @@ import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.client.gui.skinlibrary.GuiSkinLibrary;
 import moe.plushie.armourers_workshop.client.skin.cache.ClientSkinCache;
 import moe.plushie.armourers_workshop.common.init.items.ItemSkin;
-import moe.plushie.armourers_workshop.common.init.items.ItemSkinTemplate;
 import moe.plushie.armourers_workshop.common.inventory.slot.ISlotChanged;
 import moe.plushie.armourers_workshop.common.inventory.slot.SlotOutput;
-import moe.plushie.armourers_workshop.common.inventory.slot.SlotSkinTemplate;
 import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import moe.plushie.armourers_workshop.common.skin.data.SkinDescriptor;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntitySkinLibrary;
@@ -29,7 +27,7 @@ public class ContainerSkinLibrary extends ModTileContainer<TileEntitySkinLibrary
     public ContainerSkinLibrary(InventoryPlayer invPlayer, TileEntitySkinLibrary tileEntity) {
         super(invPlayer, tileEntity);
         addPlayerSlots(6, 174);
-        addSlotToContainer(new SlotSkinTemplate(tileEntity, 0, 226, 101, this));
+        addSlotToContainer(new SlotOutput(tileEntity, 0, 226, 101, this));
         addSlotToContainer(new SlotOutput(tileEntity, 1, 226, 137));
     }
     
@@ -40,7 +38,7 @@ public class ContainerSkinLibrary extends ModTileContainer<TileEntitySkinLibrary
             ItemStack stack = slot.getStack();
             ItemStack result = stack.copy();
             
-            if ((stack.getItem() instanceof ItemSkinTemplate) | stack.getItem() instanceof ItemSkin) {
+            if (stack.getItem() instanceof ItemSkin) {
                 if (!this.mergeItemStack(stack, getPlayerInvEndIndex(), getPlayerInvEndIndex() + 1, false)) {
                     return ItemStack.EMPTY;
                 }

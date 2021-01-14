@@ -13,18 +13,10 @@ public class ModItems {
 
     public static final ArrayList<Item> ITEM_LIST = new ArrayList<Item>();
 
-    public static final Item SKIN_TEMPLATE = new ItemSkinTemplate();
     public static final Item SKIN = new ItemSkin();
-
-    public static final Item ARMOUR_CONTAINER_ITEM = new ItemArmourContainerItem();
-    public static final Item[] ARMOUR_CONTAINER = new Item[4];
 
     public ModItems() {
         MinecraftForge.EVENT_BUS.register(this);
-        ARMOUR_CONTAINER[0] = new ItemArmourContainer(LibItemNames.ARMOUR_CONTAINER_HEAD, EntityEquipmentSlot.HEAD);
-        ARMOUR_CONTAINER[1] = new ItemArmourContainer(LibItemNames.ARMOUR_CONTAINER_CHEST, EntityEquipmentSlot.CHEST);
-        ARMOUR_CONTAINER[2] = new ItemArmourContainer(LibItemNames.ARMOUR_CONTAINER_LEGS, EntityEquipmentSlot.LEGS);
-        ARMOUR_CONTAINER[3] = new ItemArmourContainer(LibItemNames.ARMOUR_CONTAINER_FEET, EntityEquipmentSlot.FEET);
     }
 
     @SubscribeEvent

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import net.minecraft.item.crafting.CraftingManager;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Level;
 
@@ -16,7 +17,6 @@ import moe.plushie.armourers_workshop.common.capability.ModCapabilityManager;
 import moe.plushie.armourers_workshop.common.config.ConfigHandler;
 import moe.plushie.armourers_workshop.common.config.ConfigHandlerOverrides;
 import moe.plushie.armourers_workshop.common.config.ConfigSynchronizeHandler;
-import moe.plushie.armourers_workshop.common.crafting.CraftingManager;
 import moe.plushie.armourers_workshop.common.init.blocks.ModBlocks;
 import moe.plushie.armourers_workshop.common.init.entities.ModEntities;
 import moe.plushie.armourers_workshop.common.init.items.ModItems;
