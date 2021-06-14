@@ -21,9 +21,7 @@ public class ConfigHandler {
     public static Configuration config;
     
     // General
-    public static int maxUndos;
-    public static boolean lockDyesOnSkins = false;
-    public static boolean instancedDyeTable = false;
+    public static int maxUndos = 100;
     public static int serverSkinSendRate = 4000;
     public static boolean serverCompressesSkins = true;
     
@@ -44,9 +42,6 @@ public class ConfigHandler {
     public static boolean allowUploadingSkins = true;
     
     // Recipes
-    public static boolean disableRecipes;
-    public static boolean disableDollRecipe;
-    public static boolean disableSkinningRecipes;
     public static boolean hideDollFromCreativeTabs;
     public static boolean hideGiantFromCreativeTabs;
     public static boolean enableRecoveringSkins;
@@ -125,12 +120,6 @@ public class ConfigHandler {
         maxUndos = config.getInt("maxUndos", CATEGORY_GENERAL, 100, 0, 1000,
                 "Max number of undos a player has for block painting.");
         
-        lockDyesOnSkins = config.getBoolean("lockDyesOnSkins", CATEGORY_GENERAL, false,
-                "When enabled players will not be able to remove dyes from skins in the dye table.");
-        
-        instancedDyeTable = config.getBoolean("instancedDyeTable", CATEGORY_GENERAL, false,
-                "If true the dye table will be instanced for each player. Items will be dropped when the table is closed.");
-        
         serverSkinSendRate = config.getInt("serverModelSendRate", CATEGORY_GENERAL, 4000, 0, 8000,
                 "The maximum number of skins the server is allow to send every minute.\n"
                 + "Less that 1 equals unlimited. (not recommended may cause bandwidth and cpu spikes on the server)");
@@ -196,15 +185,6 @@ public class ConfigHandler {
     
     private static void loadCategoryRecipe() {
         config.setCategoryComment(CATEGORY_RECIPE, "Setting for mod recipes.");
-        
-        disableRecipes = config.getBoolean("disableRecipes", CATEGORY_RECIPE, false,
-                "Disable vanilla recipes. Use if you want to manually add recipes for a mod pack.");
-        
-        disableDollRecipe = config.getBoolean("disableDollRecipe", CATEGORY_RECIPE, false,
-                "Disable hidden in world doll recipe.");
-        
-        disableSkinningRecipes = config.getBoolean("disableSkinningRecipes", CATEGORY_RECIPE, false,
-                "Disable skinning table recipes.");
         
         hideDollFromCreativeTabs = config.getBoolean("hideDollFromCreativeTabs", CATEGORY_RECIPE, true,
                 "Hides the doll block from the creative tab and NEI.");

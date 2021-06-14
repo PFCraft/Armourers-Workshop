@@ -62,52 +62,6 @@ public class ItemSkin extends AbstractModItem {
         return super.getItemStackDisplayName(stack);
     }
 
-    @SideOnly(Side.CLIENT)
-    public static void addTooltipToSkinItem(ItemStack stack, EntityPlayer player, List tooltip, ITooltipFlag flagIn) {
-
-        boolean isEquipmentSkin = stack.getItem() == ModItems.SKIN;
-
-        if (SkinNBTHelper.stackHasSkinData(stack)) {
-            SkinDescriptor skinData = SkinNBTHelper.getSkinDescriptorFromStack(stack);
-            ISkinIdentifier identifier = skinData.getIdentifier();
-
-            if (ClientSkinCache.INSTANCE.isSkinInCache(skinData)) {
-                Skin data = ClientSkinCache.INSTANCE.getSkin(skinData);
-                String flavour = SkinProperties.PROP_ALL_FLAVOUR_TEXT.getValue(data.getProperties()).trim();
-                if (!StringUtils.isEmpty(flavour) & ConfigHandlerClient.tooltipFlavour) {
-                    tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.flavour", flavour));
-                }
-
-                // Skin ID error.
-                if (identifier.hasLocalId()) {
-                    if (identifier.getSkinLocalId() != data.lightHash()) {
-                        tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinIdError1"));
-                        tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinIdError2"));
-                        // tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinIdError3",
-                        // data.requestId, data.lightHash()));
-                    }
-                }
-            } else {
-                // Skin not in cache.
-                tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skindownloading", identifier.toString()));
-                if (identifier.hasLocalId()) {
-                    tooltip.add("  " + TranslateUtils.translate("item.armourers_workshop:rollover.skinId", identifier.getSkinLocalId()));
-                }
-                if (identifier.hasLibraryFile()) {
-                    tooltip.add("  " + TranslateUtils.translate("item.armourers_workshop:rollover.skinLibraryFile", identifier.getSkinLibraryFile().getFullName()));
-                }
-                if (identifier.hasGlobalId()) {
-                    tooltip.add("  " + TranslateUtils.translate("item.armourers_workshop:rollover.skinGlobalId", identifier.getSkinGlobalId()));
-                }
-            }
-        } else {
-            // No skin identifier on stack.
-            if (isEquipmentSkin) {
-                tooltip.add(TranslateUtils.translate("item.armourers_workshop:rollover.skinInvalidItem"));
-            }
-        }
-    }
-
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack stack = player.getHeldItem(hand);
@@ -125,30 +79,6 @@ public class ItemSkin extends AbstractModItem {
             return EnumActionResult.FAIL;
         }
         return EnumActionResult.PASS;
-    }
-
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-        ItemStack itemStack = playerIn.getHeldItem(handIn);
-        IPlayerWardrobeCap wardrobeCap = PlayerWardrobeCap.get(playerIn);
-        IEntitySkinCapability skinCapability = EntitySkinCapability.get(playerIn);
-        ISkinDescriptor descriptor = SkinNBTHelper.getSkinDescriptorFromStack(itemStack);
-        if (wardrobeCap == null | skinCapability == null | descriptor == null) {
-            return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStack);
-        }
-        ISkinType skinType = descriptor.getIdentifier().getSkinType();
-
-        if (!worldIn.isRemote) {
-            if (skinCapability.canHoldSkinType(descriptor.getIdentifier().getSkinType())) {
-                if (skinCapability.setStackInNextFreeSlot(itemStack.copy())) {
-                    skinCapability.syncToPlayer((EntityPlayerMP) playerIn);
-                    skinCapability.syncToAllTracking();
-                    itemStack.shrink(1);
-                }
-                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStack);
-            }
-        }
-        return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStack);
     }
 
     private static final IBehaviorDispenseItem dispenserBehavior = new BehaviorDefaultDispenseItem() {

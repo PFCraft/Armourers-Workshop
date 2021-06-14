@@ -8,7 +8,6 @@ import goblinbob.mobends.standard.client.renderer.entity.RenderBendsTippedArrow;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Field;
 import java.net.URI;
 import java.util.List;
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
@@ -18,11 +17,8 @@ import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
 import moe.plushie.armourers_workshop.client.gui.style.GuiResourceManager;
 import moe.plushie.armourers_workshop.client.handler.BlockHighlightRenderHandler;
 import moe.plushie.armourers_workshop.client.handler.ClientWardrobeHandler;
-import moe.plushie.armourers_workshop.client.handler.DebugTextHandler;
-import moe.plushie.armourers_workshop.client.handler.ItemTooltipHandler;
 import moe.plushie.armourers_workshop.client.handler.ModClientFMLEventHandler;
 import moe.plushie.armourers_workshop.client.handler.PlayerTextureHandler;
-import moe.plushie.armourers_workshop.client.handler.RehostedJarHandler;
 import moe.plushie.armourers_workshop.client.handler.SkinPreviewHandler;
 import moe.plushie.armourers_workshop.client.handler.SkinRenderHandlerApi;
 import moe.plushie.armourers_workshop.client.library.ClientLibraryManager;
@@ -62,7 +58,6 @@ import moe.plushie.armourers_workshop.utils.SkinIOUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.entity.Render;
@@ -77,7 +72,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StringUtils;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -89,7 +83,6 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.ICrashCallable;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -99,7 +92,6 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.Level;
 import org.lwjgl.Sys;
 
 @Mod.EventBusSubscriber(modid = LibModInfo.ID, value = { Side.CLIENT })
@@ -131,9 +123,6 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
         ConfigHandlerClient.init(new File(getModConfigDirectory(), "client.cfg"));
-
-        enableCrossModSupport();
-        new RehostedJarHandler(event.getSourceFile(), "Armourers-Workshop-" + LibModInfo.MOD_VERSION + ".jar");
         new GuiResourceManager();
 
         ReflectionHelper.setPrivateValue(ArmourersWorkshopClientApi.class, null, SkinRenderHandlerApi.INSTANCE, "skinRenderHandler");
@@ -166,7 +155,6 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
         SkinModelRenderHelper.init();
         EntitySkinRenderHandler.init();
         new BlockHighlightRenderHandler();
-        new ItemTooltipHandler();
         new SkinPreviewHandler();
         RenderBridge.init();
         /*
@@ -187,7 +175,6 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
         playerTextureHandler = new PlayerTextureHandler();
         ClientSkinCache.init();
         FMLCommonHandler.instance().bus().register(new ModClientFMLEventHandler());
-        MinecraftForge.EVENT_BUS.register(new DebugTextHandler());
         FastCache.INSTANCE.loadCacheData();
         paletteManager = new PaletteManager(getModDirectory());
         MinecraftForge.EVENT_BUS.register(new RenderingEventHandler());
@@ -230,38 +217,8 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
         });
     }
 
-    private void enableValentinesClouds() {
-        ModLogger.log("Love is in the air!");
-        try {
-            Object o = ReflectionHelper.getPrivateValue(RenderGlobal.class, null, new String[] {"CLOUDS_TEXTURES", "field_110925_j"});
-            Field f = ReflectionHelper.findField(ResourceLocation.class, "namespace", "field_110626_a");
-            f.setAccessible(true);
-            f.set(o, LibModInfo.ID.toLowerCase());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void enableCrossModSupport() {
-        if (ModAddonManager.addonMorePlayerModels.isModLoaded() & ModAddonManager.addonSmartMoving.isModLoaded()) {
-            ModLogger.log(Level.WARN, "Smart Moving and More Player Models are both installed. Armourer's Workshop can not support this.");
-        }
-        if (ModAddonManager.addonColoredLights.isModLoaded() & ModAddonManager.addonSmartMoving.isModLoaded()) {
-            ModLogger.log(Level.WARN, "Colored Lights and Smart Moving are both installed. Armourer's Workshop can not support this.");
-        }
-    }
-
     public static TexturePaintType getTexturePaintType() {
-        if (ConfigHandlerClient.texturePaintingType < 0) {
-            return TexturePaintType.DISABLED;
-        }
-        if (ConfigHandlerClient.texturePaintingType == 0) {
-            if (Loader.isModLoaded("tlauncher_custom_cape_skin")) {
-                return TexturePaintType.MODEL_REPLACE_AW;
-            }
-            return TexturePaintType.TEXTURE_REPLACE;
-        }
-        return TexturePaintType.values()[ConfigHandlerClient.texturePaintingType];
+        return TexturePaintType.TEXTURE_REPLACE;
     }
 
     public static boolean useMultipassSkinRendering() {

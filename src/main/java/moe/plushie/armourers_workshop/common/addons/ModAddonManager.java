@@ -23,7 +23,6 @@ public final class ModAddonManager {
     public static AddonMinecraft addonMinecraft;
     public static ModAddon addonMobends;
     public static ModAddon addonMorePlayerModels;
-    public static AddonNEI addonNEI;
     public static AddonOverlord addonOverlord;
     public static AddonRealFirstPerson addonRealFirstPerson;
     public static AddonRealFirstPerson2 addonRealFirstPerson2;
@@ -51,7 +50,6 @@ public final class ModAddonManager {
         addonMinecraft = new AddonMinecraft();
         addonMobends = new ModAddon("mobends", "Mo' Bends");
         addonMorePlayerModels = new ModAddon("moreplayermodels", "More Player Models");
-        addonNEI = new AddonNEI();
         addonOverlord = new AddonOverlord();
         addonRealFirstPerson = new AddonRealFirstPerson();
         addonRealFirstPerson2 = new AddonRealFirstPerson2();

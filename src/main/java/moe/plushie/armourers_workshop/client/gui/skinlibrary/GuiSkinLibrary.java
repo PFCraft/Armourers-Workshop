@@ -101,15 +101,12 @@ public class GuiSkinLibrary extends ModGuiContainer<ContainerSkinLibrary> implem
     private GuiDropDownList dropDownList;
     private GuiCheckBox checkBoxTrack;
 
-    private boolean isNEIVisible;
-
     private int neiBump = 18;
 
     public GuiSkinLibrary(InventoryPlayer invPlayer, TileEntitySkinLibrary armourLibrary) {
         super(new ContainerSkinLibrary(invPlayer, armourLibrary));
         player = invPlayer.player;
         this.armourLibrary = armourLibrary;
-        isNEIVisible = ModAddonManager.addonNEI.isVisible();
     }
 
     @Override
@@ -124,9 +121,6 @@ public class GuiSkinLibrary extends ModGuiContainer<ContainerSkinLibrary> implem
         int slotSize = 18;
         
         neiBump = 0;
-        if (ModAddonManager.addonNEI.isVisible()) {
-            neiBump = 18;
-        }
         if (ModAddonManager.addonJEI.isModLoaded()) {
             neiBump = 20;
         }
@@ -882,14 +876,6 @@ public class GuiSkinLibrary extends ModGuiContainer<ContainerSkinLibrary> implem
             }
         } else {
             super.keyTyped(key, keyCode);
-        }
-        checkNEIVisibility();
-    }
-
-    private void checkNEIVisibility() {
-        if (isNEIVisible != ModAddonManager.addonNEI.isVisible()) {
-            isNEIVisible = !isNEIVisible;
-            initGui();
         }
     }
 

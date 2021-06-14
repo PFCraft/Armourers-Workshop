@@ -21,14 +21,6 @@ public class ModClientFMLEventHandler {
             ConfigHandlerClient.loadConfigFile();
         }
     }
-    /*
-    @SubscribeEvent
-    public void onKeyInputEvent(InputEvent.KeyInputEvent event) {
-        if (Keybindings.OPEN_WARDROBE.isPressed() & ConfigHandler.canOpenWardrobe(Minecraft.getMinecraft().player)) {
-            PacketHandler.networkWrapper.sendToServer(new MessageClientKeyPress(Button.OPEN_WARDROBE));
-        }
-    }
-     */
 
     @SubscribeEvent
     public void onRenderTickEvent(RenderTickEvent event) {

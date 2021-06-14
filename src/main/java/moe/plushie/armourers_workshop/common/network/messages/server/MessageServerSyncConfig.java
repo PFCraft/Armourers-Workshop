@@ -32,8 +32,6 @@ public class MessageServerSyncConfig implements IMessage, IMessageHandler<Messag
     
     private String[] itemOverrides;
     private boolean libraryShowsModelPreviews;
-    private boolean lockDyesOnSkins;
-    private boolean instancedDyeTable;
     private boolean enableRecoveringSkins;
     private UUID playerId;
     
@@ -56,8 +54,6 @@ public class MessageServerSyncConfig implements IMessage, IMessageHandler<Messag
         
         itemOverrides = ModAddonManager.getItemOverrides().toArray(new String[ModAddonManager.getItemOverrides().size()]);
         libraryShowsModelPreviews = ConfigHandler.libraryShowsModelPreviews;
-        lockDyesOnSkins = ConfigHandler.lockDyesOnSkins;
-        instancedDyeTable = ConfigHandler.instancedDyeTable;
         enableRecoveringSkins = ConfigHandler.enableRecoveringSkins;
     }
     
@@ -76,8 +72,6 @@ public class MessageServerSyncConfig implements IMessage, IMessageHandler<Messag
         
         ByteBufHelper.writeStringArrayToBuf(buf, itemOverrides);
         buf.writeBoolean(libraryShowsModelPreviews);
-        buf.writeBoolean(lockDyesOnSkins);
-        buf.writeBoolean(instancedDyeTable);
         buf.writeBoolean(enableRecoveringSkins);
         if (playerId == null) {
             buf.writeBoolean(false);
@@ -103,8 +97,6 @@ public class MessageServerSyncConfig implements IMessage, IMessageHandler<Messag
         
         itemOverrides = ByteBufHelper.readStringArrayFromBuf(buf);
         libraryShowsModelPreviews = buf.readBoolean();
-        lockDyesOnSkins = buf.readBoolean();
-        instancedDyeTable = buf.readBoolean();
         enableRecoveringSkins = buf.readBoolean();
         if (buf.readBoolean()) {
             playerId = ByteBufHelper.readUUID(buf);
@@ -132,9 +124,7 @@ public class MessageServerSyncConfig implements IMessage, IMessageHandler<Messag
         
         ModAddonManager.setOverridesFromServer(message.itemOverrides);
         ConfigHandler.libraryShowsModelPreviews = message.libraryShowsModelPreviews;
-        ConfigHandler.lockDyesOnSkins = message.lockDyesOnSkins;
         ConfigHandler.remotePlayerId = message.playerId;
-        ConfigHandler.instancedDyeTable = message.instancedDyeTable;
         ConfigHandler.enableRecoveringSkins = message.enableRecoveringSkins ;
     }
 }
