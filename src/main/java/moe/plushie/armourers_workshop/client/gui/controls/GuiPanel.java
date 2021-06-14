@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.client.gui.controls;
 
 import java.util.ArrayList;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;

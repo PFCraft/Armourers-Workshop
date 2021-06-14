@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.tileentities;
 
-import java.awt.Color;
-
+import java.awt.*;
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;
 import moe.plushie.armourers_workshop.api.common.painting.IPantable;
 import moe.plushie.armourers_workshop.api.common.skin.cubes.ICubeColour;

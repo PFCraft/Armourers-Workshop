@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.client.model;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
 import moe.plushie.armourers_workshop.client.model.bake.ColouredFace;
 import moe.plushie.armourers_workshop.client.render.DisplayList;

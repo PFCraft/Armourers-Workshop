@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.library.global.task;
 
 import com.google.gson.JsonObject;
-
 import moe.plushie.armourers_workshop.common.library.global.permission.PermissionSystem.PlushieAction;
 
 public class GlobalTaskGetSkinInfo extends GlobalTask<JsonObject> {

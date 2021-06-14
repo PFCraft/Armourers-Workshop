@@ -3,9 +3,6 @@ package moe.plushie.armourers_workshop.common.skin.entity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
-
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.api.common.skin.entity.ISkinnableEntity;
 import moe.plushie.armourers_workshop.api.common.skin.entity.ISkinnableEntityRegisty;
@@ -18,6 +15,7 @@ import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
+import org.apache.logging.log4j.Level;
 
 public final class SkinnableEntityRegisty implements ISkinnableEntityRegisty {
 

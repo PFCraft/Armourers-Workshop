@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.client.palette;
 
 import java.util.Arrays;
-
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 

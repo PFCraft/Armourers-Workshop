@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.addons;
 
 import java.lang.reflect.Method;
-
 import net.minecraft.item.ItemStack;
 
 public class AddonNEI extends ModAddon {

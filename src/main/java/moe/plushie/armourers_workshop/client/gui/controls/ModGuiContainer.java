@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.client.gui.controls;
 
 import java.io.IOException;
-
 import moe.plushie.armourers_workshop.client.lib.LibGuiResources;
 import moe.plushie.armourers_workshop.common.inventory.ModContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;

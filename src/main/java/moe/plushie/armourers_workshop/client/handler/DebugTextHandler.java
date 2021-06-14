@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.client.handler;
 
 import com.google.common.cache.CacheStats;
-
 import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
 import moe.plushie.armourers_workshop.client.model.bake.ModelBakery;
 import moe.plushie.armourers_workshop.client.render.DisplayList;

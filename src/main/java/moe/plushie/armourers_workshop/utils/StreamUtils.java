@@ -4,7 +4,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
-
 import org.apache.commons.io.Charsets;
 
 public final class StreamUtils {

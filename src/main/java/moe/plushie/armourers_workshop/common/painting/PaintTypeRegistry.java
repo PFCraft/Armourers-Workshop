@@ -1,15 +1,13 @@
 package moe.plushie.armourers_workshop.common.painting;
 
 import java.util.ArrayList;
-
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.api.common.IExtraColours.ExtraColourType;
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;
 import moe.plushie.armourers_workshop.api.common.painting.IPaintTypeRegistry;
 import moe.plushie.armourers_workshop.utils.BitwiseUtils;
 import moe.plushie.armourers_workshop.utils.ModLogger;
+import org.apache.logging.log4j.Level;
 
 public final class PaintTypeRegistry implements IPaintTypeRegistry {
 

@@ -1,20 +1,18 @@
  package moe.plushie.armourers_workshop.common.skin.cache;
 
-import java.util.HashSet;
-import java.util.concurrent.CompletionService;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorCompletionService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-
-import org.apache.logging.log4j.Level;
-
-import moe.plushie.armourers_workshop.api.common.skin.data.ISkinIdentifier;
-import moe.plushie.armourers_workshop.common.data.type.BidirectionalHashMap;
-import moe.plushie.armourers_workshop.common.library.global.SkinDownloader.DownloadSkinCallable;
-import moe.plushie.armourers_workshop.common.skin.data.Skin;
-import moe.plushie.armourers_workshop.common.skin.data.SkinIdentifier;
-import moe.plushie.armourers_workshop.utils.ModLogger;
+ import java.util.HashSet;
+ import java.util.concurrent.CompletionService;
+ import java.util.concurrent.Executor;
+ import java.util.concurrent.ExecutorCompletionService;
+ import java.util.concurrent.Executors;
+ import java.util.concurrent.Future;
+ import moe.plushie.armourers_workshop.api.common.skin.data.ISkinIdentifier;
+ import moe.plushie.armourers_workshop.common.data.type.BidirectionalHashMap;
+ import moe.plushie.armourers_workshop.common.library.global.SkinDownloader.DownloadSkinCallable;
+ import moe.plushie.armourers_workshop.common.skin.data.Skin;
+ import moe.plushie.armourers_workshop.common.skin.data.SkinIdentifier;
+ import moe.plushie.armourers_workshop.utils.ModLogger;
+ import org.apache.logging.log4j.Level;
 
 public class SkinCacheGlobal {
 

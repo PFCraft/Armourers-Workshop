@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.init.blocks;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.common.lib.LibBlockNames;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntitySkinLibrary;

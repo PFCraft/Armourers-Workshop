@@ -1,10 +1,8 @@
 package moe.plushie.armourers_workshop.client.render;
 
 import java.util.concurrent.atomic.AtomicInteger;
-
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.renderer.GLAllocation;
+import org.lwjgl.opengl.GL11;
 
 public class DisplayList {
     

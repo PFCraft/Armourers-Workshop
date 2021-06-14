@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.network.messages.client;
 
 import com.mojang.authlib.GameProfile;
-
 import io.netty.buffer.ByteBuf;
 import moe.plushie.armourers_workshop.common.GameProfileCache;
 import net.minecraft.nbt.NBTTagCompound;

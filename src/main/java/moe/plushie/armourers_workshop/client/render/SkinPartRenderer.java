@@ -1,9 +1,6 @@
 package moe.plushie.armourers_workshop.client.render;
 
 import java.util.ArrayList;
-
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
 import moe.plushie.armourers_workshop.client.handler.ModClientFMLEventHandler;
 import moe.plushie.armourers_workshop.client.model.SkinModel;
@@ -19,6 +16,7 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class SkinPartRenderer extends ModelBase {

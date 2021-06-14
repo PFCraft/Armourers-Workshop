@@ -4,9 +4,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.regex.Pattern;
-
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -15,6 +12,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.logging.log4j.Level;
 
 @SideOnly(Side.CLIENT)
 public class GuiCustomLabel extends Gui {

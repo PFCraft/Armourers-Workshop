@@ -2,9 +2,6 @@ package moe.plushie.armourers_workshop.client.handler;
 
 import java.io.File;
 import java.nio.charset.CharsetEncoder;
-
-import org.apache.commons.io.Charsets;
-
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,6 +16,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Type;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.commons.io.Charsets;
 
 @SideOnly(Side.CLIENT)
 public final class RehostedJarHandler {

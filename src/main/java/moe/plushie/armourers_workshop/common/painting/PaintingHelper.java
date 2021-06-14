@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.painting;
 
-import java.awt.Color;
-
+import java.awt.*;
 import moe.plushie.armourers_workshop.api.common.IExtraColours;
 import moe.plushie.armourers_workshop.api.common.capability.IWardrobeCap;
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;

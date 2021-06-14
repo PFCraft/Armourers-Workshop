@@ -1,15 +1,12 @@
 package moe.plushie.armourers_workshop.common.library.global;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-
-import org.apache.commons.io.IOUtils;
-
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
 import moe.plushie.armourers_workshop.utils.ModLogger;
+import org.apache.commons.io.IOUtils;
 
 public final class DownloadUtils {
     

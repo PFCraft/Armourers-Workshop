@@ -1,8 +1,7 @@
 package moe.plushie.armourers_workshop.common.data.type;
 
-import java.util.Arrays;
-
 import io.netty.buffer.ByteBuf;
+import java.util.Arrays;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.model.ModelRenderer;

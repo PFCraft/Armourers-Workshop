@@ -2,9 +2,6 @@ package moe.plushie.armourers_workshop.common.skin.cache;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.api.common.library.ILibraryFile;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinIdentifier;
 import moe.plushie.armourers_workshop.common.data.type.BidirectionalHashMap;
@@ -13,6 +10,7 @@ import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import moe.plushie.armourers_workshop.common.skin.data.SkinIdentifier;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import moe.plushie.armourers_workshop.utils.SkinIOUtils;
+import org.apache.logging.log4j.Level;
 
 public class SkinCacheLocalFile {
     

@@ -1,9 +1,7 @@
 package moe.plushie.armourers_workshop.common.skin.cubes;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.utils.ModLogger;
-import net.minecraft.block.Block;
 
 
 public final class CubeRegistry {

@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.command.wardrobe;
 
 import java.util.List;
-
 import moe.plushie.armourers_workshop.api.common.capability.IPlayerWardrobeCap;
 import moe.plushie.armourers_workshop.common.capability.wardrobe.player.PlayerWardrobeCap;
 import moe.plushie.armourers_workshop.common.command.ModCommand;

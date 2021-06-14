@@ -6,16 +6,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-
-import org.apache.commons.io.Charsets;
-import org.apache.commons.io.IOUtils;
-
 import moe.plushie.armourers_workshop.client.model.bake.ColouredFace;
 import moe.plushie.armourers_workshop.client.skin.ClientSkinPartData;
 import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import moe.plushie.armourers_workshop.common.skin.data.SkinPart;
 import moe.plushie.armourers_workshop.proxies.ClientProxy;
 import moe.plushie.armourers_workshop.utils.ModLogger;
+import org.apache.commons.io.Charsets;
+import org.apache.commons.io.IOUtils;
 
 public class SkinExporterPolygon implements ISkinExporter {
 

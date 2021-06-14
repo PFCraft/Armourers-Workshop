@@ -4,10 +4,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import org.apache.commons.io.Charsets;
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import moe.plushie.armourers_workshop.common.exception.InvalidCubeTypeException;
 import moe.plushie.armourers_workshop.common.exception.NewerFileVersionException;
@@ -18,6 +14,8 @@ import moe.plushie.armourers_workshop.common.skin.data.SkinTexture;
 import moe.plushie.armourers_workshop.common.skin.type.SkinTypeRegistry;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import moe.plushie.armourers_workshop.utils.StreamUtils;
+import org.apache.commons.io.Charsets;
+import org.apache.logging.log4j.Level;
 
 public final class SkinSerializerV12 {
     

@@ -1,8 +1,7 @@
 package moe.plushie.armourers_workshop.utils;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.Random;
-
 import net.minecraft.util.math.MathHelper;
 
 public class UtilColour {

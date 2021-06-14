@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-
 import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import net.minecraft.util.math.MathHelper;
 

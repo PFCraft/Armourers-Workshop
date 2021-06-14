@@ -2,7 +2,6 @@ package moe.plushie.armourers_workshop.common.config;
 
 import java.io.File;
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.common.addons.ModAddon;
 import moe.plushie.armourers_workshop.common.addons.ModAddonManager;
 import moe.plushie.armourers_workshop.common.addons.ModAddonManager.ItemOverrideType;

@@ -2,9 +2,6 @@ package moe.plushie.armourers_workshop.common.network;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import org.apache.commons.lang3.ArrayUtils;
-
 import moe.plushie.armourers_workshop.common.config.ConfigHandler;
 import moe.plushie.armourers_workshop.common.inventory.ContainerSkinLibrary;
 import moe.plushie.armourers_workshop.common.network.messages.client.MessageClientSkinPart;
@@ -14,6 +11,7 @@ import moe.plushie.armourers_workshop.common.tileentities.TileEntitySkinLibrary;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.Container;
+import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * Helps clients upload skins onto servers. Skin will

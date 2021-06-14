@@ -2,9 +2,6 @@ package moe.plushie.armourers_workshop.common.skin.data;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.IRectangle3D;
 import moe.plushie.armourers_workshop.api.common.skin.Rectangle3D;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkin;
@@ -18,6 +15,7 @@ import moe.plushie.armourers_workshop.common.skin.cubes.ICube;
 import moe.plushie.armourers_workshop.common.skin.type.SkinTypeRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 public class Skin implements ISkin {
 

@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.skin.advanced;
 
 import java.util.ArrayList;
-
 import net.minecraft.util.math.Vec3d;
 
 public class AdvancedPart {

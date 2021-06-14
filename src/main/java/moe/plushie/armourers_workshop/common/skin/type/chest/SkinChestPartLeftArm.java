@@ -1,9 +1,6 @@
 package moe.plushie.armourers_workshop.common.skin.type.chest;
 
-import java.awt.Point;
-
-import org.lwjgl.opengl.GL11;
-
+import java.awt.*;
 import moe.plushie.armourers_workshop.api.common.IPoint3D;
 import moe.plushie.armourers_workshop.api.common.IRectangle3D;
 import moe.plushie.armourers_workshop.api.common.skin.Point3D;
@@ -16,6 +13,7 @@ import moe.plushie.armourers_workshop.common.skin.data.SkinProperties;
 import moe.plushie.armourers_workshop.common.skin.type.AbstractSkinPartTypeBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 public class SkinChestPartLeftArm extends AbstractSkinPartTypeBase implements ISkinPartTypeTextured {
 

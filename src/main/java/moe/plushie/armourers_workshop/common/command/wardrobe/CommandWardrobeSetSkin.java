@@ -1,12 +1,9 @@
 package moe.plushie.armourers_workshop.common.command.wardrobe;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.api.common.capability.IEntitySkinCapability;
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;
 import moe.plushie.armourers_workshop.common.capability.entityskin.EntitySkinCapability;
@@ -26,6 +23,7 @@ import net.minecraft.command.WrongUsageException;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
+import org.apache.logging.log4j.Level;
 
 public class CommandWardrobeSetSkin extends ModCommand {
 

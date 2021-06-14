@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.capability.entityskin;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.api.common.capability.IEntitySkinCapability;
 import moe.plushie.armourers_workshop.api.common.capability.IPlayerWardrobeCap;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;

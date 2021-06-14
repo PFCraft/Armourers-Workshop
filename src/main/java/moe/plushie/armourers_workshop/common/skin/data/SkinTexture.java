@@ -4,11 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
-
 import javax.imageio.ImageIO;
-
-import org.apache.commons.io.IOUtils;
-
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;
 import moe.plushie.armourers_workshop.common.TextureHelper;
 import moe.plushie.armourers_workshop.common.painting.PaintTypeRegistry;
@@ -20,6 +16,7 @@ import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+import org.apache.commons.io.IOUtils;
 
 /**
  * 

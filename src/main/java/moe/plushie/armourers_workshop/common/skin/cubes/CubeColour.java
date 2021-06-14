@@ -1,8 +1,7 @@
 package moe.plushie.armourers_workshop.common.skin.cubes;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.Arrays;
-
 import moe.plushie.armourers_workshop.api.common.skin.cubes.ICubeColour;
 import net.minecraft.nbt.NBTTagCompound;
 

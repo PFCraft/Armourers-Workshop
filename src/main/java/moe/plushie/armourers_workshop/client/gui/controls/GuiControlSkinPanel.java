@@ -1,13 +1,9 @@
 package moe.plushie.armourers_workshop.client.gui.controls;
 
-import java.awt.Rectangle;
+import com.google.gson.JsonObject;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.lwjgl.opengl.GL11;
-
-import com.google.gson.JsonObject;
-
 import moe.plushie.armourers_workshop.client.lib.LibGuiResources;
 import moe.plushie.armourers_workshop.client.render.ModRenderHelper;
 import moe.plushie.armourers_workshop.client.render.SkinItemRenderHelper;
@@ -25,6 +21,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class GuiControlSkinPanel extends GuiButtonExt {

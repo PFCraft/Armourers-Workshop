@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.capability.wardrobe.player;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.api.common.capability.IPlayerWardrobeCap;
 import moe.plushie.armourers_workshop.api.common.capability.IWardrobeCap;
 import moe.plushie.armourers_workshop.api.common.skin.entity.ISkinnableEntity;

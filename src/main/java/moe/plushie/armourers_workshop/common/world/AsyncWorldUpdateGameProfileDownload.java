@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.world;
 
 import com.mojang.authlib.GameProfile;
-
 import moe.plushie.armourers_workshop.common.GameProfileCache.IGameProfileCallback;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

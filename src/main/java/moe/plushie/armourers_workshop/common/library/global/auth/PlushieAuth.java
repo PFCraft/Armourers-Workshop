@@ -1,15 +1,13 @@
 package moe.plushie.armourers_workshop.common.library.global.auth;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
-
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 import moe.plushie.armourers_workshop.common.library.global.DownloadUtils;
 import moe.plushie.armourers_workshop.common.library.global.GlobalSkinLibraryUtils;
 import moe.plushie.armourers_workshop.common.library.global.PlushieUser;

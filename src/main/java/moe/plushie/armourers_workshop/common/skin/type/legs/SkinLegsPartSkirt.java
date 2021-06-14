@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.common.skin.type.legs;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.IPoint3D;
 import moe.plushie.armourers_workshop.api.common.skin.Point3D;
 import moe.plushie.armourers_workshop.api.common.skin.Rectangle3D;
@@ -11,6 +9,7 @@ import moe.plushie.armourers_workshop.client.model.armourer.ModelLegs;
 import moe.plushie.armourers_workshop.common.skin.type.AbstractSkinPartTypeBase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 public class SkinLegsPartSkirt extends AbstractSkinPartTypeBase {
 

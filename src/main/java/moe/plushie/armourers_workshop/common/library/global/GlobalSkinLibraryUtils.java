@@ -1,16 +1,13 @@
 package moe.plushie.armourers_workshop.common.library.global;
 
-import java.util.HashMap;
-import java.util.HashSet;
-
-import org.apache.logging.log4j.Level;
-
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFutureTask;
-
+import java.util.HashMap;
+import java.util.HashSet;
 import moe.plushie.armourers_workshop.common.library.global.task.GlobalTaskUserInfo;
 import moe.plushie.armourers_workshop.utils.ModLogger;
+import org.apache.logging.log4j.Level;
 
 public final class GlobalSkinLibraryUtils {
 

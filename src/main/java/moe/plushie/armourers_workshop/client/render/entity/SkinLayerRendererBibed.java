@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.client.render.entity;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.IExtraColours;
 import moe.plushie.armourers_workshop.api.common.capability.IEntitySkinCapability;
 import moe.plushie.armourers_workshop.api.common.capability.IWardrobeCap;
@@ -17,6 +15,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.entity.EntityLivingBase;
+import org.lwjgl.opengl.GL11;
 
 public class SkinLayerRendererBibed extends SkinLayerRenderer<EntityLivingBase, RenderLivingBase> {
 

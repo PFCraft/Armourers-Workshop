@@ -1,14 +1,5 @@
 package moe.plushie.armourers_workshop.common.library.global.task;
 
-import java.io.InputStream;
-import java.net.URL;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.Level;
-
 import com.google.common.base.Charsets;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
@@ -17,13 +8,19 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
-
+import java.io.InputStream;
+import java.net.URL;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 import moe.plushie.armourers_workshop.common.library.global.auth.PlushieAuth;
 import moe.plushie.armourers_workshop.common.library.global.auth.PlushieSession;
 import moe.plushie.armourers_workshop.common.library.global.permission.PermissionSystem.InsufficientPermissionsException;
 import moe.plushie.armourers_workshop.common.library.global.permission.PermissionSystem.PlushieAction;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraft.client.Minecraft;
+import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.Level;
 
 public abstract class GlobalTask<V> implements Callable<V> {
 

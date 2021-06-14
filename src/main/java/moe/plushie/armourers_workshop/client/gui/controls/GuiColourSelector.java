@@ -1,9 +1,6 @@
 package moe.plushie.armourers_workshop.client.gui.controls;
 
-import java.awt.Color;
-
-import org.lwjgl.opengl.GL11;
-
+import java.awt.*;
 import moe.plushie.armourers_workshop.client.palette.Palette;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -13,6 +10,7 @@ import net.minecraftforge.fml.client.config.GuiButtonExt;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class GuiColourSelector extends GuiButtonExt {

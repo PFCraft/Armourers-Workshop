@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.common.skin.cubes;
 
-import net.minecraft.block.Block;
-
 public interface ICube {
     
     /** Will this cube glow in the dark? */

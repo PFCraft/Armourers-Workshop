@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.client.gui.controls;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.client.gui.GuiHelper;
 import moe.plushie.armourers_workshop.client.gui.controls.ModGuiControl.IScreenSize;
 import moe.plushie.armourers_workshop.common.data.type.Rectangle_I_2D;

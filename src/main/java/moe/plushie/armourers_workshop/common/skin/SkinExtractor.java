@@ -4,13 +4,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.common.config.ConfigHandler;
 import moe.plushie.armourers_workshop.utils.ModLogger;
+import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.Level;
 
 /**
  * Extracts skins from the jar file and places them into the library folder.

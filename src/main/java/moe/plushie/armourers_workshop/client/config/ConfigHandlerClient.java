@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.client.config;
 
 import java.io.File;
-
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.relauncher.Side;

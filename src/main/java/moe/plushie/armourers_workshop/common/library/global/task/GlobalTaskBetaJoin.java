@@ -1,11 +1,9 @@
 package moe.plushie.armourers_workshop.common.library.global.task;
 
-import java.net.URLEncoder;
-
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
-
+import java.net.URLEncoder;
 import moe.plushie.armourers_workshop.common.library.global.auth.MinecraftAuth;
 import moe.plushie.armourers_workshop.common.library.global.auth.PlushieAuth;
 import moe.plushie.armourers_workshop.common.library.global.auth.PlushieSession;

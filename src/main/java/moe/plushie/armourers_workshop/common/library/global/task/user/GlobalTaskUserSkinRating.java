@@ -2,7 +2,6 @@ package moe.plushie.armourers_workshop.common.library.global.task.user;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
 import moe.plushie.armourers_workshop.common.library.global.auth.PlushieAuth;
 import moe.plushie.armourers_workshop.common.library.global.auth.PlushieSession;
 import moe.plushie.armourers_workshop.common.library.global.permission.PermissionSystem.PlushieAction;

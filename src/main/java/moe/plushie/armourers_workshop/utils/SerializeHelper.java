@@ -1,5 +1,8 @@
 package moe.plushie.armourers_workshop.utils;
 
+import com.google.common.base.Charsets;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -7,13 +10,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
-
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.Level;
-
-import com.google.common.base.Charsets;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 
 public final class SerializeHelper {
 

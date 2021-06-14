@@ -1,10 +1,9 @@
 package moe.plushie.armourers_workshop.common;
 
+import com.mojang.authlib.GameProfile;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.UUID;
-
-import com.mojang.authlib.GameProfile;
 
 public class Contributors {
 

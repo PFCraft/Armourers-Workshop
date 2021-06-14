@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.client.render.tileentities;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;
 import moe.plushie.armourers_workshop.client.model.block.ModelBlockSkinnable;
 import moe.plushie.armourers_workshop.client.render.SkinPartRenderData;

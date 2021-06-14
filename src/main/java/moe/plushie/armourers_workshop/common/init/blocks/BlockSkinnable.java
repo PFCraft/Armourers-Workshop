@@ -2,9 +2,6 @@ package moe.plushie.armourers_workshop.common.init.blocks;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.api.common.skin.Point3D;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;
@@ -52,6 +49,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.server.permission.DefaultPermissionLevel;
+import org.apache.logging.log4j.Level;
 
 public class BlockSkinnable extends AbstractModBlockContainer {
 

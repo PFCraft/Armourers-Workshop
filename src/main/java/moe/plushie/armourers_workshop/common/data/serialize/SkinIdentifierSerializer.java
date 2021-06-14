@@ -1,11 +1,9 @@
 package moe.plushie.armourers_workshop.common.data.serialize;
 
+import io.netty.buffer.ByteBuf;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-
-import net.minecraftforge.fml.common.network.ByteBufUtils;
-import io.netty.buffer.ByteBuf;
 import moe.plushie.armourers_workshop.api.common.library.ILibraryFile;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinIdentifier;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
@@ -15,6 +13,7 @@ import moe.plushie.armourers_workshop.common.skin.type.SkinTypeRegistry;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.Constants.NBT;
+import net.minecraftforge.fml.common.network.ByteBufUtils;
 
 public class SkinIdentifierSerializer {
     

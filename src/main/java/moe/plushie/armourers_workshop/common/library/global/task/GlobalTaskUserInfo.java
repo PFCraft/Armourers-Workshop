@@ -1,12 +1,10 @@
 package moe.plushie.armourers_workshop.common.library.global.task;
 
-import org.apache.logging.log4j.Level;
-
 import com.google.gson.JsonObject;
-
 import moe.plushie.armourers_workshop.common.library.global.PlushieUser;
 import moe.plushie.armourers_workshop.common.library.global.permission.PermissionSystem.PlushieAction;
 import moe.plushie.armourers_workshop.utils.ModLogger;
+import org.apache.logging.log4j.Level;
 
 public class GlobalTaskUserInfo extends GlobalTask<PlushieUser> {
 

@@ -1,12 +1,8 @@
 package moe.plushie.armourers_workshop.client.gui.controls;
 
+import com.google.common.collect.Sets;
 import java.io.IOException;
 import java.util.Set;
-
-import org.lwjgl.input.Keyboard;
-
-import com.google.common.collect.Sets;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -26,6 +22,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Keyboard;
 
 @SideOnly(Side.CLIENT)
 public class GuiSlotHandler extends Gui {

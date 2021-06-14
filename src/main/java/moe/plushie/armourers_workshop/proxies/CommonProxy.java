@@ -1,16 +1,10 @@
 package moe.plushie.armourers_workshop.proxies;
 
+import com.mojang.authlib.GameProfile;
 import goblinbob.mobends.core.Core;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import net.minecraft.item.crafting.CraftingManager;
-import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.Level;
-
-import com.mojang.authlib.GameProfile;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.api.ArmourersWorkshopApi;
 import moe.plushie.armourers_workshop.common.addons.ModAddonManager;
@@ -50,6 +44,7 @@ import moe.plushie.armourers_workshop.utils.SkinIOUtils;
 import moe.plushie.armourers_workshop.utils.SkinNBTUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
@@ -58,6 +53,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.Level;
 
 @Mod.EventBusSubscriber(modid = LibModInfo.ID)
 public class CommonProxy implements ILibraryCallback {

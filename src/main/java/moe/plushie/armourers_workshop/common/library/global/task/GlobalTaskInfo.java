@@ -3,7 +3,6 @@ package moe.plushie.armourers_workshop.common.library.global.task;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
 import moe.plushie.armourers_workshop.common.library.global.permission.PermissionSystem.PlushieAction;
 import moe.plushie.armourers_workshop.common.library.global.task.GlobalTaskInfo.TaskData;
 

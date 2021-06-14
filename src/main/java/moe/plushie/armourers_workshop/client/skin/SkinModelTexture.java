@@ -2,7 +2,6 @@ package moe.plushie.armourers_workshop.client.skin;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDye;
 import moe.plushie.armourers_workshop.client.model.bake.ColouredFace;

@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.tileentities;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.common.network.PacketHandler;
 import moe.plushie.armourers_workshop.common.network.messages.client.MessageClientGuiUpdateTileProperties;
 import moe.plushie.armourers_workshop.common.tileentities.property.IPropertyHolder;

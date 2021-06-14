@@ -1,8 +1,6 @@
 package moe.plushie.armourers_workshop.common.init.items;
 
 import java.util.ArrayList;
-import moe.plushie.armourers_workshop.common.lib.LibItemNames;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;

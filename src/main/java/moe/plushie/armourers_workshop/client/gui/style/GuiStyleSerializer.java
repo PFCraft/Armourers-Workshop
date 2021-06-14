@@ -1,10 +1,9 @@
 package moe.plushie.armourers_workshop.client.gui.style;
 
-import java.awt.Color;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import java.awt.*;
 
 public final class GuiStyleSerializer {
     

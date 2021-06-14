@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.library;
 
 import java.util.ArrayList;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 

@@ -3,14 +3,12 @@ package moe.plushie.armourers_workshop.common.library;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
-
-import org.apache.commons.io.FilenameUtils;
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import moe.plushie.armourers_workshop.utils.SkinIOUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.logging.log4j.Level;
 
 public final class LibraryHelper {
     

@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.client.gui.controls;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.client.gui.skinlibrary.GuiSkinLibrary;
 import moe.plushie.armourers_workshop.client.lib.LibGuiResources;
 import moe.plushie.armourers_workshop.client.render.ModRenderHelper;
@@ -19,6 +17,7 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class GuiFileListItem extends Gui implements IGuiListItem {

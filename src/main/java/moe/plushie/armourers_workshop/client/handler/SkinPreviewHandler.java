@@ -2,9 +2,6 @@ package moe.plushie.armourers_workshop.client.handler;
 
 import java.util.Iterator;
 import java.util.List;
-
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.client.config.ConfigHandlerClient;
 import moe.plushie.armourers_workshop.client.lib.LibGuiResources;
 import moe.plushie.armourers_workshop.client.render.ModRenderHelper;
@@ -26,6 +23,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public final class SkinPreviewHandler {

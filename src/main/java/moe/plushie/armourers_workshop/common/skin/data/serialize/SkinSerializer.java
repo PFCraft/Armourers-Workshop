@@ -3,7 +3,6 @@ package moe.plushie.armourers_workshop.common.skin.data.serialize;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import moe.plushie.armourers_workshop.common.exception.InvalidCubeTypeException;
 import moe.plushie.armourers_workshop.common.exception.NewerFileVersionException;

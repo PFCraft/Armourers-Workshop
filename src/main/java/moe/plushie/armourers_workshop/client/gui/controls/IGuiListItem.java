@@ -1,8 +1,8 @@
 package moe.plushie.armourers_workshop.client.gui.controls;
 
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.client.gui.FontRenderer;
 
 @SideOnly(Side.CLIENT)
 public interface IGuiListItem {

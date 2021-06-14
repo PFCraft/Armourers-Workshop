@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.common.network.messages.server;
 
-import org.apache.logging.log4j.Level;
-
 import io.netty.buffer.ByteBuf;
 import moe.plushie.armourers_workshop.api.common.capability.IEntitySkinCapability;
 import moe.plushie.armourers_workshop.common.capability.entityskin.EntitySkinCapability;
@@ -17,6 +15,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.logging.log4j.Level;
 
 /**
  * Send from the server to a client when a player walks into range or they edit

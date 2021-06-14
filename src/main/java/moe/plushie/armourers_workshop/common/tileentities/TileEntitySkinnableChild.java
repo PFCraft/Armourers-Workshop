@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.common.tileentities;
 
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.common.init.blocks.BlockSkinnable;
 import moe.plushie.armourers_workshop.common.init.blocks.BlockSkinnableChild;
 import moe.plushie.armourers_workshop.utils.ModLogger;
@@ -11,6 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import org.apache.logging.log4j.Level;
 
 public class TileEntitySkinnableChild extends TileEntitySkinnable {
     

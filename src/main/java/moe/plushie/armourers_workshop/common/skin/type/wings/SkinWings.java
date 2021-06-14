@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.skin.type.wings;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinProperty;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinPartType;
 import moe.plushie.armourers_workshop.common.skin.data.SkinProperties;

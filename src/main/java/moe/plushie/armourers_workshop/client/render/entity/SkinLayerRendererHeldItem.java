@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.client.render.entity;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.capability.IEntitySkinCapability;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
@@ -28,6 +26,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHandSide;
+import org.lwjgl.opengl.GL11;
 
 public class SkinLayerRendererHeldItem extends LayerHeldItem {
 

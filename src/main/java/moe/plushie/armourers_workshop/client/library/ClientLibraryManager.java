@@ -2,7 +2,6 @@ package moe.plushie.armourers_workshop.client.library;
 
 import java.io.File;
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import moe.plushie.armourers_workshop.common.library.ILibraryCallback;

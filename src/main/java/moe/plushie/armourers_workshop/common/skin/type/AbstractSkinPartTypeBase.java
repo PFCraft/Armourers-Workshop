@@ -2,7 +2,6 @@ package moe.plushie.armourers_workshop.common.skin.type;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.api.common.IPoint3D;
 import moe.plushie.armourers_workshop.api.common.IRectangle3D;
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;

@@ -1,20 +1,18 @@
 package moe.plushie.armourers_workshop.client.texture;
 
-import org.apache.commons.codec.Charsets;
-import org.apache.commons.codec.binary.Base64;
-
 import com.google.common.collect.Iterables;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-
 import moe.plushie.armourers_workshop.common.data.type.TextureType;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StringUtils;
+import org.apache.commons.codec.Charsets;
+import org.apache.commons.codec.binary.Base64;
 
 public class PlayerTexture {
     

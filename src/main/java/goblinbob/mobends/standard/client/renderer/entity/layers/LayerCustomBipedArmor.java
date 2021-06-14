@@ -1,6 +1,5 @@
 package goblinbob.mobends.standard.client.renderer.entity.layers;
 
-import goblinbob.mobends.core.data.EntityData;
 import goblinbob.mobends.core.data.EntityDatabase;
 import goblinbob.mobends.core.data.LivingEntityData;
 import goblinbob.mobends.standard.client.model.armor.ArmorModelFactory;

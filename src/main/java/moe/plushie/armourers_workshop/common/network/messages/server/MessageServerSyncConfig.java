@@ -1,8 +1,7 @@
 package moe.plushie.armourers_workshop.common.network.messages.server;
 
-import java.util.UUID;
-
 import io.netty.buffer.ByteBuf;
+import java.util.UUID;
 import moe.plushie.armourers_workshop.common.addons.ModAddonManager;
 import moe.plushie.armourers_workshop.common.config.ConfigHandler;
 import moe.plushie.armourers_workshop.common.network.ByteBufHelper;

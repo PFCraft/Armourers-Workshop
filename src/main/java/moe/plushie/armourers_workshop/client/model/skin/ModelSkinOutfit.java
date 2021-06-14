@@ -1,9 +1,6 @@
 package moe.plushie.armourers_workshop.client.model.skin;
 
 import java.util.ArrayList;
-
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.IExtraColours;
 import moe.plushie.armourers_workshop.api.common.skin.Point3D;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDye;
@@ -23,6 +20,7 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
+import org.lwjgl.opengl.GL11;
 
 public class ModelSkinOutfit extends ModelTypeHelper {
 

@@ -6,14 +6,12 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
+import moe.plushie.armourers_workshop.utils.ModLogger;
+import net.minecraft.util.Session;
 import org.apache.commons.io.Charsets;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.Validate;
 import org.apache.logging.log4j.Level;
-
-import moe.plushie.armourers_workshop.utils.ModLogger;
-import net.minecraft.util.Session;
 
 public class MinecraftAuth {
 

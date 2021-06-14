@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.common.network.messages.server;
 
-import org.apache.logging.log4j.Level;
-
 import io.netty.buffer.ByteBuf;
 import moe.plushie.armourers_workshop.api.common.capability.IWardrobeCap;
 import moe.plushie.armourers_workshop.common.capability.wardrobe.WardrobeCap;
@@ -15,6 +13,7 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import org.apache.logging.log4j.Level;
 
 /**
  * Sent from the server to a client when a player walks

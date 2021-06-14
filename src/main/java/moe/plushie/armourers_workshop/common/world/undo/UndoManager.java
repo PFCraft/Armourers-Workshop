@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.world.undo;
 
 import java.util.HashMap;
-
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;

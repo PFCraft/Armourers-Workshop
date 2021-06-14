@@ -1,10 +1,6 @@
 package moe.plushie.armourers_workshop.client.gui.controls;
 
-import java.awt.Color;
-
-import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.GL11;
-
+import java.awt.*;
 import moe.plushie.armourers_workshop.client.lib.LibGuiResources;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -15,6 +11,8 @@ import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class GuiHSBSlider extends GuiSlider {

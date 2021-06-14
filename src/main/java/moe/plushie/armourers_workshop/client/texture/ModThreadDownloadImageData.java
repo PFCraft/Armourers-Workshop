@@ -2,7 +2,6 @@ package moe.plushie.armourers_workshop.client.texture;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-
 import net.minecraft.client.renderer.IImageBuffer;
 import net.minecraft.client.renderer.ThreadDownloadImageData;
 import net.minecraft.util.ResourceLocation;

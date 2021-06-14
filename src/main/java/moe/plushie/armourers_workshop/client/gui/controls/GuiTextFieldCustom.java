@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.client.gui.controls;
 
-import org.lwjgl.input.Keyboard;
-
 import moe.plushie.armourers_workshop.client.render.ModRenderHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -11,6 +9,7 @@ import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Keyboard;
 
 @SideOnly(Side.CLIENT)
 public class GuiTextFieldCustom extends GuiButtonExt {

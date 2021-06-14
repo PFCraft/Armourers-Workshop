@@ -1,9 +1,6 @@
 package moe.plushie.armourers_workshop.client.model.skin;
 
 import java.util.ArrayList;
-
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.IExtraColours;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDye;
 import moe.plushie.armourers_workshop.client.render.AdvancedPartRenderer;
@@ -24,6 +21,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class ModelSkinLegs extends ModelTypeHelper {

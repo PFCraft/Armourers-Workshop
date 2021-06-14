@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.command.wardrobe;
 
 import java.util.List;
-
 import moe.plushie.armourers_workshop.api.common.capability.IEntitySkinCapability;
 import moe.plushie.armourers_workshop.common.capability.entityskin.EntitySkinCapability;
 import moe.plushie.armourers_workshop.common.command.ModCommand;

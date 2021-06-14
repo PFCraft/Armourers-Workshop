@@ -39,7 +39,6 @@ import moe.plushie.armourers_workshop.client.render.entity.RenderTippedArrowSkin
 import moe.plushie.armourers_workshop.client.render.item.RenderItemEquipmentSkin;
 import moe.plushie.armourers_workshop.client.render.tileentities.RenderBlockColourable;
 import moe.plushie.armourers_workshop.client.render.tileentities.RenderBlockSkinnable;
-import moe.plushie.armourers_workshop.client.settings.Keybindings;
 import moe.plushie.armourers_workshop.client.skin.cache.ClientSkinCache;
 import moe.plushie.armourers_workshop.client.skin.cache.ClientSkinPaintCache;
 import moe.plushie.armourers_workshop.client.skin.cache.FastCache;
@@ -275,11 +274,6 @@ public class ClientProxy extends CommonProxy implements IBakedSkinReceiver {
         } else {
             return 2;
         }
-    }
-
-    @Override
-    public void registerKeyBindings() {
-        ClientRegistry.registerKeyBinding(Keybindings.OPEN_WARDROBE);
     }
 
     @Override

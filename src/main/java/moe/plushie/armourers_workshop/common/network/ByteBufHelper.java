@@ -1,5 +1,6 @@
 package moe.plushie.armourers_workshop.common.network;
 
+import io.netty.buffer.ByteBuf;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -8,17 +9,14 @@ import java.io.IOException;
 import java.util.UUID;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.Level;
-
-import io.netty.buffer.ByteBuf;
 import moe.plushie.armourers_workshop.common.config.ConfigHandler;
 import moe.plushie.armourers_workshop.common.data.serialize.SkinIdentifierSerializer;
 import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import moe.plushie.armourers_workshop.common.skin.data.serialize.SkinSerializer;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.Level;
 
 public final class ByteBufHelper {
 

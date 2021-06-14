@@ -1,8 +1,7 @@
 package moe.plushie.armourers_workshop.common.network.messages.server;
 
-import java.util.ArrayList;
-
 import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.common.library.LibraryFile;
 import moe.plushie.armourers_workshop.common.library.LibraryFileType;

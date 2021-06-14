@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.client.gui;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.client.lib.LibGuiResources;
 import moe.plushie.armourers_workshop.common.inventory.ContainerSkinnable;
 import moe.plushie.armourers_workshop.common.lib.LibBlockNames;
@@ -13,6 +11,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiUtils;
+import org.lwjgl.opengl.GL11;
 
 public class GuiSkinnable extends GuiContainer {
 

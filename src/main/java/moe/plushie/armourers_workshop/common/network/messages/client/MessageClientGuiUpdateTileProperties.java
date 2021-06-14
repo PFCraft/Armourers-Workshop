@@ -1,8 +1,7 @@
 package moe.plushie.armourers_workshop.common.network.messages.client;
 
-import java.util.ArrayList;
-
 import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
 import moe.plushie.armourers_workshop.common.inventory.ModTileContainer;
 import moe.plushie.armourers_workshop.common.tileentities.ModTileEntity;
 import moe.plushie.armourers_workshop.common.tileentities.property.TileProperty;

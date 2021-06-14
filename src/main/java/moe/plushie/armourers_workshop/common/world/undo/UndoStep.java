@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.world.undo;
 
 import java.util.ArrayList;
-
 import net.minecraft.world.World;
 
 public class UndoStep {

@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.inventory;
 
 import javax.annotation.Nonnull;
-
 import moe.plushie.armourers_workshop.utils.NBTHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;

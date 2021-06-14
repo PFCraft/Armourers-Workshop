@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.client.render;
 
 import java.util.HashMap;
-
 import moe.plushie.armourers_workshop.api.common.IExtraColours;
 import moe.plushie.armourers_workshop.api.common.capability.IEntitySkinCapability;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;

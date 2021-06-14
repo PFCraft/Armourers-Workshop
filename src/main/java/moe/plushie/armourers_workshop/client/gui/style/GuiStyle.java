@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.client.gui.style;
 
 import java.util.HashMap;
-
 import net.minecraft.util.ResourceLocation;
 
 public class GuiStyle {

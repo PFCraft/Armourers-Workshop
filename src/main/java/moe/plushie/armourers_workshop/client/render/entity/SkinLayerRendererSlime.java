@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.client.render.entity;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.client.render.entity.ISkinnableEntityRenderer;
 import moe.plushie.armourers_workshop.api.common.skin.IEntityEquipment;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDescriptor;
@@ -18,6 +16,7 @@ import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class SkinLayerRendererSlime implements ISkinnableEntityRenderer<EntitySlime> {

@@ -1,9 +1,8 @@
 package moe.plushie.armourers_workshop.common.network.messages.client;
 
+import io.netty.buffer.ByteBuf;
 import java.util.Iterator;
 import java.util.Set;
-
-import io.netty.buffer.ByteBuf;
 import moe.plushie.armourers_workshop.common.painting.tool.IConfigurableTool;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;

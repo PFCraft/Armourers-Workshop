@@ -1,11 +1,7 @@
 package moe.plushie.armourers_workshop.utils;
 
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.Logger;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
-import moe.plushie.armourers_workshop.common.lib.LibModInfo;
-import net.minecraftforge.fml.common.FMLLog;
+import org.apache.logging.log4j.Level;
 
 public class ModLogger {
 	

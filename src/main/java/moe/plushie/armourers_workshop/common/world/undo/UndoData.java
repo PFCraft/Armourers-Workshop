@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.world.undo;
 
-import java.awt.Color;
-
+import java.awt.*;
 import moe.plushie.armourers_workshop.api.common.painting.IPantableBlock;
 import moe.plushie.armourers_workshop.common.painting.PaintTypeRegistry;
 import net.minecraft.block.Block;

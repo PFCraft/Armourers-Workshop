@@ -1,12 +1,11 @@
 package moe.plushie.armourers_workshop.client.render.entity;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import net.minecraft.client.renderer.entity.RenderCreeper;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class SkinLayerRendererCreeper extends SkinLayerRenderer<EntityCreeper, RenderCreeper> {

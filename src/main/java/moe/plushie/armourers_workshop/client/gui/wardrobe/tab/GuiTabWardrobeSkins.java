@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.client.gui.wardrobe.tab;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.client.gui.controls.GuiTabPanel;
 import moe.plushie.armourers_workshop.client.gui.wardrobe.GuiWardrobe;
 import moe.plushie.armourers_workshop.common.inventory.ContainerSkinWardrobe;
@@ -10,6 +8,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Slot;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class GuiTabWardrobeSkins extends GuiTabPanel {

@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.network.messages.client;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

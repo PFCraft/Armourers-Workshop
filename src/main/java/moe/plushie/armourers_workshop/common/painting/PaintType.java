@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.painting;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.api.common.IExtraColours.ExtraColourType;
 import moe.plushie.armourers_workshop.api.common.painting.IPaintType;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;

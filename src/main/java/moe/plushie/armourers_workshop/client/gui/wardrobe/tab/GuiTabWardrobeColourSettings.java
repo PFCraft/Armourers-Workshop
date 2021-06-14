@@ -1,10 +1,7 @@
 package moe.plushie.armourers_workshop.client.gui.wardrobe.tab;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.image.BufferedImage;
-
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.api.common.IExtraColours;
 import moe.plushie.armourers_workshop.api.common.IExtraColours.ExtraColourType;
 import moe.plushie.armourers_workshop.api.common.capability.IEntitySkinCapability;
@@ -29,6 +26,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class GuiTabWardrobeColourSettings extends GuiTabPanel {

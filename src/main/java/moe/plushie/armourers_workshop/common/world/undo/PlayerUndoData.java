@@ -1,19 +1,11 @@
 package moe.plushie.armourers_workshop.common.world.undo;
 
-import java.awt.Color;
 import java.util.ArrayList;
-
-import org.apache.logging.log4j.Level;
-
-import moe.plushie.armourers_workshop.api.common.painting.IPantableBlock;
 import moe.plushie.armourers_workshop.common.config.ConfigHandler;
-import moe.plushie.armourers_workshop.common.painting.PaintTypeRegistry;
 import moe.plushie.armourers_workshop.utils.ModLogger;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.apache.logging.log4j.Level;
 
 public class PlayerUndoData {
     

@@ -1,12 +1,10 @@
 package moe.plushie.armourers_workshop.common;
 
 import java.util.LinkedHashMap;
-
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraft.util.ResourceLocation;
+import org.apache.logging.log4j.Level;
 
 public class ModRegistry<TYPE extends ModRegistry.IRegistryItem> {
     

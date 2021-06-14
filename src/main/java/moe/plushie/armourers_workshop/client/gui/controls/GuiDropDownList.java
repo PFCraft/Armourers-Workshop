@@ -2,9 +2,6 @@ package moe.plushie.armourers_workshop.client.gui.controls;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.lwjgl.input.Mouse;
-
 import moe.plushie.armourers_workshop.client.render.ModRenderHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -15,6 +12,7 @@ import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Mouse;
 
 @SideOnly(Side.CLIENT)
 public class GuiDropDownList extends GuiButtonExt {

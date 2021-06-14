@@ -1,9 +1,6 @@
 package moe.plushie.armourers_workshop.client.particles;
 
 import java.util.ArrayList;
-
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
@@ -21,6 +18,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @Mod.EventBusSubscriber(modid = LibModInfo.ID, value = { Side.CLIENT })
 @SideOnly(Side.CLIENT)

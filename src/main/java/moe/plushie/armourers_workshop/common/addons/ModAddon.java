@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.addons;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.common.addons.ModAddonManager.ItemOverrideType;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraftforge.fml.common.Loader;

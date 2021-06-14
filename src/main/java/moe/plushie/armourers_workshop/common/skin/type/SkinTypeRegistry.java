@@ -3,9 +3,6 @@ package moe.plushie.armourers_workshop.common.skin.type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-
-import org.apache.logging.log4j.Level;
-
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinPartType;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinTypeRegistry;
@@ -26,6 +23,7 @@ import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.logging.log4j.Level;
 
 public final class SkinTypeRegistry implements ISkinTypeRegistry {
 

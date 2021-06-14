@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.inventory;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;

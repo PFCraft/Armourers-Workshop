@@ -6,13 +6,11 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletionService;
-
-import org.apache.commons.io.IOUtils;
-
 import moe.plushie.armourers_workshop.common.skin.data.Skin;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import moe.plushie.armourers_workshop.utils.SkinIOUtils;
 import net.minecraft.util.StringUtils;
+import org.apache.commons.io.IOUtils;
 
 public final class SkinDownloader {
     

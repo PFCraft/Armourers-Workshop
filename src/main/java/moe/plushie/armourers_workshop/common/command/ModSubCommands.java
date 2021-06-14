@@ -3,7 +3,6 @@ package moe.plushie.armourers_workshop.common.command;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;

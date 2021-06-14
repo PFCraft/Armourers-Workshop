@@ -8,7 +8,6 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-
 import org.apache.commons.io.Charsets;
 import org.apache.commons.io.IOUtils;
 

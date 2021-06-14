@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.init.entities;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.ArmourersWorkshop;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import net.minecraft.entity.Entity;

@@ -1,9 +1,6 @@
 package moe.plushie.armourers_workshop.client.gui.controls;
 
 import java.util.ArrayList;
-
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.client.gui.GuiHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
@@ -13,6 +10,7 @@ import net.minecraft.util.StringUtils;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class GuiIconButton extends GuiButtonExt {

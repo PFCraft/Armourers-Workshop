@@ -2,7 +2,6 @@ package moe.plushie.armourers_workshop.common.addons;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-
 import moe.plushie.armourers_workshop.common.config.ConfigHandlerOverrides;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraft.item.Item;

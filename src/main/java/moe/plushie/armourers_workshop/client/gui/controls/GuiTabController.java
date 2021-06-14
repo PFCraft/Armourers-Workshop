@@ -1,8 +1,7 @@
 package moe.plushie.armourers_workshop.client.gui.controls;
 
-import java.awt.Point;
+import java.awt.*;
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.client.gui.GuiHelper;
 import moe.plushie.armourers_workshop.client.lib.LibGuiResources;
 import net.minecraft.client.Minecraft;

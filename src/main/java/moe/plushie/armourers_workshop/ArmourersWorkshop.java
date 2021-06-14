@@ -3,8 +3,6 @@ package moe.plushie.armourers_workshop;
 import goblinbob.mobends.core.Core;
 import goblinbob.mobends.core.addon.AddonHelper;
 import goblinbob.mobends.standard.DefaultAddon;
-import org.apache.logging.log4j.Logger;
-
 import moe.plushie.armourers_workshop.common.command.CommandArmourers;
 import moe.plushie.armourers_workshop.common.creativetab.CreativeTabMain;
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
@@ -20,6 +18,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
+import org.apache.logging.log4j.Logger;
 
 @Mod(modid = LibModInfo.ID, name = LibModInfo.NAME, version = LibModInfo.MOD_VERSION, guiFactory = LibModInfo.GUI_FACTORY_CLASS, dependencies = LibModInfo.DEPENDENCIES, acceptedMinecraftVersions = LibModInfo.MC_VERSION, updateJSON = LibModInfo.UPDATE_URL)
 public class ArmourersWorkshop {

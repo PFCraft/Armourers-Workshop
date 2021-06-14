@@ -1,10 +1,7 @@
 package moe.plushie.armourers_workshop.common.skin.data;
 
-import java.util.Arrays;
-
-import org.apache.logging.log4j.Level;
-
 import io.netty.buffer.ByteBuf;
+import java.util.Arrays;
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinDye;
 import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraft.nbt.NBTTagCompound;
@@ -12,6 +9,7 @@ import net.minecraft.util.StringUtils;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
+import org.apache.logging.log4j.Level;
 
 public class SkinDye implements ISkinDye {
     

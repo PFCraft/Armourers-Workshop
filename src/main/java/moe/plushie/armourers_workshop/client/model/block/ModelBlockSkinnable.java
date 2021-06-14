@@ -1,7 +1,5 @@
 package moe.plushie.armourers_workshop.client.model.block;
 
-import org.lwjgl.opengl.GL11;
-
 import moe.plushie.armourers_workshop.common.lib.LibModInfo;
 import moe.plushie.armourers_workshop.common.tileentities.TileEntitySkinnable;
 import net.minecraft.client.Minecraft;
@@ -9,6 +7,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 public class ModelBlockSkinnable extends ModelBase {
     

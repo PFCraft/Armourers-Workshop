@@ -7,14 +7,12 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-
-import org.apache.commons.io.IOUtils;
-
 import moe.plushie.armourers_workshop.api.common.skin.data.ISkinProperties;
 import moe.plushie.armourers_workshop.common.skin.data.serialize.SkinSerializer;
 import moe.plushie.armourers_workshop.common.skin.type.wings.SkinWings.MovementType;
 import moe.plushie.armourers_workshop.utils.StreamUtils;
 import net.minecraft.nbt.NBTTagCompound;
+import org.apache.commons.io.IOUtils;
 
 public class SkinProperties implements ISkinProperties {
 

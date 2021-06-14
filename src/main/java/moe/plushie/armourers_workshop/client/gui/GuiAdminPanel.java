@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.client.gui;
 
 import java.io.IOException;
-
 import moe.plushie.armourers_workshop.common.inventory.ModContainer;
 import moe.plushie.armourers_workshop.common.network.PacketHandler;
 import moe.plushie.armourers_workshop.common.network.messages.client.MessageClientGuiAdminPanel;

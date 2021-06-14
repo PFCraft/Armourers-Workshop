@@ -1,11 +1,7 @@
 package moe.plushie.armourers_workshop.common.tileentities.property;
 
-import java.util.HashMap;
-
-import org.apache.logging.log4j.Level;
-
 import com.mojang.authlib.GameProfile;
-
+import java.util.HashMap;
 import moe.plushie.armourers_workshop.api.common.IExtraColours.ExtraColourType;
 import moe.plushie.armourers_workshop.common.capability.wardrobe.ExtraColours;
 import moe.plushie.armourers_workshop.common.data.type.BipedRotations;
@@ -14,6 +10,7 @@ import moe.plushie.armourers_workshop.utils.ModLogger;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraftforge.common.util.Constants.NBT;
+import org.apache.logging.log4j.Level;
 
 public final class TilePropertyManager {
 

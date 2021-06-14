@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.skin.entity;
 
 import java.util.ArrayList;
-
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;
 import moe.plushie.armourers_workshop.client.render.entity.SkinLayerRendererChicken;
 import moe.plushie.armourers_workshop.common.skin.type.SkinTypeRegistry;

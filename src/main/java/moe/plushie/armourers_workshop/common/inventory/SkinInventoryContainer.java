@@ -2,7 +2,6 @@ package moe.plushie.armourers_workshop.common.inventory;
 
 import java.util.HashMap;
 import java.util.Set;
-
 import moe.plushie.armourers_workshop.api.common.ISkinInventoryContainer;
 import moe.plushie.armourers_workshop.api.common.skin.entity.ISkinnableEntity;
 import moe.plushie.armourers_workshop.api.common.skin.type.ISkinType;

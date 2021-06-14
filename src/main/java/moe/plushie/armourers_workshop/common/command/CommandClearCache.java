@@ -1,7 +1,6 @@
 package moe.plushie.armourers_workshop.common.command;
 
 import java.util.List;
-
 import moe.plushie.armourers_workshop.common.network.PacketHandler;
 import moe.plushie.armourers_workshop.common.network.messages.server.MessageServerClientCommand;
 import moe.plushie.armourers_workshop.common.network.messages.server.MessageServerClientCommand.CommandType;

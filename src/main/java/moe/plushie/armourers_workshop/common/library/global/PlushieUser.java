@@ -1,9 +1,7 @@
 package moe.plushie.armourers_workshop.common.library.global;
 
-import java.util.UUID;
-
 import com.google.gson.JsonObject;
-
+import java.util.UUID;
 import moe.plushie.armourers_workshop.common.library.global.auth.PlushieAuth;
 import moe.plushie.armourers_workshop.common.library.global.auth.PlushieSession;
 
