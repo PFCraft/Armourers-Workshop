@@ -19,15 +19,11 @@ public class ConfigHandlerClient {
     // Performance
     public static int renderDistanceSkin;
     public static int renderDistanceBlockSkin;
-    public static int renderDistanceMannequinEquipment;
     public static int modelBakingThreadCount;
     public static double lodDistance = 32F;
     public static boolean multipassSkinRendering = true;
     public static int maxLodLevels = 4;
     public static boolean useClassicBlockModels;
-
-    // Misc
-    public static int skinLoadAnimationTime;
 
     // Cache
     public static int skinCacheExpireTime;
@@ -64,7 +60,6 @@ public class ConfigHandlerClient {
     }
 
     public static void loadConfigFile() {
-        loadCategoryMisc();
         loadCategoryPerformance();
         loadCategoryCache();
         //皮肤预览
@@ -72,14 +67,6 @@ public class ConfigHandlerClient {
         if (config.hasChanged()) {
             config.save();
         }
-    }
-
-    private static void loadCategoryMisc() {
-        config.setCategoryComment(CATEGORY_MISC, "Miscellaneous settings.");
-
-        skinLoadAnimationTime = config.getInt("skinLoadAnimationTime", CATEGORY_MISC, 200, 0, 10000,
-                "How long skins will display their loading animation for in milliseconds\n"
-                        + "Settings this to 0 will disable loading animations.");
     }
 
     private static void loadCategoryPerformance() {
@@ -91,9 +78,6 @@ public class ConfigHandlerClient {
         renderDistanceBlockSkin = config.getInt("renderDistanceBlockSkin", CATEGORY_PERFORMANCE, 128, 16, 512,
                 "The max distance in blocks that block skins will be rendered.");
         renderDistanceBlockSkin = renderDistanceBlockSkin * renderDistanceBlockSkin;
-
-        renderDistanceMannequinEquipment = config.getInt("renderDistanceMannequinEquipment", CATEGORY_PERFORMANCE, 64, 16, 512,
-                "The max distance in blocks that equipment will be rendered on mannequins.");
 
 
         int cores = Runtime.getRuntime().availableProcessors();

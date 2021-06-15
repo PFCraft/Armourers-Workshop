@@ -264,7 +264,7 @@ public class PlayerMutator extends BipedMutator<PlayerData, AbstractClientPlayer
 				.offsetTextureQuad(BoxSide.BOTTOM, 0, -6F)
 				.create();
 		this.rightForeLeg.addChild(this.rightForeLegwear);
-		
+
 		return true;
 	}
 

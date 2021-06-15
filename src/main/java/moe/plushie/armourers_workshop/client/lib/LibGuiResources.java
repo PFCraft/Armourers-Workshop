@@ -27,17 +27,7 @@ public class LibGuiResources {
     public static final String CONTROL_RATING = PREFIX_TEXTURE + "_controls/rating.png";
 
     // GUIs
-    public static final String GUI_ADVANCED_SKIN_BUILDER = PREFIX_TEXTURE + "advanced_skin_builder/advanced-skin-builder.png";
-    public static final String GUI_ARMOURER = PREFIX_TEXTURE + "armourer/armourer.png";
-    public static final String GUI_COLOUR_MIXER = PREFIX_TEXTURE + "colour_mixer/colour-mixer.png";
-    public static final String GUI_DYE_TABLE = PREFIX_TEXTURE + "dye_table/dye-table.png";
-    public static final String GUI_GLOBAL_LIBRARY = PREFIX_TEXTURE + "global_library/global-library.png";
-    public static final String GUI_GUIDE_BOOK = PREFIX_TEXTURE + "guide_book/guide-book.png";
-    public static final String GUI_GUIDE_BOOK_PAGES = PREFIX_TEXTURE + "guide_book/guide-book-page.png";
-    public static final String GUI_HOLOGRAM_PROJECTOR = PREFIX_TEXTURE + "hologram_projector/hologram-projector.png";
-    public static final String GUI_OUTFIT_MAKER = PREFIX_TEXTURE + "outfit_maker/outfit-maker.png";
     public static final String GUI_SKIN_LIBRARY = PREFIX_TEXTURE + "skin_library/armour-library.png";
-    public static final String GUI_SKINNING_TABLE = PREFIX_TEXTURE + "skinning_table/skinning-table.png";
     public static final String GUI_WARDROBE_1 = PREFIX_TEXTURE + "wardrobe/wardrobe-1.png";
     public static final String GUI_WARDROBE_2 = PREFIX_TEXTURE + "wardrobe/wardrobe-2.png";
 

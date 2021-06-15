@@ -60,8 +60,6 @@ public class ConfigHandler {
     
     // Other
     public static UUID remotePlayerId;
-    public static String lastVersion;
-    public static boolean hasUpdated;
     
     public static void init(File file) {
         if (config == null) {
@@ -77,7 +75,6 @@ public class ConfigHandler {
         loadCategoryRecipe();
         loadCategoryEntitySkins();
         loadCategoryCache();
-        checkIfUpdated();
         if (config.hasChanged()) {
             config.save();
         }
@@ -97,23 +94,6 @@ public class ConfigHandler {
         return true;
     }
     
-    private static void checkIfUpdated() {
-        String localVersion = LibModInfo.MOD_VERSION;
-        if (LibModInfo.MOD_VERSION.startsWith("@VER")) {
-            return;
-        }
-        if (versionCompare(lastVersion.replaceAll("-", "."), localVersion.replaceAll("-", ".")) < 0) {
-            ModLogger.log(String.format("Updated from version %s to version %s.", lastVersion, localVersion));
-            config.getCategory(CATEGORY_GENERAL).get("lastVersion").set(localVersion);
-            if (config.hasChanged()) {
-                config.save();
-            }
-            hasUpdated = true;
-        } else {
-            hasUpdated = false;
-        }
-    }
-    
     private static void loadCategoryGeneral() {
         config.setCategoryComment(CATEGORY_GENERAL, "General settings.");
         
@@ -127,11 +107,6 @@ public class ConfigHandler {
         serverCompressesSkins = config.getBoolean("serverCompressesSkins", CATEGORY_GENERAL, true,
                 "If enabled the server will compress skins before sending them to clients.\n" +
                 "Highly recommended unless the server has a very slow CPU.");
-        
-        if (!LibModInfo.MOD_VERSION.startsWith("@VER")) {
-            lastVersion = config.getString("lastVersion", CATEGORY_GENERAL, "0.0",
-                    "Used by the mod to check if it has been updated.");
-        }
     }
     
     private static void loadCategoryWardrobe() {

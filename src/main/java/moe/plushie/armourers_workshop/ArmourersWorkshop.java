@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = LibModInfo.ID, name = LibModInfo.NAME, version = LibModInfo.MOD_VERSION, guiFactory = LibModInfo.GUI_FACTORY_CLASS, dependencies = LibModInfo.DEPENDENCIES, acceptedMinecraftVersions = LibModInfo.MC_VERSION, updateJSON = LibModInfo.UPDATE_URL)
+@Mod(modid = LibModInfo.ID, name = LibModInfo.NAME, version = "0.51.0", guiFactory = LibModInfo.GUI_FACTORY_CLASS, dependencies = LibModInfo.DEPENDENCIES, acceptedMinecraftVersions = LibModInfo.MC_VERSION)
 public class ArmourersWorkshop {
 
     /*
@@ -44,7 +44,6 @@ public class ArmourersWorkshop {
     @EventHandler
     public void perInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
-        ModLogger.log(String.format("Loading %s version %s.", LibModInfo.NAME, LibModInfo.MOD_VERSION));
         proxy.preInit(event);
         proxy.initLibraryManager();
         proxy.createCore();
